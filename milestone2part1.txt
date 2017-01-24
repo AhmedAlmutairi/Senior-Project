@@ -1,0 +1,89 @@
+Milestone2
+Whitney Meulink
+Ahmed Almutairi
+Robert Balsley
+Due Date: January 25th, 2017
+
+Problem 1: 
+1. Primary Needs and Features:
+	a. An MVC5 Web Application with the following Action Links:
+		i. Home
+			a. On the home page, it gives the user the top 10 most
+			   current/popular topics
+			b. A Login portal, where the user can enter their user name
+			   and password
+		ii. Most Popular
+			a. A new view to display the most liked pages/topics
+		iii. Browse
+			a. An advanced search, where a user can enter in key
+			   characters, like "Dogs", "Artificial Intelligence", or "Donald
+			   Trump" etc
+		iv. Most Recent
+			a. When people run out of ideas to read, they can go and see
+			   which topics have been created today
+		 v: Politics
+			a. Actionlinks to "Fox News", "O'Reilly Factor", "CNN News",
+			   "CBS News", "Rush Limbaugh", "The New York Times", "Katie
+			   Couric"
+		vi: Sports
+			a. Actionlinks to "The Seattle Seahawks", "The Yankees",
+			   "The Lakers" etc
+		vii: Random
+			a. A way for the user to click on Random, and it shows the
+			   user a completely random topic.
+	b. A database that can collect the following:
+		i. Users comments based off Topics and subtopics
+		ii. Users logins
+		iii. Topics
+		iv. A means of relating one topic to another
+		v. A Profile for each user
+			a. Collects all the users favorite Topics
+			b. Allows users to private message other users
+			c. Allows users to pick an icon for their profile picture
+			d. Allows users to look at previous topics/comments they liked
+	c. A feature where we can count how many users have liked each topic
+2. Requirements:
+	a. Web Application Framework, ASP.net, Azure
+	b. Security and verifying account procedures
+	c. A backup system workflow via version control git
+	d. A searching/sorting algorithm that allows us to categorize the websites headlines
+	e. A way of keeping track of money earned
+3. Modeling outputs
+	a. Please see images.
+4. Architecture Requirements
+	a. Web Server / Hosting
+	b. IIS/Windows/Azure
+	c. Internet Network
+5. User Stories
+	a. As a user, I want to write my own headline, so that I can add new 	   	 headlines to the web.
+	b. As a user, I want to be able to browse others headline, so that I can read them.
+	c. As a user, I want to be able to specify which category I am going with, so that I can find headlines easily.
+	d. As an admin, I want to be able to delete or edit users’ headline, so that I can delete or edit improper headlines. 
+	e. As a user, I want to be able to search for a specific headline, so that I can find it fast.
+	
+Problem 2. 
+
+My wall app:
+
+An app or page that anyone can write what he/she wants whether by signing in or anonymously. Anyone can comment others’ posts and can contact them if their information are public. The app is to say what you feel at this moment, and to share your feeling with the world.
+
+Novni app is the related app to my wall app. In Novni, you write what you feel anonymously. It is to get things out of your head and relax. In Novni, you can make your post private or public. Also, you can allow other to leave comments or block the comments.
+
+Join my wall and get rid of stress, share your happiness, or declare your success. That what makes it interesting and useful. 
+We need to use asp.net MVC5, C#, SQL server, LINQ pad. So, we won’t use any tools that not covered in the class.
+
+We will use sorting algorithms and search algorithms since the user need to be able to search for some posts or profiles.
+We think that it’s about 6. So, it is about the average of difficulty to be done. 
+
+Elementary School App:
+
+An app that allows students’, parents, and teachers in a school to be able to communicate and to stay connected. Also, parents from their home can track their childrens progress and see the announcements that schools post about weather, emergency, upcoming national holiday, invitation for events. Teachers will be able to reach the parent as wells. Parents can notify teachers with children’s absentee letters.
+
+The teacher app & grade book is so related to our team project. Teachers and parents can talk in private, can see their children’s grade. Also, parents can see events notifications, reports about their children, and review attendance.
+This is so useful for parents and teachers. It keeps both parents and teachers in track. It will eliminate the gap between parents and teachers. This will help in increasing children’s successes. 
+We need to use asp.net MVC5, C#, SQL server, LINQ pad. So, we won’t use any tools that not covered in the class.
+We will use sorting algorithms and search algorithms.
+We think that it’s about 7. So, it is not easy to be done. 
+
+
+
