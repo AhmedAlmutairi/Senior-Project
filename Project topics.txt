@@ -1,0 +1,17 @@
+1. Exercise application
+-----------------------------
+An exercise application that targets beginner through expert gym goers to aid in either losing weight or gaining bulk / body building. For beginners, the user can enter some basic information and answer questions about goals (lose weight, gain muscle mass, increase physical stamina, etc.), the area(s) of the body that the user wants to focus on, schedule, sex (male or female), and intensity, the system will generate a customized exercise program. It will also allow the user to input their daily food intake and make suggestions of what a user should eat for each meal or what should be eliminated from their diet.
+For advanced users, the user can define their own exercise regime and nutrition intake and the system can make suggestions for optimal routines or diet.
+
+
+
+2. Elementary school app
+-----------------------------
+We live in a busy world. Both parents and teachers are inundated with competing responsibilities and activities. But as parents, we want to be connected to our children’s progress in school. Enter our app. We intend to be the link between parent and teacher. Teachers can give daily or weekly updates about how the children are doing in class as a whole and can create individual updates on a child by child basis. These messages will be private between parent and teacher and can offer push notifications as there will not always be updates every day. 
+Grades and assigned homework is also an optional feature that will allow parents to see what homework assignments have been / will be assigned along with due dates, what the student’s academic progress is, and any missing assignments that need to be turned in.
+
+
+
+3. The Entangled Whiteboard
+-----------------------------
+A collaboration tool for working with collogues locally or remotely where users can draw out diagrams, mind maps, brainstorming lists, flow charts, etc. and save them for later review. The system will show real-time updates as others draw, either using digital whiteboards or tablets, and areas of the white board can be protected with the option of turning on or off overlays of others drawings or notes.
