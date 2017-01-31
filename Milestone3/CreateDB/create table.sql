@@ -1,0 +1,52 @@
+﻿-- Create tables and populate with seed data
+--    This version is customized for initializing the db on Azure
+--    Seed data is in populate.sql
+
+
+
+IF OBJECT_ID('dbo.Genre','U') IS NOT NULL
+	DROP TABLE [dbo].[Genre];
+GO
+
+IF OBJECT_ID('dbo.User','U') IS NOT NULL
+	DROP TABLE [dbo].[User];
+GO
+
+IF OBJECT_ID('dbo.Headline','U') IS NOT NULL
+	DROP TABLE [dbo].[Headline];
+GO
+-- ########### Genre ###########
+CREATE TABLE [dbo].[Genre]
+(
+	[ID] INT IDENTITY (1,1) NOT NULL,
+	[G_Name] NVARCHAR (50) NOT NULL,
+	
+	CONSTRAINT [PK_dbo.Genre] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+-- ########### User ###########
+
+CREATE TABLE [dbo].[User]
+(
+	[ID] INT IDENTITY (1,1) NOT NULL,
+	[Name] NVARCHAR (50) NOT NULL,
+	[Username] NVARCHAR (100) NOT NULL,
+	[Password] INT,
+	CONSTRAINT [PK_dbo.User] PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+-- ########### Headline ###########
+CREATE TABLE [dbo].[Headline]
+(
+	[ID] INT IDENTITY (1,1) NOT NULL,
+	[GenreID] INT,
+	[UserID] INT,
+	[Title] NVARCHAR (100) NOT NULL,
+	[Body] NVARCHAR (500) NOT NULL,
+	[Comment] NVARCHAR (300) NOT NULL,
+	[PDate] Date NOT NULL,
+	CONSTRAINT [PK_dbo.Headline] PRIMARY KEY CLUSTERED ([ID] ASC),
+	CONSTRAINT [FK_dbo.Headline_dbo.Genre_ID] FOREIGN KEY ([GenreID]) REFERENCES [dbo].[Genre] ([ID]),
+	CONSTRAINT [FK_dbo.Headline_dbo.User_ID] FOREIGN KEY ([UserID]) REFERENCES [dbo].[User] ([ID])
+);
+

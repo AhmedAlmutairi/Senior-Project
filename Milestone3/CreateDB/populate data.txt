@@ -1,0 +1,42 @@
+SET IDENTITY_INSERT Pirate ON;
+
+-- ########### Pirate ###########
+INSERT INTO [dbo].[Pirate](ID, FirstName,LastName, PDate)VALUES(1000, 'Mitch','Fry', '12/08/2009');
+INSERT INTO [dbo].[Pirate](ID, FirstName,LastName, PDate)VALUES(1001,'Scot','Morse', '12/07/2010');
+INSERT INTO [dbo].[Pirate](ID, FirstName,LastName, PDate)VALUES(1002,'Ahmed','Almutairi', '12/05/2011');
+INSERT INTO [dbo].[Pirate](ID, FirstName,LastName, PDate)VALUES(1003,'Jhon','Sal', '12/04/2012');
+INSERT INTO [dbo].[Pirate](ID, FirstName,LastName, PDate)VALUES(1004,'Mary','Abdul', '12/02/2013');
+
+SET IDENTITY_INSERT Pirate OFF;
+
+SET IDENTITY_INSERT Ship ON;
+-- ########### Ship ###########
+INSERT INTO [dbo].[Ship](ID, Name,SType, Tonnage)VALUES(2000, 'Sami', 'Jameel', 200);
+INSERT INTO [dbo].[Ship](ID, Name,SType, Tonnage)VALUES(2001,'Nano', 'Camel', 300);
+INSERT INTO [dbo].[Ship](ID, Name,SType, Tonnage)VALUES(2002,'Hadi', 'Jameel', 200);
+INSERT INTO [dbo].[Ship](ID, Name,SType, Tonnage)VALUES(2003,'Mahd', 'Camel', 300);
+INSERT INTO [dbo].[Ship](ID, Name,SType, Tonnage)VALUES(2004,'Dhahb', 'Short', 400);
+
+SET IDENTITY_INSERT Ship OFF;
+
+-- ########### Crew ###########
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1000, 2000, 200.0);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1000, 2001, 150.0);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1000, 2002, 300.5);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1000, 2003, 400.5);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1001, 2004, 350.5);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1001, 2000, 300.7);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1001, 2002, 120.8);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1001, 2001, 140.7);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1002, 2004, 134.8);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1002, 2001, 126.9);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1002, 2002, 134.6);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1002, 2003, 156.8);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1003, 2000, 128.0);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1003, 2001, 139.0);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1003, 2003, 158.0);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1003, 2002, 147.8);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1004, 2000, 176.8);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1004, 2001, 174.9);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1004, 2002, 152.7);
+INSERT INTO [dbo].[Crew](PirateID, ShipID, Booty)VALUES(1004, 2004, 189.0);
