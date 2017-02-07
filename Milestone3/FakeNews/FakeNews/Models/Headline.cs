@@ -1,4 +1,4 @@
-namespace FakeNews
+namespace FakeNews.Models
 {
     using System;
     using System.Collections.Generic;
@@ -11,9 +11,9 @@ namespace FakeNews
     {
         public int ID { get; set; }
 
-        public int? GenreID { get; set; }
+        public int GenreID { get; set; }
 
-        public int? UserID { get; set; }
+        public int UserID { get; set; }
 
         [Required]
         [StringLength(100)]
