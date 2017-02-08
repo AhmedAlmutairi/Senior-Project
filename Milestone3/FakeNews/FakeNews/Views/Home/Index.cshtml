@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FakeNews.Models.Headline>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<head>
+    <title>Welcome to Headline Hut!</title>
+
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <div class="jumbotron text-center">
+        <h1>Headline Hut - Fake news</h1>
+        <p>We allow you to submit and browse silly news!</p>
+        <form>
+            <div class="input-group">
+                <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-danger">Subscribe</button>
+                </div>
+            </div>
+        </form>
+
+        <p>
+            @using (Html.BeginForm("index", "Home", FormMethod.Get))
+            {
+                <b>Search By: </b>
+                @Html.RadioButton("searchBy", "Title") <text> Title </text>
+                @Html.RadioButton("Search By", "Body") <text> Body </text> <br />
+                @Html.TextBox("search")
+                <input class="butt" type="submit" value="Search" />
+            }
+        </p>
+    </div>
+
+    <p id="tem">
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+
+
+
+
+    @foreach (var item in Model)
+    {
+
+
+
+        <div id="tem">
+            @Html.ActionLink(item.Title, "Tiltle", new { id = item.ID }, new { @class = "col-sm-12" }) <br />
+
+            @Html.DisplayFor(modelItem => item.Body, new { @style = "font-size: medium" }) <br />
+        </div>
+
+
+
+    }
+
+
+
+</body>
