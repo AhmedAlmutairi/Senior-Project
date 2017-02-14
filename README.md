@@ -6,7 +6,7 @@ An application used to collaborate with your team, your co-worker, your friends,
 
 ## Envision Statement ##
 The Wall is a collaboration tool for working with collogues locally or remotely where users can draw out diagrams, mind maps, brainstorming lists, flow charts, etc. and save them for later review. The system will show real-time updates as others draw, either using digital whiteboards, tablets, or desktop computers, and areas of the white board can be protected with the option of turning on or off overlays of others drawings or notes. This system is intended to be for both individual users and for teams who need a way to work collaboratively and have an easy way to keep track of their progress. 
-Unlike A Web Whiteboard (awwapp.com), www.webwhiteboard.com, or Realtime Board (realtimeboard.com), our app will be different as there will be a section where items can be posted to the community at large, like a Stack Exchange site.
+Unlike A Web Whiteboard (awwapp.com), [www.webwhiteboard.com](Link URL), or Realtime Board (realtimeboard.com), our app will be different as there will be a section where items can be posted to the community at large, like a Stack Exchange site.
 
 
 
