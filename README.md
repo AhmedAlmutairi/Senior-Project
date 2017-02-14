@@ -16,13 +16,8 @@ Unlike A Web Whiteboard (awwapp.com), www.webwhiteboard.com, or Realtime Board (
 * Whitney Meulink
 * Robert Balsley
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+##Needs to be installed from Nutget:##
+* Ninject V3.2.2
+* Ninject.MVC5 V3.2.1
+* Ninject.Web.Common V3.2.3
+* Moq V4.5.30
