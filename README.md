@@ -16,6 +16,15 @@ Unlike A Web Whiteboard (awwapp.com), [www.webwhiteboard.com](Link URL), or Real
 * Whitney Meulink
 * Robert Balsley
 
+## Tools that are used in developing the project  ##
+
+* Visual Studio MVC5 v2015
+* SQL Server 2015
+* Linq pad 5
+* [Visual Studio Team Service](https://engorg.visualstudio.com/theWall/_backlogs?level=Epics&_a=backlog)
+* [Bitbucket](https://bitbucket.org/CS460Almutairi/engorg)
+* [Azure Deployed site](http://neonews.azurewebsites.net/)
+
 ##Needs to be installed from Nutget:##
 * Ninject V3.2.2
 * Ninject.MVC5 V3.2.1
