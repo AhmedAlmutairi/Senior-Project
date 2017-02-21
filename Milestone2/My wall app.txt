@@ -1,0 +1,9 @@
+My wall app:
+My Wall is an app where anyone can write what they think or how they feel. Posts can be anonymous or you can establish an account to write your posts so others can follow you. The app is used to say what you feel at any given moment and share those feelings with the world. Its aim is to help you destress, rant, or tell the world of your successes. Others can comment on your posts and you can comment on others. Other may also contact you if you make your contact information publicly available.
+Join My Wall and get rid of stress, share your happiness, let others bask in your success, or just say whatever comes to your mind.
+
+An app that is related to My Wall is Novni. In Novni, you write what you feel anonymously or by logging in. You can make your posts private or public. You can allow others to comment on your posts or to just be able to read what you post. 
+
+We need to use asp.net MVC5, C#, SQL server, LINQ pad. So, we won’t use any tools that not covered in the class.
+We will use sorting algorithms and search algorithms since the user need to be able to search for some posts or profiles.
+We think that it’s about 6. So, it is about the average of difficulty to be done. 
