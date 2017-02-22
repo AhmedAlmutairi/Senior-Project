@@ -1,0 +1,7 @@
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\bin\Debug\myWall.DataAccessLayer.dll
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\bin\Debug\myWall.DataAccessLayer.pdb
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\bin\Debug\myWall.Model.dll
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\bin\Debug\myWall.Model.pdb
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\obj\Debug\myWall.DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\obj\Debug\myWall.DataAccessLayer.dll
+C:\Users\Ahmed\Documents\engOrg\engorg\myWall\myWall\myWall.DataAccessLayer\obj\Debug\myWall.DataAccessLayer.pdb
