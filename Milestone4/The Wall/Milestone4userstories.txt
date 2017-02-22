@@ -1,0 +1,38 @@
+Epic:
+	As a user, I want to be able to communicate with other users via mywall app. 
+		User Stories:
+			As a user, I want to add other users
+			As a user, I want to search users
+			As a user, I want to see other users walls if they are public
+			As a user, I want to block or befriend a user
+Epic:
+	As a user, I want to be able to create a fresh wall, and save my previous wall for later use
+		User Stories:
+			As a user, I want to add a pdf book to my wall for discussion
+			As a user, I want to add a picture to my wall for discussion
+			As a user, I want to add to have a view for chat and a view for a whiteboard
+			As a user, I want a button where I can easily navigate to the whiteboard
+			As a user, I want a button where I can easily naviagate to a chat box 
+			As a user, I want to be able type explanations or questions to other users
+			As a user, I want to be able to add comments to pictures, books, whiteboard
+Epic:
+	As a user, I want to have a secure user name and password
+		User Stories:
+			As a user, I want to be able to enter in security questions and answers
+			As a user, I want to be able to reset my password
+			As a user, I want to be able to change my password
+			As a user, I want to have a CAPCHA setting when logging in
+Epic:
+	As a user, I want to have a reminder wall
+		User Stories:
+			As a user, I want to be able to write/type mathematical formulas
+			As a user, I want to be able to display lists of chores for my kids
+			As a user, I want to add a calendar with my work schedule
+			As a user, I want to search for previous reminders that I have wrote on my reminder wall
+Epic:
+	As a user, I want to be able to creatively give opinions on meanless items
+		User Stories:
+			As a user, I want to be able to insert a funny picture, 
+			As a user, I want to be able to edit a funny picture with my white board tools
+			As a user, I want to post a newly editted funny picture to a new public wall
+			As a user, I want to 
