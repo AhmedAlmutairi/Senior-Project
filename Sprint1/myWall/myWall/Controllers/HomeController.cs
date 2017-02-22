@@ -1,4 +1,5 @@
-﻿using System;
+﻿using myWall.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,37 @@ namespace myWall.Controllers
 {
     public class HomeController : Controller
     {
+        private DefaultConnection db = new DefaultConnection();
+
+        // GET: Home
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult CreateWall()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        [HttpPost]
 
-            return View();
+        public ActionResult CreateWall(Wall wall)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Walls.Add(wall);
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+
+            }
+
+            return View(wall);
         }
+
     }
 }

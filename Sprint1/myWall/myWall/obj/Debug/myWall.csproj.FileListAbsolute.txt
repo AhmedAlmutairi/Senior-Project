@@ -77,9 +77,9 @@ C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.dll
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.pdb
+<<<<<<< HEAD
 C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\myWall\bin\roslyn\csc.exe
 C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\myWall\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\myWall\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -162,3 +162,9 @@ C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\m
 C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
 C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\myWall\obj\Debug\myWall.dll
 C:\Users\Ahmed\Documents\engoeg_ahmed\engorg_ahmed\engorg_ahmed\Sprint1\myWall\myWall\obj\Debug\myWall.pdb
+=======
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.Migrations._1.resources
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.csproj.GenerateResource.Cache
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.Migrations.InitialCreate.resources
+>>>>>>> develop
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
