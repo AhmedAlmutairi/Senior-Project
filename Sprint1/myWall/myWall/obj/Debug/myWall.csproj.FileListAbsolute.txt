@@ -77,6 +77,8 @@ C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.dll
 C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.pdb
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.Migrations._1.resources
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.csproj.GenerateResource.Cache
+C:\Users\Ahmed\Documents\engOrg\engorg\Sprint1\myWall\myWall\obj\Debug\myWall.Migrations.InitialCreate.resources
