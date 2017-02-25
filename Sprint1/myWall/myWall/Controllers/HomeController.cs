@@ -1,7 +1,10 @@
-﻿using myWall.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using myWall.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,7 +28,6 @@ namespace myWall.Controllers
         }
 
         [HttpPost]
-
         public ActionResult CreateWall(Wall wall)
         {
             if (ModelState.IsValid)
@@ -37,6 +39,16 @@ namespace myWall.Controllers
                 return RedirectToAction("Index");
 
             }
+
+            return View(wall);
+        }
+
+
+       
+
+        public ActionResult Wall()
+        {
+            var wall = db.Walls.ToList();
 
             return View(wall);
         }

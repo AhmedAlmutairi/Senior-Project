@@ -1,0 +1,24 @@
+﻿@model IEnumerable<myWall.Models.Wall>
+
+@{
+    ViewBag.Title = "Wall";
+}
+
+<h2>Wall</h2>
+
+<div>
+    <h4>Wall</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        
+
+
+    </dl>
+</div>
+<p> |
+    @Html.ActionLink("Back to List", "Index")
+</p>
