@@ -1,4 +1,4 @@
-﻿@model IEnumerable<myWall.Models.Wall>
+﻿@model IEnumerable<myWall.Models.Wall> 
 
 @{
     ViewBag.Title = "Wall";
@@ -9,16 +9,27 @@
 <div>
     <h4>Wall</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+</div>   
+
+
+<body>
+
+    <form id="TodoForm">
+        <input id="TodoInput" />
+        <button type="button" onclick="TodoList()">Add a List</button>
+    </form>
+    <ul id="TodoList">
 
         
+    </ul>
 
+    <Script src="~/Scripts/myWall.js"></Script>
 
-    </dl>
-</div>
-<p> |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@foreach (var item in Model)
+{
+
+@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+}
+
+</body>

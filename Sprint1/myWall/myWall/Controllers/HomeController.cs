@@ -4,6 +4,7 @@ using myWall.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,8 @@ namespace myWall.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var wall = db.Walls.ToList();
+            return View(wall);
         }
 
         [HttpGet]
@@ -46,11 +48,35 @@ namespace myWall.Controllers
 
        
 
-        public ActionResult Wall()
+        public ActionResult Wall(int id)
         {
-            var wall = db.Walls.ToList();
+            var wal = db.Walls.Where(wa => wa.Id == id).ToList();
+            //Find(id).Id.ToString().ToList();
+            return View(wal);
+        }
 
-            return View(wall);
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Wall wal = db.Walls.Find(id);
+            if (wal == null)
+            {
+                return HttpNotFound();
+            }
+            return View(wal);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Wall wal = db.Walls.Find(id);
+            db.Walls.Remove(wal);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

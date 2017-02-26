@@ -22,3 +22,28 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+#bak {
+    background-color: #fac5ca;
+    border: solid;
+    border-radius: 10px;
+
+}
+
+#wal {
+    
+    border: solid;
+    border-radius: 10px;
+
+}
+
+#hed{
+    font-family: Britannic;
+}
+
+#bd{
+    font-family: 'Arabic Typesetting';
+    font-size: xx-large; 
+    
+}
