@@ -48,9 +48,9 @@ namespace myWall.Controllers
 
        
 
-        public ActionResult Wall(int id)
+        public ActionResult Wall(int? Id)
         {
-            var wal = db.Walls.Where(wa => wa.Id == id).ToList();
+            var wal = db.Walls.Where(wa => wa.Id == Id).ToList();
             //Find(id).Id.ToString().ToList();
             return View(wal);
         }
