@@ -60,7 +60,7 @@ CREATE UNIQUE NONCLUSTERED INDEX [UserNameIndex] ON [dbo].[AspNetUsers]([UserNam
 -- ############# AspNetUserClaims #############
 CREATE TABLE [dbo].[AspNetUserClaims]
 (
-    [Id]         INT            IDENTITY (1, 1) NOT NULL,
+    [Id]         INT      IDENTITY (1, 1) NOT NULL,
     [UserId]     NVARCHAR (128) NOT NULL,
     [ClaimType]  NVARCHAR (MAX) NULL,
     [ClaimValue] NVARCHAR (MAX) NULL,
@@ -122,25 +122,25 @@ CREATE TABLE [dbo].[UserCalloboration]
 
 -- ########### CalloborationCenters ###########
 
-CREATE TABLE [dbo].[CalloborationCenters]
+CREATE TABLE [dbo].[CalloborationCenter]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Name] NVARCHAR (50) NOT NULL,
 	[Tier] NVARCHAR (100) NOT NULL,
 	[CallobId]  INT NOT NULL,
-	CONSTRAINT [PK_dbo.CalloborationCenters] PRIMARY KEY CLUSTERED ([Id] ASC),
-	CONSTRAINT [FK_dbo.CalloborationCenters_dbo.CalloborationAccount_CallobId] FOREIGN KEY ([CallobId]) REFERENCES [dbo].[CalloborationAccount] ([Id]) ON DELETE CASCADE
+	CONSTRAINT [PK_dbo.CalloborationCenter] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_dbo.CalloborationCenter_dbo.CalloborationAccount_CallobId] FOREIGN KEY ([CallobId]) REFERENCES [dbo].[CalloborationAccount] ([Id]) ON DELETE CASCADE
 
 );
 
 -- ########### Walls ###########
-CREATE TABLE [dbo].[Walls]
+CREATE TABLE [dbo].[Wall]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Name] NVARCHAR (50) NOT NULL,
 	[UserId] NVARCHAR (128) NOT NULL,
-	CONSTRAINT [PK_dbo.Walls] PRIMARY KEY CLUSTERED ([Id] ASC),
-	CONSTRAINT [FK_dbo.Walls_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+	CONSTRAINT [PK_dbo.Wall] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_dbo.Wall_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
 
 );
 
@@ -173,26 +173,28 @@ CREATE TABLE [dbo].[Wall_Group]
     [GroupId] INT NOT NULL,
     CONSTRAINT [PK_dbo.Wall_Group] PRIMARY KEY CLUSTERED ([WallId] ASC, [GroupId] ASC),
     CONSTRAINT [FK_dbo.Wall_Group_dbo.Groups_GroupId] FOREIGN KEY ([GroupId]) REFERENCES [dbo].[Groups] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [FK_dbo.Wall_Group_dbo.Walls_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Walls] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [FK_dbo.Wall_Group_dbo.Wall_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Wall] ([Id]) ON DELETE CASCADE
 
 
 );
 
 -- ########### Posts ###########
-CREATE TABLE [dbo].[Posts]
+CREATE TABLE [dbo].[Post]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[UserId] NVARCHAR (128) NOT NULL,
 	[WallId] INT NOT NULL,
 	[CallobId] INT NOT NULL,
-	[Title] NVARCHAR (128) NOT NULL,
-	[Text] NVARCHAR (1000) NOT NULL,
+	[Title]       NVARCHAR (MAX)  NULL,
+    [Description] NVARCHAR (MAX)  NULL,
+    [Contents]    NVARCHAR (MAX)  NULL,
+    [Image]       VARBINARY (MAX) NULL,
 
 	
-	CONSTRAINT [PK_dbo.Posts] PRIMARY KEY CLUSTERED ([Id] ASC),
-	CONSTRAINT [FK_dbo.Posts_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
-	CONSTRAINT [FK_dbo.Posts_dbo.Walls_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Walls] ([Id]),
-	CONSTRAINT [FK_dbo.Posts_dbo.CalloborationCenters_CallobId] FOREIGN KEY ([CallobId]) REFERENCES [dbo].[CalloborationCenters] ([Id]) ON DELETE CASCADE
+	CONSTRAINT [PK_dbo.Post] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_dbo.Post_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
+	CONSTRAINT [FK_dbo.Post_dbo.Walls_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Wall] ([Id]),
+	CONSTRAINT [FK_dbo.Post_dbo.CalloborationCenters_CallobId] FOREIGN KEY ([CallobId]) REFERENCES [dbo].[CalloborationCenter] ([Id]) ON DELETE CASCADE
 
 );
 
@@ -208,7 +210,7 @@ CREATE TABLE [dbo].[Comments]
 	
 	CONSTRAINT [PK_dbo.Comments] PRIMARY KEY CLUSTERED ([Id] ASC),
 	CONSTRAINT [FK_dbo.Comments_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
-	CONSTRAINT [FK_dbo.Comments_dbo.Posts_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Posts] ([Id]) 
+	CONSTRAINT [FK_dbo.Comments_dbo.Post_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Post] ([Id]) 
 	
 );
 
@@ -216,24 +218,24 @@ CREATE TABLE [dbo].[Comments]
 
 
 -- ########### Tags ###########
-CREATE TABLE [dbo].[Tags]
+CREATE TABLE [dbo].[Tag]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Tag] NVARCHAR (50) NOT NULL,
 	
-	CONSTRAINT [PK_dbo.Tags] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [PK_dbo.Tag] PRIMARY KEY CLUSTERED ([Id] ASC),
 	
 );
 
 -- ########### Diagrams ###########
-CREATE TABLE [dbo].[Diagrams]
+CREATE TABLE [dbo].[Diagram]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Data] NVARCHAR (500) NOT NULL,
 	[UserId] NVARCHAR (128) NOT NULL,
 	
-	CONSTRAINT [PK_dbo.Diagrams] PRIMARY KEY CLUSTERED ([Id] ASC),
-	CONSTRAINT [FK_dbo.Diagrams_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
+	CONSTRAINT [PK_dbo.Diagram] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_dbo.Diagram_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
 );
 
 -- ########### Post_Tag ###########
@@ -242,8 +244,8 @@ CREATE TABLE [dbo].[Post_Tag]
 	[PostId] INT NOT NULL,
     [TagId] INT NOT NULL,
     CONSTRAINT [PK_dbo.Post_Tag] PRIMARY KEY CLUSTERED ([PostId] ASC, [TagId] ASC),
-    CONSTRAINT [FK_dbo.Post_Tag_dbo.Posts_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Posts] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [FK_dbo.Post_Tag_dbo.Tags_TagId] FOREIGN KEY ([TagId]) REFERENCES [dbo].[Tags] ([Id]) ON DELETE CASCADE
+    CONSTRAINT [FK_dbo.Post_Tag_dbo.Post_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Post] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_dbo.Post_Tag_dbo.Tag_TagId] FOREIGN KEY ([TagId]) REFERENCES [dbo].[Tag] ([Id]) ON DELETE CASCADE
 
 );
 
@@ -253,14 +255,14 @@ CREATE TABLE [dbo].[Post_Diagram]
 	[PostId] INT NOT NULL,
     [DiagramId] INT NOT NULL,
     CONSTRAINT [PK_dbo.Post_Diagram] PRIMARY KEY CLUSTERED ([PostId] ASC, [DiagramId] ASC),
-    CONSTRAINT [FK_dbo.Post_Diagram_dbo.Posts_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Posts] ([Id]) ON DELETE CASCADE,
-    CONSTRAINT [FK_dbo.Post_Diagram_dbo.Diagrams_DiagramId] FOREIGN KEY ([DiagramId]) REFERENCES [dbo].[Diagrams] ([Id]) 
+    CONSTRAINT [FK_dbo.Post_Diagram_dbo.Post_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Post] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_dbo.Post_Diagram_dbo.Diagram_DiagramId] FOREIGN KEY ([DiagramId]) REFERENCES [dbo].[Diagram] ([Id]) 
 
 );
 
 
 -- ########### Answers ###########
-CREATE TABLE [dbo].[Answers]
+CREATE TABLE [dbo].[Answer]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Answer] NVARCHAR (500) NOT NULL,
@@ -268,14 +270,14 @@ CREATE TABLE [dbo].[Answers]
 	[PostId] INT NOT NULL,
 	[Votes] NVARCHAR (128) NOT NULL,
 	
-	CONSTRAINT [PK_dbo.Answers] PRIMARY KEY CLUSTERED ([Id] ASC),
-	CONSTRAINT [FK_dbo.Answers_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
-	CONSTRAINT [FK_dbo.Answers_dbo.Posts_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Posts] ([Id])
+	CONSTRAINT [PK_dbo.Answer] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_dbo.Answer_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
+	CONSTRAINT [FK_dbo.Answer_dbo.Posts_PostId] FOREIGN KEY ([PostId]) REFERENCES [dbo].[Post] ([Id])
     
 );
 
 -- ########### Annotations ###########
-CREATE TABLE [dbo].[Annotations]
+CREATE TABLE [dbo].[Annotation]
 (
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Title] NVARCHAR (128) NOT NULL,
@@ -283,7 +285,7 @@ CREATE TABLE [dbo].[Annotations]
 	[DiagramId] INT NOT NULL,
 	[Votes] NVARCHAR (128) NOT NULL,
 	
-	CONSTRAINT [PK_dbo.Annotations] PRIMARY KEY CLUSTERED ([Id] ASC),
-	CONSTRAINT [FK_dbo.Annotations_dbo.Diagrams_DiagramId] FOREIGN KEY ([DiagramId]) REFERENCES [dbo].[Diagrams] ([Id]) ON DELETE CASCADE
+	CONSTRAINT [PK_dbo.Annotation] PRIMARY KEY CLUSTERED ([Id] ASC),
+	CONSTRAINT [FK_dbo.Annotation_dbo.Diagram_DiagramId] FOREIGN KEY ([DiagramId]) REFERENCES [dbo].[Diagram] ([Id]) ON DELETE CASCADE
 );
 

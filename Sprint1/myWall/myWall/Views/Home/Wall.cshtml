@@ -1,35 +1,47 @@
-﻿@model IEnumerable<myWall.Models.Wall> 
-
+﻿
+@model IEnumerable<myWall.ViewModel.ContentViewModel>
 @{
-    ViewBag.Title = "Wall";
+    ViewBag.Title = "Index";
 }
 
-<h2>Wall</h2>
+<h2>Index</h2>
 
-<div>
-    <h4>Wall</h4>
-    <hr />
-</div>   
+<p>
+    @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
+</p>
 
+<br />
+<table class="table" style="width: 1200px;">
+    <tr>
+        <th>
+            <b>Title</b>
+        </th>
+        <th>
+            <b>Content</b>
+        </th>
+        <th>
+            <b>Image</b>
+        </th>
+        <th>
+            <b>Description</b>
+        </th>
+    </tr>
 
-<body>
-
-    <form id="TodoForm">
-        <input id="TodoInput" />
-        <button type="button" onclick="TodoList()">Add a List</button>
-    </form>
-    <ul id="TodoList">
-
-        
-    </ul>
-
-    <Script src="~/Scripts/myWall.js"></Script>
-
-@foreach (var item in Model)
-{
-
-@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-
-}
-
-</body>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td style="width: 500px;">
+                @Html.Raw(item.Contents)
+            </td>
+            <td>
+                <img src="/Content/RetrieveImage/@item.Id" alt="" height=100 width=200 />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+</table>

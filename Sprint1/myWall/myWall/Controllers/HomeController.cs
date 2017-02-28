@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using myWall.Models;
+using myWall.Repositories;
+using myWall.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,11 +50,78 @@ namespace myWall.Controllers
 
        
 
-        public ActionResult Wall(int? Id)
+        public ActionResult Wall()
         {
-            var wal = db.Walls.Where(wa => wa.Id == Id).ToList();
+
+            var content = db.Posts.Select(s => new
+            {
+                s.Id,
+                s.Title,
+                s.Image,
+                s.Contents,
+                s.Description
+            });
+
+            List<ContentViewModel> contentModel = content.Select(item => new ContentViewModel()
+            {
+                Id = item.Id,
+                Title = item.Title,
+                Image = item.Image,
+                Description = item.Description,
+                Contents = item.Contents
+            }).ToList();
+            return View(contentModel);
+
+
+
+            /*var wal = db.Walls.Where(wa => wa.Id == Id).ToList();
             //Find(id).Id.ToString().ToList();
-            return View(wal);
+            return View(wal);*/
+        }
+
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            var q = from temp in db.Posts where temp.Id == Id select temp.Image;
+            byte[] cover = q.First();
+            return cover;
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Save content and images
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [Route("Create")]
+        [HttpPost]
+        public ActionResult Create(ContentViewModel model)
+        {
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            ContentRepository service = new ContentRepository();
+            int i = service.myWall(file, model);
+            if (i == 1)
+            {
+                
+                return RedirectToAction("Wall");
+            }
+            return View(model);
         }
 
         public ActionResult Delete(int? id)
