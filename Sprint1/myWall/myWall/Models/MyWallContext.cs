@@ -4,12 +4,14 @@ namespace myWall.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Infrastructure;
 
     public partial class MyWallContext : DbContext
     {
         public MyWallContext()
             : base("name=MyWallContext")
         {
+            //Database.SetInitializer<MyWallContext>(new DropCreateDatabaseIfModelChanges<MyWallContext>());
         }
 
         public virtual DbSet<Annotation> Annotations { get; set; }
@@ -27,6 +29,8 @@ namespace myWall.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            
+
             modelBuilder.Entity<CalloborationAccount>()
                 .HasMany(e => e.CalloborationCenters)
                 .WithRequired(e => e.CalloborationAccount)

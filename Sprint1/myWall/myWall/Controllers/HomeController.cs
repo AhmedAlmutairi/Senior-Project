@@ -13,9 +13,12 @@ using System.Web.Mvc;
 
 namespace myWall.Controllers
 {
+    [RoutePrefix("Home")]
+    [ValidateInput(false)]
+
     public class HomeController : Controller
     {
-
+        
         private MyWallContext db = new MyWallContext();
 
         public ActionResult Index()
@@ -23,6 +26,8 @@ namespace myWall.Controllers
             var wall = db.Walls.ToList();
             return View(wall);
         }
+
+
 
         [HttpGet]
         public ActionResult CreateWall()
@@ -48,14 +53,18 @@ namespace myWall.Controllers
         }
 
 
-       
 
+        [Route("Wall")]
+        [HttpGet]
         public ActionResult Wall()
         {
 
             var content = db.Posts.Select(s => new
             {
                 s.Id,
+                s.UserId,
+                s.WallId,
+                s.CallobId,
                 s.Title,
                 s.Image,
                 s.Contents,
@@ -65,6 +74,9 @@ namespace myWall.Controllers
             List<ContentViewModel> contentModel = content.Select(item => new ContentViewModel()
             {
                 Id = item.Id,
+                UserId = item.UserId,
+                WallId = item.WallId,
+                CallobId = item.CallobId,
                 Title = item.Title,
                 Image = item.Image,
                 Description = item.Description,
@@ -118,13 +130,18 @@ namespace myWall.Controllers
             int i = service.myWall(file, model);
             if (i == 1)
             {
-                
+
                 return RedirectToAction("Wall");
             }
             return View(model);
         }
 
-        public ActionResult Delete(int? id)
+    
+
+
+
+
+    public ActionResult Delete(int? id)
         {
             if (id == null)
             {

@@ -14,6 +14,14 @@ namespace myWall.ViewModel
         /// Get and Set id
         /// </summary>
         public int Id { get; set; }
+
+
+        public string UserId { get; set; }
+        public int WallId { get; set; }
+        public int CallobId { get; set; }
+
+
+
         /// <summary>
         /// Get and set title of content 
         /// </summary>

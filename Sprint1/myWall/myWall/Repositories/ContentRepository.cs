@@ -1,27 +1,31 @@
-﻿using myWall.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using myWall.ViewModel;
+using myWall.Models;
 
 namespace myWall.Repositories
 {
     public class ContentRepository
     {
-        private readonly MyWallContext db = new MyWallContext();
+        private MyWallContext db = new MyWallContext();
         public int myWall(HttpPostedFileBase file, ContentViewModel contentViewModel)
         {
             contentViewModel.Image = ConvertToBytes(file);
-            var Content = new Post
+            var Post = new Post
             {
+                
+                UserId = contentViewModel.UserId,
+                WallId = contentViewModel.WallId,
+                CallobId = contentViewModel.CallobId,
                 Title = contentViewModel.Title,
                 Description = contentViewModel.Description,
                 Contents = contentViewModel.Contents,
                 Image = contentViewModel.Image
             };
-            db.Posts.Add(Content);
+            db.Posts.Add(Post);
             int i = db.SaveChanges();
             if (i == 1)
             {

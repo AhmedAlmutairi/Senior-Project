@@ -1,5 +1,5 @@
-﻿
-@model IEnumerable<myWall.ViewModel.ContentViewModel>
+﻿@model IEnumerable<myWall.ViewModel.ContentViewModel>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -37,11 +37,16 @@
                 @Html.Raw(item.Contents)
             </td>
             <td>
-                <img src="/Content/RetrieveImage/@item.Id" alt="" height=100 width=200 />
+                <img src="/Home/RetrieveImage/@item.Id" alt="" height=100 width=200 />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
         </tr>
+
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
     }
+
+
 </table>
+
