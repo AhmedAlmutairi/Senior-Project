@@ -1,11 +1,14 @@
-﻿@model IEnumerable<myWall.ViewModel.ContentViewModel>
-
+﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Download";
 }
 
-<h2>Index</h2>
+<h2>Download</h2>
 
+
+@{
+    ViewBag.Title = "Upload File";
+}
 
 <div>
     <input type='file' id="files" multiple="multiple" />
@@ -76,38 +79,5 @@
     }
 }
 
-
-
-
-<p>
-    @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
-</p>
-
-<br />
-<table class="table" style="width: 1200px;">
-    
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td style="width: 500px;">
-                @Html.Raw(item.Contents)
-            </td>
-            <td>
-                <img src="/Home/RetrieveImage/@item.Id" alt="" height=300 width=400 />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-        </tr>
-
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    }
-
-
-</table>
 
 

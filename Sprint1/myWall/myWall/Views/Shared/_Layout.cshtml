@@ -7,6 +7,18 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+    <!-- Common checks for Site-->
+    <script>
+        jQuery(document).ready(function () {
+
+            // Check for FileReader API (HTML5) support.
+            if (!window.FileReader) {
+                alert('This browser does not support the FileReader API.');
+            }
+        });
+    </script>
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">

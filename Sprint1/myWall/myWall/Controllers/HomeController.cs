@@ -5,6 +5,7 @@ using myWall.Repositories;
 using myWall.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -41,6 +42,7 @@ namespace myWall.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Walls.Add(wall);
 
                 db.SaveChanges();
@@ -136,12 +138,8 @@ namespace myWall.Controllers
             return View(model);
         }
 
-    
 
-
-
-
-    public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -163,6 +161,50 @@ namespace myWall.Controllers
             db.Walls.Remove(wal);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(string baseData)
+        {
+            if (HttpContext.Request.Files.AllKeys.Any())
+            {
+                for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
+                {
+                    var file = HttpContext.Request.Files["files" + i];
+                    if (file != null)
+                    {
+                        var fileSavePath = Path.Combine(Server.MapPath("/Files"), file.FileName);
+                        file.SaveAs(fileSavePath);
+                        //return RedirectToAction("Wall");
+                    }
+                }
+            }
+            return View();
+        }
+
+        public ActionResult Download()
+        {
+            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+            ViewBag.Files = files;
+            return View();
+        }
+
+        public FileResult DownloadFile(string fileName)
+        {
+            var filepath = System.IO.Path.Combine(Server.MapPath("/Files/"), fileName);
+            return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
         }
 
         public ActionResult About()
