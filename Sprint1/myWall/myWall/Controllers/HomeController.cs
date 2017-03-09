@@ -26,6 +26,7 @@ namespace myWall.Controllers
         {
             var wall = db.Walls.ToList();
             return View(wall);
+            
         }
 
 
@@ -72,7 +73,7 @@ namespace myWall.Controllers
                 s.Contents,
                 s.Description
             });
-
+            
             List<ContentViewModel> contentModel = content.Select(item => new ContentViewModel()
             {
                 Id = item.Id,
@@ -86,7 +87,7 @@ namespace myWall.Controllers
             }).ToList();
             return View(contentModel);
 
-
+            
 
             /*var wal = db.Walls.Where(wa => wa.Id == Id).ToList();
             //Find(id).Id.ToString().ToList();
@@ -165,47 +166,52 @@ namespace myWall.Controllers
 
 
 
-        [HttpGet]
-        public ActionResult Upload()
-        {
-            return View();
-        }
+         [HttpGet]
+         public ActionResult Upload()
+         {
+             return View();
+         }
 
-        [HttpPost]
-        public ActionResult Upload(string baseData)
-        {
-            if (HttpContext.Request.Files.AllKeys.Any())
-            {
-                for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
-                {
-                    var file = HttpContext.Request.Files["files" + i];
-                    if (file != null)
-                    {
-                        var fileSavePath = Path.Combine(Server.MapPath("/Files"), file.FileName);
-                        file.SaveAs(fileSavePath);
-                        //return RedirectToAction("Wall");
-                    }
-                }
-            }
-            return View();
-        }
+         [HttpPost]
+         public ActionResult Upload(string baseData)
+         {
+             if (HttpContext.Request.Files.AllKeys.Any())
+             {
+                 for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
+                 {
+                     var file = HttpContext.Request.Files["files" + i];
+                     if (file != null)
+                     {
+                         var fileSavePath = Path.Combine(Server.MapPath("/Files"), file.FileName);
+                         file.SaveAs(fileSavePath);
+                         //return RedirectToAction("Wall");
+                     }
+                 }
+             }
+             return View();
+         }
 
-        public ActionResult Download()
-        {
-            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
-            for (int i = 0; i < files.Length; i++)
-            {
-                files[i] = Path.GetFileName(files[i]);
-            }
-            ViewBag.Files = files;
-            return View();
-        }
+         public ActionResult Download()
+         {
+             string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+             for (int i = 0; i < files.Length; i++)
+             {
+                 files[i] = Path.GetFileName(files[i]);
+             }
+             ViewBag.Files = files;
+             return View();
+         }
 
-        public FileResult DownloadFile(string fileName)
-        {
-            var filepath = System.IO.Path.Combine(Server.MapPath("/Files/"), fileName);
-            return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
-        }
+         public FileResult DownloadFile(string fileName)
+         {
+             var filepath = System.IO.Path.Combine(Server.MapPath("/Files/"), fileName);
+             return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
+         }
+
+
+      
+
+
 
         public ActionResult About()
         {
