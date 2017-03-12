@@ -1,7 +1,8 @@
 ﻿
 
 
-
+<div class="lib">
+    <h1>E-Library</h1>
 @{
     ViewBag.Title = "Files";
     var Files = (ViewBag.Files as string[]);
@@ -20,8 +21,12 @@
     {
         <label>No File(s) to Download</label>
     }
+
+    <p id="lib">
+        @Html.ActionLink("Go back to my wall", "Wall", null, new { @class = "btn btn-primary" })
+    </p>
+
 }
-
-
+</div>
 
 

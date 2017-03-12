@@ -191,7 +191,7 @@ namespace myWall.Controllers
              return View();
          }
 
-         public ActionResult Download()
+         public ActionResult Library()
          {
              string[] files = Directory.GetFiles(Server.MapPath("/Files"));
              for (int i = 0; i < files.Length; i++)
@@ -226,5 +226,10 @@ namespace myWall.Controllers
 
             return View();
         }
+
+
+
+
+
     }
 }

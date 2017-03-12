@@ -225,6 +225,8 @@
     <Compile Include="ViewModel\ContentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\create DB.sql" />
+    <Content Include="App_Data\create table.sql" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -559,11 +561,10 @@
     <Content Include="Views\Home\Delete.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Wall.cshtml" />
-    <Content Include="Views\Home\Download.cshtml" />
-    <Content Include="Views\Home\Upload.cshtml" />
+    <Content Include="Views\Home\Library.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Content\images\Profile\" />
     <Folder Include="Files\" />
     <Folder Include="Views\Content\" />
   </ItemGroup>
