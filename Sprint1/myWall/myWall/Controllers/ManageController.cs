@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using myWall.Models;
+using System.IO;
+using System.Web.Hosting;
 
 namespace myWall.Controllers
 {
@@ -61,6 +63,8 @@ namespace myWall.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.PhotoUploadSuccess ? "Your photo has been uploaded."
+                : message == ManageMessageId.FileExtensionError ? "Only jpg, png and gif file formats are allowed."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -322,6 +326,40 @@ namespace myWall.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
+
+
+
+        [HttpPost]
+        public async Task<ActionResult> UploadPhoto(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                var user = await GetCurrentUserAsync();
+                var username = user.UserName;
+                var fileExt = Path.GetExtension(file.FileName);
+                var fnm = username + ".png";
+                if (fileExt.ToLower().EndsWith(".png") || fileExt.ToLower().EndsWith(".jpg") || fileExt.ToLower().EndsWith(".gif"))// Important for security if saving in webroot
+                {
+                    var filePath = HostingEnvironment.MapPath("~/Content/images/profile/") + fnm;
+                    var directory = new DirectoryInfo(HostingEnvironment.MapPath("~/Content/images/profile/"));
+                    if (directory.Exists == false)
+                    {
+                        directory.Create();
+                    }
+                    ViewBag.FilePath = filePath.ToString();
+                    file.SaveAs(filePath);
+                    return RedirectToAction("Index", new { Message = ManageMessageId.PhotoUploadSuccess });
+                }
+                else
+                {
+                    return RedirectToAction("Index", new { Message = ManageMessageId.FileExtensionError });
+                }
+            }
+            return RedirectToAction("Index", new { Message = ManageMessageId.Error });// PRG
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
@@ -373,6 +411,12 @@ namespace myWall.Controllers
             return false;
         }
 
+
+        private async Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return await UserManager.FindByIdAsync(User.Identity.GetUserId());
+        }
+
         public enum ManageMessageId
         {
             AddPhoneSuccess,
@@ -381,7 +425,9 @@ namespace myWall.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
-            Error
+            Error,
+            PhotoUploadSuccess,
+            FileExtensionError
         }
 
 #endregion

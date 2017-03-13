@@ -47,3 +47,24 @@ textarea {
     font-size: xx-large; 
     
 }
+
+.upld{
+    width: 300px;
+    height: 200px;
+    background-color: aliceblue;
+}
+
+.lib{
+    width: 700px ;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-color: aliceblue;
+    border: groove;
+    text-align: center;
+    
+
+}
+
+#lib{
+    text-align: center;
+}
