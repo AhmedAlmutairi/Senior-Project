@@ -146,7 +146,7 @@ namespace myWall.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wall wal = db.Walls.Find(id);
+            Post wal = db.Posts.Find(id);
             if (wal == null)
             {
                 return HttpNotFound();
@@ -158,10 +158,10 @@ namespace myWall.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Wall wal = db.Walls.Find(id);
-            db.Walls.Remove(wal);
+            Post wal = db.Posts.Find(id);
+            db.Posts.Remove(wal);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Wall");
         }
 
 

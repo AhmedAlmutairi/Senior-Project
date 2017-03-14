@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<myWall.ViewModel.ContentViewModel>
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -14,8 +15,10 @@
     <input type='file' id="files" multiple="multiple" />
     <input type="button" id="upload" class="btn btn-primary" value="Upload" /> <br/>
     <p>
-    @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
+        <br /> @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
     </p>
+
+    <br />
 </div>
 
 
@@ -67,7 +70,7 @@
 
 
 <p>
-    @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
+    <br />    @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
 </p>
 
 <br />
@@ -89,9 +92,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+
+            <td>
+               @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
         </tr>
 
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        
     }
 
 
