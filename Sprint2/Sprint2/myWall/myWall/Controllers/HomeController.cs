@@ -26,20 +26,7 @@ namespace myWall.Controllers
             var wall = db.Walls.ToList();
             return View(wall);
         }
-        public ActionResult AWall()
-        {
-            return View();
-        }
-        public ActionResult Whiteboard()
-        {
-            return View();
-        }
-        public ActionResult Draw()
-        {
-            
-            return View();
-        }
-
+       
         [HttpGet]
         public ActionResult CreateWall()
         {
@@ -186,6 +173,20 @@ namespace myWall.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult AWall()
+        {
+            return View();
+        }
+        public ActionResult Whiteboard()
+        {
+            return View();
+        }
+        public ActionResult Draw()
+        {
 
             return View();
         }
