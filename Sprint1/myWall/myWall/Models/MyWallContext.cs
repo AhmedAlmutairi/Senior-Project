@@ -4,14 +4,14 @@ namespace myWall.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.ModelConfiguration.Conventions;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public partial class MyWallContext : DbContext
     {
         public MyWallContext()
-            : base("name=MyWallContext")
+            : base("name=DefaultConnection")
         {
-            //Database.SetInitializer<MyWallContext>(new DropCreateDatabaseIfModelChanges<MyWallContext>());
         }
 
         public virtual DbSet<Annotation> Annotations { get; set; }
@@ -29,8 +29,6 @@ namespace myWall.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
-
             modelBuilder.Entity<CalloborationAccount>()
                 .HasMany(e => e.CalloborationCenters)
                 .WithRequired(e => e.CalloborationAccount)
@@ -75,6 +73,17 @@ namespace myWall.Models
                 .HasMany(e => e.Posts)
                 .WithRequired(e => e.Wall)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new {
+                r.RoleId,
+                r.UserId
+            });
         }
+
+        
     }
 }
