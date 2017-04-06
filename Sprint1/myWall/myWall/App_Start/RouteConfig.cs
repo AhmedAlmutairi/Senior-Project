@@ -16,8 +16,8 @@ namespace myWall
             routes.MapRoute(
                "Wall",
                "{controller}/{action}/{id}",
-                new { controller = "Home", action = "Wall" },
-                constraints: new { productId = "\\d +" }
+                new { controller = "Home", action = "Wall" }
+                //constraints: new { productId = "\\d +" }
             );
 
 

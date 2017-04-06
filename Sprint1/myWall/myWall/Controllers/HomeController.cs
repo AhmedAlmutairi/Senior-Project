@@ -17,7 +17,7 @@ using System.Web.Security;
 namespace myWall.Controllers
 {
     
-    //[RoutePrefix("Home")]
+    [RoutePrefix("Home")]
     //[ValidateInput(false)]
     
     public class HomeController : Controller
