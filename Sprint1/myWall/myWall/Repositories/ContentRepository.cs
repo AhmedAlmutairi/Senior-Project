@@ -11,13 +11,14 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace myWall.Repositories
 {
-    public class ContentRepository
+   /* public class ContentRepository
     {
-        private MyWallContext db = new MyWallContext();
+        //private MyWallContext db = new MyWallContext();
+        ApplicationDbContext d = new ApplicationDbContext();
         public int myWall(HttpPostedFileBase file, Post contentViewModel)
         {
             contentViewModel.Image = ConvertToBytes(file);
-            //contentViewModel.UserId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+            //contentViewModel.UserId = User.Identity.GetUserId();
             var Post = new Post
             {
                 
@@ -31,8 +32,8 @@ namespace myWall.Repositories
             };
 
             
-            db.Posts.Add(Post);
-            int i = db.SaveChanges();
+            d.Posts.Add(Post);
+            int i = d.SaveChanges();
             if (i == 1)
             {
                 return 1;
@@ -51,5 +52,5 @@ namespace myWall.Repositories
             imageBytes = reader.ReadBytes((int)image.ContentLength);
             return imageBytes;
         }
-    }
+    }*/
 }

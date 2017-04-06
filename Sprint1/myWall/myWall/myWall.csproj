@@ -568,6 +568,9 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\Wall.cshtml" />
     <Content Include="Views\Home\Library.cshtml" />
+    <Content Include="Views\Home\DeletePost.cshtml" />
+    <Content Include="Views\Home\EditPost.cshtml" />
+    <Content Include="Views\Home\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<myWall.Models.Wall>
+
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+<h2>UserProfile</h2>
+
+<h2>Walls:</h2>
+<table class="table">
+    
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        
+    </tr>
+}
+
+</table>

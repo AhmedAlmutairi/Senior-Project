@@ -98,6 +98,12 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
+                            <td>
+                                @Html.ActionLink("Delete", "DeletePost", new { id = item.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditPost", new { id = item.Id })
+                            </td>
 
 
                         </tr>
@@ -110,7 +116,7 @@
 
 @foreach (var name in stwall)
 {
-    @Html.ActionLink("Delete", "Delete", new { id = name.Id })
+    @Html.ActionLink("Delete the whole wall", "Delete", new { id = name.Id })
 }
 
 
