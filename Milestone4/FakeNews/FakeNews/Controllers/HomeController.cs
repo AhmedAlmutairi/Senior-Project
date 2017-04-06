@@ -74,5 +74,12 @@ namespace FakeNews.Controllers
             return View(headline);
         }
 
+
+        public ActionResult Show()
+        {
+
+            return View(db.Headlines.ToList());
+        }
+
     }
 }
