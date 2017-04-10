@@ -1,0 +1,76 @@
+﻿@model myWall.Models.Questions
+@{
+    ViewBag.Title = "SecurityQuestions";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+<div class="form-group">
+    <!-- Answer -->
+    @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label col-lg-3" })
+    <div class="col-lg-9">
+        @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nana" } })
+        @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <!-- Hint -->
+    @Html.LabelFor(model => model.Hint, htmlAttributes: new { @class = "control-label col-lg-3" })
+    <div class="col-lg-9">
+        @Html.EditorFor(model => model.Hint, new { htmlAttributes = new { @class = "form-control", @placeholder = "My Border Collie..." } })
+        @Html.ValidationMessageFor(model => model.Hint, "", new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    <!-- Email -->
+    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3" })
+    <div class="col-md-9">
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "something@myemail.com" } })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+</div><br />
+
+@Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-lg-3" })
+    <div class="col-lg-9">
+        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @placeholder = "mm/dd/yyyy" } })
+        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        <div class="col-lg-9">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </div><br />
+}
+
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+    }
+</style>

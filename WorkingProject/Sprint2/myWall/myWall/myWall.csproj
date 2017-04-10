@@ -221,6 +221,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MyWallContext.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\UserCalloboration.cs" />
     <Compile Include="Models\User_Group.cs" />
@@ -598,6 +599,8 @@
     <Content Include="Views\myAction\Whiteboard.cshtml" />
     <Content Include="Views\myAction\Upload.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\myAction\SecurityQuestions.cshtml" />
+    <Content Include="Views\myAction\ViewSecurityQuestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
