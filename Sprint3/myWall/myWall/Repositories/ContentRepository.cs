@@ -5,15 +5,20 @@ using System.Linq;
 using System.Web;
 using myWall.ViewModel;
 using myWall.Models;
+using Microsoft.AspNet.Identity;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace myWall.Repositories
 {
-    public class ContentRepository
+   /* public class ContentRepository
     {
-        private MyWallContext db = new MyWallContext();
-        public int myWall(HttpPostedFileBase file, ContentViewModel contentViewModel)
+        //private MyWallContext db = new MyWallContext();
+        ApplicationDbContext d = new ApplicationDbContext();
+        public int myWall(HttpPostedFileBase file, Post contentViewModel)
         {
             contentViewModel.Image = ConvertToBytes(file);
+            //contentViewModel.UserId = User.Identity.GetUserId();
             var Post = new Post
             {
                 
@@ -25,8 +30,10 @@ namespace myWall.Repositories
                 Contents = contentViewModel.Contents,
                 Image = contentViewModel.Image
             };
-            db.Posts.Add(Post);
-            int i = db.SaveChanges();
+
+            
+            d.Posts.Add(Post);
+            int i = d.SaveChanges();
             if (i == 1)
             {
                 return 1;
@@ -45,5 +52,5 @@ namespace myWall.Repositories
             imageBytes = reader.ReadBytes((int)image.ContentLength);
             return imageBytes;
         }
-    }
+    }*/
 }

@@ -13,14 +13,16 @@
 
 </div>
 
-
+<div class="waa">
 <h3>Latest Wall:</h3>
 @foreach (var item in Model)
 {
 
-    @Html.ActionLink(item.Name, "Wall", new { wallId = item.Id}) <br />
+    @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id}) <br />
 
 }
+
+</div>
 
 
 

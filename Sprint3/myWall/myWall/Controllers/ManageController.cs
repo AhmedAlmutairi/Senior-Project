@@ -34,7 +34,7 @@ namespace myWall.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
+            set 
             { 
                 _signInManager = value; 
             }

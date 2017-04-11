@@ -39,12 +39,19 @@ namespace myWall.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
 
+       // [ForeignKey("CallobId")]
         public virtual CalloborationCenter CalloborationCenter { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
 
+       // [ForeignKey("WallId")]
         public virtual Wall Wall { get; set; }
+
+
+        [ForeignKey("UserId")]
+        // [Required]
+        public virtual ApplicationUser AspNetUsers { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Diagram> Diagrams { get; set; }

@@ -5,26 +5,31 @@ using myWall.Repositories;
 using myWall.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace myWall.Controllers
 {
+    
     [RoutePrefix("Home")]
-    [ValidateInput(false)]
-
+    //[ValidateInput(false)]
+    
     public class HomeController : Controller
     {
         
         private MyWallContext db = new MyWallContext();
+        ApplicationDbContext d = new ApplicationDbContext();
 
         public ActionResult Index()
         {
-            var wall = db.Walls.ToList();
+            
+            var wall = d.Walls.ToList();
             return View(wall);
             
         }
@@ -41,57 +46,86 @@ namespace myWall.Controllers
         [HttpPost]
         public ActionResult CreateWall(Wall wall)
         {
-            if (ModelState.IsValid)
-            {
-                
-                db.Walls.Add(wall);
 
-                db.SaveChanges();
+
+            //ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
+
+            if (User.Identity.IsAuthenticated)
+            {
+                //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+                //String WallId = currentUser.Id;
+                //ApplicationUser AspNetUsers = UserManager.FindById(User.Identity.GetUserId());
+                wall.UserId = User.Identity.GetUserId();
+                d.Walls.Add(wall);
+                
+                d.SaveChanges();
 
                 return RedirectToAction("Index");
 
-            }
 
+            }
             return View(wall);
         }
 
-
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         [Route("Wall")]
         [HttpGet]
-        public ActionResult Wall()
+        public ActionResult Wall(int? id)
         {
 
-            var content = db.Posts.Select(s => new
-            {
-                s.Id,
-                s.UserId,
-                s.WallId,
-                s.CallobId,
-                s.Title,
-                s.Image,
-                s.Contents,
-                s.Description
-            });
-            
-            List<ContentViewModel> contentModel = content.Select(item => new ContentViewModel()
-            {
-                Id = item.Id,
-                UserId = item.UserId,
-                WallId = item.WallId,
-                CallobId = item.CallobId,
-                Title = item.Title,
-                Image = item.Image,
-                Description = item.Description,
-                Contents = item.Contents
-            }).ToList();
-            return View(contentModel);
+            List<object> myModel = new List<object>();
+            //var post = d.Walls.Find(id).Posts.ToList();
+            //myModel.Add(d.Walls.ToList());
+            //myModel.Add(d.Posts.ToList());
 
+
+            var wall = from w in d.Walls
+                       where w.Id == id
+                       select w;
+            var wal = wall.First();
+
+            var post = from p in d.Posts
+                       join w in d.Walls on p.WallId equals wal.Id
+                       where p.WallId == id
+                       select p;
             
 
-            /*var wal = db.Walls.Where(wa => wa.Id == Id).ToList();
-            //Find(id).Id.ToString().ToList();
-            return View(wal);*/
+            myModel.Add(wall.ToList());
+            myModel.Add(post.ToList());
+            /* var content = d.Walls.
+            Join(d.Posts, u => u.Id, uir => uir.WallId,
+            (u, uir) => new { u, uir }).
+            Where(n => n.uir.WallId == n.u.Id)
+            .AsEnumerable().Select(m => new Post  //ContentViewModel
+            {
+                Id = m.uir.Id,
+                UserId = m.uir.UserId,
+                WallId = m.uir.WallId,
+                CallobId = m.uir.CallobId,
+                Title = m.uir.Title,
+                Image = m.uir.Image,
+                Contents = m.uir.Contents,
+                Description = m.uir.Description
+
+
+            }).ToList();*/
+            //return View(content);
+
+
+            return View(myModel);
+
         }
 
         public ActionResult RetrieveImage(int id)
@@ -126,19 +160,70 @@ namespace myWall.Controllers
         /// <returns></returns>
         [Route("Create")]
         [HttpPost]
-        public ActionResult Create(ContentViewModel model)
+        public ActionResult Create(Post model)
         {
-            HttpPostedFileBase file = Request.Files["ImageData"];
-            ContentRepository service = new ContentRepository();
-            int i = service.myWall(file, model);
-            if (i == 1)
-            {
 
-                return RedirectToAction("Wall");
-            }
+            
+            
+                HttpPostedFileBase file = Request.Files["ImageData"];
+                //var UserId = User.Identity.GetUserId();
+                //model.UserId = User.Identity.GetUserId();
+               // model.WallId = 
+                //ContentRepository service = new ContentRepository();
+                int i = myWall(file, model);
+                if (i == 1)
+                {
+
+                    return RedirectToAction("Wall");
+                }
+            
             return View(model);
         }
 
+        public int myWall(HttpPostedFileBase file, Post contentViewModel)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                contentViewModel.Image = ConvertToBytes(file);
+                contentViewModel.UserId = User.Identity.GetUserId();
+                var Post = new Post
+                {
+
+                    UserId = contentViewModel.UserId,
+                    WallId = contentViewModel.WallId,
+                    CallobId = contentViewModel.CallobId,
+                    Title = contentViewModel.Title,
+                    Description = contentViewModel.Description,
+                    Contents = contentViewModel.Contents,
+                    Image = contentViewModel.Image
+                };
+
+
+                d.Posts.Add(Post);
+                int i = d.SaveChanges();
+
+
+                if (i == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            return 0;
+
+        }
+
+        public byte[] ConvertToBytes(HttpPostedFileBase image)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(image.InputStream);
+            imageBytes = reader.ReadBytes((int)image.ContentLength);
+            return imageBytes;
+        }
 
         public ActionResult Delete(int? id)
         {
@@ -165,8 +250,61 @@ namespace myWall.Controllers
         }
 
 
+        public ActionResult DeletePost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = d.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
 
-         [HttpGet]
+        [HttpPost, ActionName("DeletePost")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmedPost(int id)
+        {
+            Post post = d.Posts.Find(id);
+            d.Posts.Remove(post);
+            d.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult EditPost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = d.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(d.Posts.ToList());
+        }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost([Bind(Include = "Id,Title,Descrition,Contents,Image")] Post post)
+        {
+
+            if (ModelState.IsValid)
+            {
+                d.Entry(post).State = EntityState.Modified;
+                d.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(post);
+        }
+
+        [HttpGet]
          public ActionResult Upload()
          {
              return View();
@@ -211,7 +349,30 @@ namespace myWall.Controllers
 
       
 
+        public ActionResult UserProfile(string id)
+        {
+            /*var user = d.Users.Find(id);   //User.Identity.GetUserId();
 
+            var wal = from w in d.Walls
+                       
+                       where w.UserId == 
+                       select w;*/
+
+
+            /*var user = from w in d.Users
+                       where w.Id == id
+                       select w;
+            var users = user.First();
+
+            var wal = from p in d.Walls
+                       join w in d.Users on p.UserId equals users.Id
+                       where p.UserId == id
+                       select p;
+            return View(wal.ToList());*/
+
+            var user = d.Users.Find(id).Walls.ToList();
+            return View(user);
+        }
 
         public ActionResult About()
         {

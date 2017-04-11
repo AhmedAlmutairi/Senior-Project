@@ -50,8 +50,11 @@ textarea {
 
 .upld{
     width: 300px;
-    height: 200px;
+    height: 250px;
     background-color: aliceblue;
+    text-align: center;
+    border: groove;
+    border-bottom: inset;
 }
 
 .lib{
@@ -64,6 +67,18 @@ textarea {
     
 
 }
+
+.waa{
+    
+    margin-left: auto ;
+    margin-right: auto ;
+    background-color: aliceblue;
+    border: groove;
+    text-align: center;
+    
+
+}
+
 
 #lib{
     text-align: center;
