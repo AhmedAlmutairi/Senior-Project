@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\myActionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +217,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MyWallContext.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\UserCalloboration.cs" />
     <Compile Include="Models\User_Group.cs" />
@@ -500,11 +502,17 @@
     <Content Include="ckeditor\styles.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chess.css" />
     <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\joint.css" />
+    <Content Include="Content\paper.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\atrament.js" />
+    <Content Include="Scripts\backbone-min.js" />
+    <Content Include="Scripts\bezier.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -522,6 +530,14 @@
     <None Include="Properties\PublishProfiles\MyWallWeb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\newmywall - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chess.js" />
+    <Content Include="Scripts\coverage.js" />
+    <Content Include="Scripts\ellipse.js" />
+    <Content Include="Scripts\fastclick.js" />
+    <Content Include="Scripts\garbochess.js" />
+    <Content Include="Scripts\geometry.js" />
+    <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\joint.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -529,10 +545,27 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\line.js" />
+    <Content Include="Scripts\links.js" />
+    <Content Include="Scripts\literallycanvas-core.js%281%29.htm" />
+    <Content Include="Scripts\literallycanvas-core.js.htm" />
+    <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mouse.js" />
     <Content Include="Scripts\myWall.js" />
+    <Content Include="Scripts\normalizeAngle.js" />
+    <Content Include="Scripts\paper.js" />
+    <Content Include="Scripts\point.js" />
+    <Content Include="Scripts\rect.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\scale.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Scripts\sketch.js" />
+    <Content Include="Scripts\snapToGrid.js" />
+    <Content Include="Scripts\testing.js" />
+    <Content Include="Scripts\toDeg.js" />
+    <Content Include="Scripts\toRad.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -576,12 +609,17 @@
     <Content Include="Views\Home\DeletePost.cshtml" />
     <Content Include="Views\Home\EditPost.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
+    <Content Include="Views\myAction\Chess.cshtml" />
+    <Content Include="Views\myAction\Create.cshtml" />
+    <Content Include="Views\myAction\SecurityQuestions.cshtml" />
+    <Content Include="Views\myAction\Upload.cshtml" />
+    <Content Include="Views\myAction\ViewSecurityQuestions.cshtml" />
+    <Content Include="Views\myAction\Whiteboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
     <Folder Include="Controllers\Files\" />
     <Folder Include="Files\" />
-    <Folder Include="Views\Content\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

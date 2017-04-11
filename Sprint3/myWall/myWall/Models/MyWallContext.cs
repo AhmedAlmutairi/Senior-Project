@@ -22,6 +22,7 @@ namespace myWall.Models
         public virtual DbSet<Diagram> Diagrams { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Questions> Questions { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User_Group> User_Group { get; set; }
         public virtual DbSet<UserCalloboration> UserCalloborations { get; set; }
