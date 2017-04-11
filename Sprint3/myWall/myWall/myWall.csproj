@@ -200,7 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\myActionController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,6 +239,9 @@
     <Content Include="App_Data\create DB.sql" />
     <Content Include="App_Data\create table.sql" />
     <Content Include="App_Data\MyWallDB.mdf" />
+    <Content Include="App_Data\MyWallDB_log.ldf">
+      <DependentUpon>MyWallDB.mdf</DependentUpon>
+    </Content>
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
     <Content Include="ckeditor\ckeditor.js" />
@@ -609,12 +612,12 @@
     <Content Include="Views\Home\DeletePost.cshtml" />
     <Content Include="Views\Home\EditPost.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
-    <Content Include="Views\myAction\Chess.cshtml" />
-    <Content Include="Views\myAction\Create.cshtml" />
-    <Content Include="Views\myAction\SecurityQuestions.cshtml" />
-    <Content Include="Views\myAction\Upload.cshtml" />
-    <Content Include="Views\myAction\ViewSecurityQuestions.cshtml" />
-    <Content Include="Views\myAction\Whiteboard.cshtml" />
+    <Content Include="Views\Request\Chess.cshtml" />
+    <Content Include="Views\Request\Home.cshtml" />
+    <Content Include="Views\Request\Create.cshtml" />
+    <Content Include="Views\Request\Upload.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
+    <Content Include="Views\Request\Whiteboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

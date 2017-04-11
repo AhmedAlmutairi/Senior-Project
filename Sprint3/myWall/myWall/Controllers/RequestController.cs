@@ -8,13 +8,13 @@ using myWall.Models;
 
 namespace myWall.Controllers
 {
-    public class myActionController : Controller
+    public class RequestController : Controller
     {
         public int App_Data { get; private set; }
 
         private MyWallContext db = new MyWallContext();
 
-        public ActionResult Create()
+        public ActionResult Home()
         {
             return View();
         }
@@ -32,39 +32,30 @@ namespace myWall.Controllers
             return View("Upload");
 
         }
-
-        public ActionResult SecurityQuestions()
+        [HttpGet]
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SecurityQuestions(Questions question)
+        public ActionResult Create(Questions question)
         {
             if (ModelState.IsValid)
             {
                 db.Questions.Add(question);
                 db.SaveChanges();
-                return RedirectToAction("ViewSecurityQuestions");
+                return RedirectToAction("Index");
             }
             return View(question);
         }
 
-        public ActionResult ViewSecurityQuestions()
+        
+        public ActionResult Index()
         {
             return View(db.Questions.ToList());
         }
 
-        /// <summary>
-        /// GET: Request/Create
-        /// Gets the create form page for creating a new change of major request
-        /// </summary>
-        /// <returns>The View object for Request/Create</returns>
-        [HttpGet]
-        public ActionResult ViewSecurity ()
-        {
-            return View();
-        }
 
         public ActionResult AWall()
         {

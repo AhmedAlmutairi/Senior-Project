@@ -1,6 +1,6 @@
 ﻿@model myWall.Models.Questions
 @{
-    ViewBag.Title = "SecurityQuestions";
+    ViewBag.Title = "Create";
 }
 
 @using (Html.BeginForm())
@@ -8,13 +8,21 @@
     @Html.AntiForgeryToken()
 
 
+   <div class="form-group">
+        @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-lg-3" })
+        <div class="col-lg-9">
+            @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter a Security Question" } })
+            @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+           
+        </div>
+    </div>
 
 <div class="form-group">
     <!-- Answer -->
     @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label col-lg-3" })
     <div class="col-lg-9">
         @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nana" } })
-        @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+       
     </div>
 </div>
 
@@ -23,24 +31,12 @@
     @Html.LabelFor(model => model.Hint, htmlAttributes: new { @class = "control-label col-lg-3" })
     <div class="col-lg-9">
         @Html.EditorFor(model => model.Hint, new { htmlAttributes = new { @class = "form-control", @placeholder = "My Border Collie..." } })
-        @Html.ValidationMessageFor(model => model.Hint, "", new { @class = "text-danger" })
-    </div>
-</div>
-<div class="form-group">
-    <!-- Email -->
-    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-3" })
-    <div class="col-md-9">
-        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "something@myemail.com" } })
-        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
     </div>
 </div><br />
 <div class="form-group">
-    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-lg-3" })
-    <div class="col-lg-9">
-        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", @placeholder = "mm/dd/yyyy" } })
-        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+  
     </div>
-    </div>
+    <br />
     <div class="form-group">
         <div class="col-lg-9">
             <input type="submit" value="Create" class="btn btn-primary" />
@@ -61,7 +57,7 @@
 
         input[type=submit] {
             width: 100%;
-            background-color: #4CAF50;
+            background-color: #00ffcc;
             color: white;
             padding: 14px 20px;
             margin: 8px 0;

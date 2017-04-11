@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<myWall.Models.Questions>
 
 @{
-    ViewBag.Title = "ViewSecurityQuestions";
+    ViewBag.Title = "Index";
 }
 
 <center><h2>My Security Questions</h2></center>
@@ -10,35 +10,29 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Question)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Answer)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Hint)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.Question)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Answer)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Hint)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
+            
         </tr>
     }
 
