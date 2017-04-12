@@ -233,9 +233,7 @@
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
     <Content Include="App_Data\aspnet_myWall_20170224085357.mdf" />
-    <Content Include="App_Data\aspnet_myWall_20170224085357_log.ldf">
-      <DependentUpon>aspnet_myWall_20170224085357.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\aspnet_myWall_20170224085357_log.ldf" />
     <Content Include="App_Data\create DB.sql" />
     <Content Include="App_Data\create table.sql" />
     <Content Include="App_Data\MyWallDB.mdf" />

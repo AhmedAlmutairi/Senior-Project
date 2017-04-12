@@ -41,11 +41,15 @@ namespace myWall.Controllers
         [HttpPost]
         public ActionResult Create(Questions question)
         {
-            
+
+            if (ModelState.IsValid)
+            {
                 db.Questions.Add(question);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-           
+            }
+            
+            return View(question);
         }
 
         
