@@ -2482,9 +2482,9 @@ var joint = {
 
             if (typeof window !== 'undefined') {
 
-                raf = window.requestAnimationFrame     ||
+            raf = window.requestAnimationFrame     ||
 		    window.webkitRequestAnimationFrame ||
-	            window.mozRequestAnimationFrame    ||
+	        window.mozRequestAnimationFrame    ||
 		    window.oRequestAnimationFrame      ||
 		    window.msRequestAnimationFrame;
             }

@@ -39,7 +39,7 @@ namespace myWall.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Questions question)
+        public ActionResult Create(Wall question)
         {
             
                 db.Questions.Add(question);
