@@ -389,6 +389,20 @@ namespace myWall.Controllers
         }
 
 
+        public ActionResult AWall()
+        {
+            return View();
+        }
+        public ActionResult Whiteboard()
+        {
+            return View();
+        }
+        public ActionResult Chess()
+        {
+
+            return View();
+        }
+
 
 
 

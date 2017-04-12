@@ -200,7 +200,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,7 +216,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MyWallContext.cs" />
     <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\Questions.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\UserCalloboration.cs" />
     <Compile Include="Models\User_Group.cs" />
@@ -233,9 +231,7 @@
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
     <Content Include="App_Data\aspnet_myWall_20170224085357.mdf" />
-    <Content Include="App_Data\aspnet_myWall_20170224085357_log.ldf">
-      <DependentUpon>aspnet_myWall_20170224085357.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\aspnet_myWall_20170224085357_log.ldf" />
     <Content Include="App_Data\create DB.sql" />
     <Content Include="App_Data\create table.sql" />
     <Content Include="App_Data\MyWallDB.mdf" />
@@ -612,12 +608,12 @@
     <Content Include="Views\Home\DeletePost.cshtml" />
     <Content Include="Views\Home\EditPost.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
-    <Content Include="Views\Request\Chess.cshtml" />
+    <Content Include="Views\Home\Chess.cshtml" />
     <Content Include="Views\Request\Home.cshtml" />
     <Content Include="Views\Request\Create.cshtml" />
     <Content Include="Views\Request\Upload.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
-    <Content Include="Views\Request\Whiteboard.cshtml" />
+    <Content Include="Views\Home\Whiteboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
