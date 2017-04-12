@@ -7,42 +7,41 @@
 {
     @Html.AntiForgeryToken()
 
-
-   <div class="form-group">
-        @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-lg-3" })
-        <div class="col-lg-9">
-            @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter a Security Question" } })
-            @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
-           
+    <div class="form-group">        
+            <div class="form-group">
+                <!-- Question -->
+                @Html.LabelFor(model => model.Question, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Question, "", new { @class = "text-danger" })
+                </div>
         </div>
-    </div>
+                <div class="form-group">
+                    <!-- Answer -->
+                    @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Answer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div><br />
+            <div class="form-group">
+                <!-- Hint -->
+                @Html.LabelFor(model => model.Hint, htmlAttributes: new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.EditorFor(model => model.Hint, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Hint, "", new { @class = "text-danger" })
+                </div>
+            </div><br />
 
-<div class="form-group">
-    <!-- Answer -->
-    @Html.LabelFor(model => model.Answer, htmlAttributes: new { @class = "control-label col-lg-3" })
-    <div class="col-lg-9">
-        @Html.EditorFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nana" } })
-       
-    </div>
-</div>
 
-<div class="form-group">
-    <!-- Hint -->
-    @Html.LabelFor(model => model.Hint, htmlAttributes: new { @class = "control-label col-lg-3" })
-    <div class="col-lg-9">
-        @Html.EditorFor(model => model.Hint, new { htmlAttributes = new { @class = "form-control", @placeholder = "My Border Collie..." } })
-    </div>
-</div><br />
-<div class="form-group">
-  
-    </div>
-    <br />
-    <div class="form-group">
-        <div class="col-lg-9">
-            <input type="submit" value="Create" class="btn btn-primary" />
-        </div>
-    </div><br />
-    }
+            <div class="form-group">
+                <div class="col-lg-9">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div><br />
+
+}
 
     <style>
         input[type=text], select {
