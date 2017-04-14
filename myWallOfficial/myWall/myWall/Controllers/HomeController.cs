@@ -12,6 +12,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Security;
 
 namespace myWall.Controllers
@@ -286,23 +287,74 @@ namespace myWall.Controllers
             {
                 return HttpNotFound();
             }
-            return View(d.Posts.ToList());
+            return View(post);
         }
 
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPost([Bind(Include = "Id,Title,Descrition,Contents,Image")] Post post)
+        public ActionResult EditPost([Bind(Include = "Id, WallId, CallobId, Title, Image, Description, Contents")] Post post)
         {
 
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 d.Entry(post).State = EntityState.Modified;
                 d.SaveChanges();
                 return RedirectToAction("Index");
+            }*/
+            HttpPostedFileBase file = Request.Files["ImageData"];
+            //Wall wall = d.Walls.Find(id);
+            int d = post.WallId;
+            int i = myWallEdit(file, post);
+            if (i == 1)
+            {
+
+
+                return RedirectToAction("Wall", new { id = d });
+                //return RedirectToAction("Index");
             }
+
+
             return View(post);
         }
+
+        public int myWallEdit(HttpPostedFileBase file, Post contentViewModel)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                contentViewModel.Image = ConvertToBytes(file);
+                contentViewModel.UserId = User.Identity.GetUserId();
+                var Post = new Post
+                {
+
+                    UserId = contentViewModel.UserId,
+                    WallId = contentViewModel.WallId,
+                    CallobId = contentViewModel.CallobId,
+                    Title = contentViewModel.Title,
+                    Description = contentViewModel.Description,
+                    Contents = contentViewModel.Contents,
+                    Image = contentViewModel.Image
+                };
+
+
+                d.Entry(contentViewModel).State = EntityState.Modified;
+                int i = d.SaveChanges();
+
+
+                if (i == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            return 0;
+
+        }
+
 
         [HttpGet]
          public ActionResult Upload()
