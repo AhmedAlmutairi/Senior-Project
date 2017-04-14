@@ -83,6 +83,10 @@ namespace myWall.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string Question { get; set; }
+        public string Hint { get; set; }
+        public string Answer { get; set; }
     }
 
     public class ResetPasswordViewModel

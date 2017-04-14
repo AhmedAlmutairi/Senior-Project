@@ -270,9 +270,10 @@ namespace myWall.Controllers
         public ActionResult DeleteConfirmedPost(int id)
         {
             Post post = d.Posts.Find(id);
+            int i = post.WallId;
             d.Posts.Remove(post);
             d.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Wall", new { id = i });
         }
 
 
@@ -296,14 +297,9 @@ namespace myWall.Controllers
         public ActionResult EditPost([Bind(Include = "Id, WallId, CallobId, Title, Image, Description, Contents")] Post post)
         {
 
-            /*if (ModelState.IsValid)
-            {
-                d.Entry(post).State = EntityState.Modified;
-                d.SaveChanges();
-                return RedirectToAction("Index");
-            }*/
+            
             HttpPostedFileBase file = Request.Files["ImageData"];
-            //Wall wall = d.Walls.Find(id);
+            
             int d = post.WallId;
             int i = myWallEdit(file, post);
             if (i == 1)
@@ -311,7 +307,7 @@ namespace myWall.Controllers
 
 
                 return RedirectToAction("Wall", new { id = d });
-                //return RedirectToAction("Index");
+                
             }
 
 
@@ -403,9 +399,10 @@ namespace myWall.Controllers
 
         public ActionResult UserProfile(string id)
         {
-            /*var user = d.Users.Find(id);   //User.Identity.GetUserId();
-
-            var wal = from w in d.Walls
+            //var user = d.Users.Find(id);   
+           // var user = User.Identity.GetUserId();
+            //id = user;
+            /*var wal = from w in d.Walls
                        
                        where w.UserId == 
                        select w;*/

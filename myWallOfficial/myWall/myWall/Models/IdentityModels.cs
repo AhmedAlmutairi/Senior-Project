@@ -27,6 +27,10 @@ namespace myWall.Models
             return userIdentity;
         }
 
+        public string Question { get; set; }
+        public string Hint { get; set; }
+        public string Answer { get; set; }
+
         public virtual ICollection<Wall> Walls { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
     }
