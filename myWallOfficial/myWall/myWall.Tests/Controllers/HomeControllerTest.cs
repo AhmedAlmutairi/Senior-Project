@@ -20,9 +20,57 @@ namespace myWall.Tests.Controllers
     public class HomeControllerTest:TestBaseRoutes
     {
         [TestMethod]
-        public void DefaultURL_ShouldMapTo_Home_Index()
+        public void DefaultUrl_ShouldMapTo_Home_Index()
         {
             TestRouteMatch("~/", "Home", "Index");
+        }
+
+        [TestMethod]
+        public void DefaultHomeUrl_ShouldMapTo_Home_Index()
+        {
+            TestRouteMatch("~/Home", "Home", "Index");
+        }
+
+        [TestMethod]
+        public void DefaultUrlIndex_ShouldMapTo_Home_Index()
+        {
+            TestRouteMatch("~/Home/Index", "Home", "Index");
+        }
+
+        [TestMethod]
+        public void IndexUrl_ShouldNotMapTo_Home_Index()
+        {
+            TestRouteFail("~/Index");
+        }
+
+        [TestMethod]
+        public void BogusUrl_ShouldNotMap()
+        {
+            TestRouteFail("~/ThisUrlIsBogus");
+        }
+
+        [TestMethod]
+        public void HomeAboutUrl_ShouldMapTo_Home_Index()
+        {
+            TestRouteMatch("~/Home/About", "Home", "About");
+        }
+
+        [TestMethod]
+        public void AboutUrl_ShouldNotMap()
+        {
+            TestRouteFail("~/About");
+        }
+
+        [TestMethod]
+        public void HomeContactUrl_ShouldMapTo_Home_Index()
+        {
+            TestRouteMatch("~/Home/Contact", "Home", "Contact");
+        }
+
+        [TestMethod]
+        public void ContactUrl_ShouldNotMap()
+        {
+            TestRouteFail("~/About");
         }
 
         [TestMethod]
