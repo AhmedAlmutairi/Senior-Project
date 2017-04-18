@@ -6,12 +6,29 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using myWall;
 using myWall.Controllers;
+using NUnit.Framework;
 
 namespace myWall.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
     {
+        [SetUp]
+        public void Setup()
+        {
+            //Routes = RouteTable.Routes;
+            //myWall.RouteConfig.RegisterRoutes(Routes);
+
+            //RouteAssert.UseAssertEngine(new NunitAssertEngine());
+        }
+
+
+        [OneTimeSetUp]
+        public void RunThisBeforeEveryTestMethod()
+        {
+
+        }
+
         [TestMethod]
         public void Index()
         {
@@ -22,7 +39,13 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
+        }
+
+        [OneTimeTearDown]
+        public void RunThisAfterEveryTestMethod()
+        {
+
         }
 
         [TestMethod]
@@ -35,7 +58,7 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.About() as ViewResult;
 
             // Assert
-            Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Your application description page.", result.ViewBag.Message);
         }
 
         [TestMethod]
@@ -48,8 +71,11 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.Contact() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
+
+
+       
 
         [TestMethod]
         public void Wall()
@@ -61,8 +87,10 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.Wall(12) as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
+
+        
 
         [TestMethod]
         public void Create()
@@ -74,7 +102,7 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.Create() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -87,7 +115,7 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.CreateWall() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -100,7 +128,7 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.DeleteConfirmed(11) as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
 
         [TestMethod]
@@ -113,7 +141,20 @@ namespace myWall.Tests.Controllers
             ViewResult result = controller.DeletePost(11) as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void UserProfile()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.UserProfile("95b0702f-7c4e-4c12-8674-e25224fc2209") as ViewResult;
+
+            // Assert
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
     }
 }

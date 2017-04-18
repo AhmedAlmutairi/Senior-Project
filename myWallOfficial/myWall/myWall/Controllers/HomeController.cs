@@ -27,6 +27,7 @@ namespace myWall.Controllers
         private MyWallContext db = new MyWallContext();
         ApplicationDbContext d = new ApplicationDbContext();
 
+        
         public ActionResult Index()
         {
             
@@ -36,7 +37,7 @@ namespace myWall.Controllers
         }
 
 
-
+        
         [HttpGet]
         public ActionResult CreateWall()
         {
@@ -81,6 +82,7 @@ namespace myWall.Controllers
             }
         }
 
+        
         [Route("Wall")]
         [HttpGet]
         public ActionResult Wall(int? id)
@@ -244,10 +246,13 @@ namespace myWall.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+           
             Wall wal = db.Walls.Find(id);
-            db.Walls.Remove(wal);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+                db.Walls.Remove(wal);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            
+            
         }
 
 
@@ -429,7 +434,7 @@ namespace myWall.Controllers
 
             return View();
         }
-
+       
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
