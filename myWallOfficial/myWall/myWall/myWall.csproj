@@ -529,6 +529,7 @@
     <None Include="Properties\PublishProfiles\MyWallWeb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\newmywall - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\canvas2image.js" />
     <Content Include="Scripts\chess.js" />
     <Content Include="Scripts\coverage.js" />
     <Content Include="Scripts\ellipse.js" />
