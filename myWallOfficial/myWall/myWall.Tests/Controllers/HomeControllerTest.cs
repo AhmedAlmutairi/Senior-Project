@@ -111,7 +111,7 @@ namespace myWall.Tests.Controllers
             // Assert
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
 
-
+        }
             [TestMethod]
         public void DefaultUrl_ShouldMapTo_Home_Whiteboard()
         {
@@ -173,7 +173,7 @@ namespace myWall.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Wall() as ViewResult;
+            ViewResult result = controller.AWall() as ViewResult;
 
             // Assert
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
