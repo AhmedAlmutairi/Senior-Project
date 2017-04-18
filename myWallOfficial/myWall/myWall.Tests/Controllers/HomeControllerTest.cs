@@ -110,6 +110,102 @@ namespace myWall.Tests.Controllers
 
             // Assert
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
+
+        }
+            [TestMethod]
+        public void DefaultUrl_ShouldMapTo_Home_Whiteboard()
+        {
+            TestRouteMatch("~/", "Home", "Whiteboard");
+        }
+
+        [TestMethod]
+        public void DefaultHomeUrl_ShouldMapTo_Home_Whiteboard()
+        {
+            TestRouteMatch("~/Home", "Home", "Whiteboard");
+        }
+
+        [TestMethod]
+        public void DefaultUrlIndex_ShouldMapTo_Home_Whiteboard()
+        {
+            TestRouteMatch("~/Home/Whiteboard", "Home", "Whiteboard");
+        }
+
+        [TestMethod]
+        public void WhiteboardUrl_ShouldNotMapTo_Home_Whiteboard()
+        {
+            TestRouteFail("~/Index");
+        }
+
+        [TestMethod]
+        public void BogusUrl_ShouldNotMapWall()
+        {
+            TestRouteFail("~/ThisUrlIsBogus");
+        }
+
+        [TestMethod]
+        public void ChessUrl_ShouldMapTo_Home_Chess()
+        {
+            TestRouteMatch("~/Home/Chess", "Home", "Chess");
+        }
+
+        [TestMethod]
+        public void ChessUrl_ShouldNotMapToChess()
+        {
+            TestRouteFail("~/Chess");
+        }
+
+        [TestMethod]
+        public void HomeContactUrl_ShouldMapTo_Home_Wall()
+        {
+            TestRouteMatch("~/Home/Wall", "Home", "Wall");
+        }
+
+        [TestMethod]
+        public void WallUrl_ShouldNotMapTOWALL()
+        {
+            TestRouteFail("~/Wall");
+        }
+
+        [TestMethod]
+        public void Wall()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.AWall() as ViewResult;
+
+            // Assert
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Chess()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Chess() as ViewResult;
+
+            // Assert
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+        }
+
+        [TestMethod]
+        public void Whiteboard()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Whiteboard() as ViewResult;
+
+            // Assert
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
     }
+
+
+    
 }

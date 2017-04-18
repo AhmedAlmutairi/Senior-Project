@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MyWallWeb" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="MyWallWeb/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=mywall.database.windows.net;Initial Catalog=MyWallWeb;User ID=MyWall;Password=Ahmed123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MyWallContext-Web.config Connection String" description="MyWallContext Connection String used in web.config by the application to access the database." value="data source=(LocalDB)\ProjectsV13;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
+  </parameter>
+</parameters>
