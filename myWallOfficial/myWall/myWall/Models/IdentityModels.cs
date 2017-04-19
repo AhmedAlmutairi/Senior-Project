@@ -14,6 +14,7 @@ namespace myWall.Models
         {
             Walls = new HashSet<Wall>();
             Posts = new HashSet<Post>();
+            
         }
 
         
@@ -33,6 +34,8 @@ namespace myWall.Models
 
         public virtual ICollection<Wall> Walls { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+
+       
     }
 
     
@@ -43,7 +46,8 @@ namespace myWall.Models
 
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SQLAzureConnection", throwIfV1Schema: false)
+            
         {
             Database.SetInitializer<ApplicationDbContext>(null);
         }
@@ -58,6 +62,8 @@ namespace myWall.Models
         //public IEnumerable<object> Posts { get; internal set; }
 
          public virtual DbSet<Post> Posts { get; set; }
+
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

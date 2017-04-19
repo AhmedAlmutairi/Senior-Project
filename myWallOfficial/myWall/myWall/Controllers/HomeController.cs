@@ -24,7 +24,7 @@ namespace myWall.Controllers
     public class HomeController : Controller
     {
         
-        private MyWallContext db = new MyWallContext();
+        private MyWallDB db = new MyWallDB();
         ApplicationDbContext d = new ApplicationDbContext();
 
         
@@ -194,7 +194,6 @@ namespace myWall.Controllers
 
                     UserId = contentViewModel.UserId,
                     WallId = contentViewModel.WallId,
-                    CallobId = contentViewModel.CallobId,
                     Title = contentViewModel.Title,
                     Description = contentViewModel.Description,
                     Contents = contentViewModel.Contents,
@@ -329,8 +328,7 @@ namespace myWall.Controllers
                 {
 
                     UserId = contentViewModel.UserId,
-                    WallId = contentViewModel.WallId,
-                    CallobId = contentViewModel.CallobId,
+                    WallId = contentViewModel.WallId, 
                     Title = contentViewModel.Title,
                     Description = contentViewModel.Description,
                     Contents = contentViewModel.Contents,
@@ -458,7 +456,7 @@ namespace myWall.Controllers
         }
 
 
-
+       
 
     }
 }
