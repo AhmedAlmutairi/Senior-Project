@@ -26,14 +26,11 @@ IF OBJECT_ID('dbo.CalloborationAccount','U') IS NOT NULL
 	DROP TABLE [dbo].[CalloborationAccount];
 GO
 
-<<<<<<< HEAD
 IF OBJECT_ID('dbo.Chat','U') IS NOT NULL
 	DROP TABLE [dbo].[Chat];
 GO
 
 
-=======
->>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
 -- ############# AspNetRoles #############
 CREATE TABLE [dbo].[AspNetRoles]
 (
@@ -60,12 +57,9 @@ CREATE TABLE [dbo].[AspNetUsers]
     [LockoutEnabled]       BIT            NOT NULL,
     [AccessFailedCount]    INT            NOT NULL,
     [UserName]             NVARCHAR (256) NOT NULL,
-<<<<<<< HEAD
 	[Question]             NVARCHAR (256) NULL,
 	[Hint]             NVARCHAR (256) NULL,
 	[Answer]             NVARCHAR (256) NULL,
-=======
->>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
     CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 GO
@@ -198,19 +192,12 @@ CREATE TABLE [dbo].[Post]
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[UserId] NVARCHAR (128) NOT NULL,
 	[WallId] INT NOT NULL,
-<<<<<<< HEAD
 	[CallobId] INT NULL,
-=======
-	[CallobId] INT NOT NULL,
->>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
 	[Title]       NVARCHAR (MAX)  NULL,
     [Description] NVARCHAR (MAX)  NULL,
     [Contents]    NVARCHAR (MAX)  NULL,
     [Image]       VARBINARY (MAX) NULL,
-<<<<<<< HEAD
 	[File]       VARBINARY (MAX) NULL,
-=======
->>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
 
 	
 	CONSTRAINT [PK_dbo.Post] PRIMARY KEY CLUSTERED ([Id] ASC),
@@ -311,7 +298,6 @@ CREATE TABLE [dbo].[Annotation]
 	CONSTRAINT [FK_dbo.Annotation_dbo.Diagram_DiagramId] FOREIGN KEY ([DiagramId]) REFERENCES [dbo].[Diagram] ([Id]) ON DELETE CASCADE
 );
 
-<<<<<<< HEAD
 
 -- ############# Chat #############
 CREATE TABLE [dbo].[Chat]
@@ -326,5 +312,3 @@ CREATE TABLE [dbo].[Chat]
     CONSTRAINT [FK_dbo.Chat_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]),
 	CONSTRAINT [FK_dbo.Chat_dbo.Wall_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Wall] ([Id]) ON DELETE CASCADE
 );
-=======
->>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e

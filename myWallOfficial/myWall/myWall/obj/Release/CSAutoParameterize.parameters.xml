@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-<<<<<<< HEAD
   <parameter name="SQLAzureConnection-Web.config Connection String" description="SQLAzureConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=mywallofficialdb.database.windows.net;Initial Catalog=MyWallOfficialdb;User ID=ahmedAA;Password=Ahmed123;Encrypt=true;Trusted_Connection=false;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SQLAzureConnection']/@connectionString" />
   </parameter>
@@ -9,12 +8,5 @@
   </parameter>
   <parameter name="MyWallDB-Web.config Connection String" description="MyWallDB Connection String used in web.config by the application to access the database." defaultValue="data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallDB']/@connectionString" />
-=======
-  <parameter name="MyWallContext-Web.config Connection String" description="MyWallContext Connection String used in web.config by the application to access the database." defaultValue="data source=(LocalDB)\ProjectsV13;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
-  </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet_myWall_20170224085357.mdf;Initial Catalog=aspnet_myWall_20170224085357;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
->>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
   </parameter>
 </parameters>
