@@ -6,11 +6,16 @@
 
     <meta charset="utf-8">
     <title>Friendly Drawing</title>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
     <script src="~/Scripts/atrament.js"></script>
     <style>
 			canvas {
 				width: 100vw;
 				height: 100vh;
+<<<<<<< HEAD
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -37,6 +42,25 @@
 			#clear {
 				display: none;
 			}
+=======
+				position: absolute;
+				
+				
+			}
+			form {
+				z-index: 3;
+				position: absolute;
+				
+				background: rgba(0, 0, 0, 0.7);
+				
+				color:white;
+			}
+			form * {
+				
+			}
+			
+		
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
     </style>
 
     <form>
@@ -57,10 +81,55 @@
         <input type="color" onchange="atrament.color = event.target.value;" value="#000000" autocomplete="off"><br>
         <label>Opacity</label><br>
         <input type="range" min="0" max="1" onchange="atrament.opacity = parseFloat(event.target.value);" value="1" step="0.05" autocomplete="off">
+<<<<<<< HEAD
     </form>
     <canvas id="sketcher"></canvas>
     
 <script>
+=======
+       
+        <a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>
+        @Html.ActionLink("Create New Wall", "Wall")
+    </form>
+    <canvas id="sketcher"></canvas>
+<div>
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br /><br>
+<br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <p>
+        
+    </p>
+    <br />
+</div>
+
+<script>
+    var button = document.getElementById('btn-download');
+    button.addEventListener('click', function (e) {
+        var dataURL = canvas.toDataURL('image/png');
+        button.href = dataURL;
+    })
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
 		var canvas = document.getElementById('sketcher');
 		var atrament = atrament(canvas, window.innerWidth, window.innerHeight);
 		var clearButton = document.getElementById('clear');
@@ -68,3 +137,11 @@
 			clearButton.style.display = atrament.dirty ? 'inline-block' : 'none';
 		});
 </script>
+<<<<<<< HEAD
+=======
+
+
+
+    
+
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e

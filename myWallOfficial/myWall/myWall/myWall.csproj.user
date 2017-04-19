@@ -2,6 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <UseIISExpress>true</UseIISExpress>
+<<<<<<< HEAD
     <NameOfLastUsedPublishProfile>MyWallOfficial - Web Deploy %282%29</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_IsLayoutPageSelected>True</WebStackScaffolding_IsLayoutPageSelected>
@@ -9,6 +10,9 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>myWall.Models.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
+=======
+    <NameOfLastUsedPublishProfile>newmywall - Web Deploy</NameOfLastUsedPublishProfile>
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

@@ -11,13 +11,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using MvcRouteTester;
 using NUnit.Framework;
+using myWall;
+using myWall.Controllers;
 
 namespace myWall.Tests.Controllers
 {
     [TestClass]
     public class TestBaseRoutes
     {
-        private HttpContextBase CreateHttpContext(string targetUrl = null, string httpMethod = "GET")
+        protected HttpContextBase CreateHttpContext(string targetUrl = null, string httpMethod = "GET")
         {
             // create the mock request
             Mock<HttpRequestBase> mockRequest = new Mock<HttpRequestBase>();
@@ -38,7 +40,7 @@ namespace myWall.Tests.Controllers
             return mockContext.Object;
         }
 
-        private void TestRouteMatch(string url, string controller, string action,
+        protected void TestRouteMatch(string url, string controller, string action,
                                     object routeProperties = null, string httpMethod = "GET")
         {
             // Arrange
@@ -53,7 +55,7 @@ namespace myWall.Tests.Controllers
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(TestIncomingRouteResult(result, controller, action, routeProperties));
         }
 
-        private bool TestIncomingRouteResult(RouteData routeResult, string controller,
+        protected bool TestIncomingRouteResult(RouteData routeResult, string controller,
                                              string action, object propertySet = null)
         {
             Func<object, object, bool> valCompare = (v1, v2) =>
@@ -80,7 +82,7 @@ namespace myWall.Tests.Controllers
             return result;
         }
 
-        private void TestRouteFail(string url)
+        protected void TestRouteFail(string url)
         {
             // Arrange
             RouteCollection routes = new RouteCollection();
