@@ -47,7 +47,7 @@ namespace myWall.Models
 
         public ApplicationDbContext()
             : base("SQLAzureConnection", throwIfV1Schema: false)
-            
+        //SQLAzureConnection
         {
             Database.SetInitializer<ApplicationDbContext>(null);
         }
