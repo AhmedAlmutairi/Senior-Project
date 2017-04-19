@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+<<<<<<< HEAD
+  <parameter name="IIS Web Application Name" description="" value="MyWallOfficial" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="MyWallOfficial/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=mywallofficialdb.database.windows.net;Initial Catalog=mywallofficialdb;User ID=ahmedAA;Password=Ahmed123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MyWallDB-Web.config Connection String" description="" value="data source=mywallofficialdb.database.windows.net;initial catalog=mywallofficialdb;user id=ahmedAA;password=Ahmed123;MultipleActiveResultSets=True;App=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallDB']/@connectionString" />
+  </parameter>
+  <parameter name="SQLAzureConnection-Web.config Connection String" description="" value="Data Source=mywallofficialdb.database.windows.net;Initial Catalog=mywallofficialdb;User ID=ahmedAA;Password=Ahmed123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SQLAzureConnection']/@connectionString" />
+=======
+  <parameter name="IIS Web Application Name" description="" value="MyWallWeb" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="MyWallWeb/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=mywall.database.windows.net;Initial Catalog=MyWallWeb;User ID=MyWall;Password=Ahmed123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MyWallContext-Web.config Connection String" description="MyWallContext Connection String used in web.config by the application to access the database." value="data source=(LocalDB)\ProjectsV13;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Whitney\\Documents\\engorgwhitney\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
+  </parameter>
+</parameters>
