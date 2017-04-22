@@ -28,6 +28,7 @@ namespace myWall.Models
 
         [MaxLength(1)]
         public byte[] File { get; set; }
+        public int Code { get; set; }
 
         public virtual Wall Wall { get; set; }
     }

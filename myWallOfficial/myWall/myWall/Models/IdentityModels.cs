@@ -32,6 +32,8 @@ namespace myWall.Models
         public string Hint { get; set; }
         public string Answer { get; set; }
 
+        public string ConnectionId { get; set; }
+
         public virtual ICollection<Wall> Walls { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
 
