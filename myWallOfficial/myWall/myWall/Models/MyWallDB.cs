@@ -8,7 +8,7 @@ namespace myWall.Models
     public partial class MyWallDB : DbContext
     {
         public MyWallDB()
-            : base("name=SQLAzureConnection")
+            : base("name=MyWallDB")
         {
             Database.SetInitializer<ApplicationDbContext>(null);
         }

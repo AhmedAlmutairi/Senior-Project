@@ -11,7 +11,7 @@ namespace myWall.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(128)]
         public string UserId { get; set; }
 
@@ -30,6 +30,13 @@ namespace myWall.Models
         public byte[] File { get; set; }
         public int Code { get; set; }
 
-        public virtual Wall Wall { get; set; }
+        [Required]
+        public string userName { get; set; }
+
+       // [ForeignKey("userName")]
+        // [Required]
+        //public virtual ApplicationUser AspNetUsers { get; set; }
+
+        //public virtual Wall Wall { get; set; }
     }
 }
