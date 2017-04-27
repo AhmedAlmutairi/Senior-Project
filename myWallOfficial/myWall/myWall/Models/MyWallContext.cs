@@ -5,12 +5,11 @@ namespace myWall.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class MyWallDB : DbContext
+    public partial class MyWallContext : DbContext
     {
-        public MyWallDB()
-            : base("name=MyWallDB")
+        public MyWallContext()
+            : base("name=MyWallContext")
         {
-            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public virtual DbSet<Annotation> Annotations { get; set; }
@@ -38,10 +37,6 @@ namespace myWall.Models
                 .HasMany(e => e.UserCalloborations)
                 .WithRequired(e => e.CalloborationAccount)
                 .HasForeignKey(e => e.CallobId);
-
-            modelBuilder.Entity<Chat>()
-                .Property(e => e.Time)
-                .IsFixedLength();
 
             modelBuilder.Entity<Chat>()
                 .Property(e => e.File)

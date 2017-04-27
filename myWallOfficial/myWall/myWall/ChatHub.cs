@@ -14,7 +14,7 @@ namespace myWall
 {
     public class ChatHub : Hub
     {
-        MyWallDB DB = new MyWallDB();
+       // MyWallDB DB = new MyWallDB();
         /*public void LetsChat(string Cl_Name, string Cl_Message)
         {
             Cl_Name = Context.User.Identity.Name;
@@ -77,12 +77,15 @@ namespace myWall
 
         private void AddAllMessageinCache(string UserName, string message)
         {
-            //UserName = Context.User.Identity.Name;
+
+           var userId = Context.User.Identity.GetUserId();
             using (ApplicationDbContext dc = new ApplicationDbContext())
             {
+
                 var messageDetail = new Chat
                 {
-                   
+                    
+                    UserId = userId,
                     userName = UserName,
                     Message = message
                     
@@ -93,7 +96,7 @@ namespace myWall
                 //try
                 //{
                     dc.Chats.Add(messageDetail);
-                    dc.Entry(messageDetail).State = EntityState.Modified;
+                    //dc.Entry(messageDetail).State = EntityState.Modified;
                     dc.SaveChanges();
                     
                     

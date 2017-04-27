@@ -11,16 +11,12 @@ namespace myWall.Models
     {
         public int Id { get; set; }
 
-        //[Required]
         [StringLength(128)]
         public string UserId { get; set; }
 
-        public int WallId { get; set; }
+        public int? WallId { get; set; }
 
-        [Column(TypeName = "timestamp")]
-        [MaxLength(8)]
-        [Timestamp]
-        public byte[] Time { get; set; }
+        public DateTime? Time { get; set; }
 
         [Required]
         [StringLength(500)]
@@ -28,15 +24,14 @@ namespace myWall.Models
 
         [MaxLength(1)]
         public byte[] File { get; set; }
-        public int Code { get; set; }
+
+        public int? Code { get; set; }
 
         [Required]
+        [StringLength(50)]
         public string userName { get; set; }
 
-       // [ForeignKey("userName")]
-        // [Required]
-        //public virtual ApplicationUser AspNetUsers { get; set; }
-
-        //public virtual Wall Wall { get; set; }
+        [StringLength(256)]
+        public string ConnectionId { get; set; }
     }
 }

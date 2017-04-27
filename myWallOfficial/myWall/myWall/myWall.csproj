@@ -222,13 +222,13 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MyWallDB.cs" />
+    <Compile Include="ChatHub.cs" />
+    <Compile Include="Models\MyWallContext.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\UserCalloboration.cs" />
     <Compile Include="Models\User_Group.cs" />
     <Compile Include="Models\Wall.cs" />
-    <Compile Include="ChatHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ContentRepository.cs" />
     <Compile Include="Startup.cs" />

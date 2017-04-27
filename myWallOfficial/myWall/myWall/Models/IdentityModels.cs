@@ -6,6 +6,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System;
+using System.Diagnostics;
+using System.Data.Entity.Infrastructure;
+using System.Text;
 
 namespace myWall.Models
 {
@@ -16,7 +20,7 @@ namespace myWall.Models
         {
             Walls = new HashSet<Wall>();
             Posts = new HashSet<Post>();
-            Chats = new HashSet<Chat>();
+           // Chats = new HashSet<Chat>();
             
         }
 
@@ -39,7 +43,7 @@ namespace myWall.Models
 
         public virtual ICollection<Wall> Walls { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
-        public virtual ICollection<Chat> Chats { get; set; }
+       // public virtual ICollection<Chat> Chats { get; set; }
 
 
     }
@@ -55,26 +59,36 @@ namespace myWall.Models
             {
                 return base.SaveChanges();
             }
-            catch (DbEntityValidationException ex)
+            
+            catch (DbUpdateException dbu)
             {
-                // Retrieve the error messages as a list of strings.
-                var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
-
-                // Join the list to a single string.
-                var fullErrorMessage = string.Join("; ", errorMessages);
-
-                // Combine the original exception message with the new one.
-                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
-
-                // Throw a new DbEntityValidationException with the improved exception message.
-                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+                var exception = HandleDbUpdateException(dbu);
+                throw exception;
             }
         }
 
+        private Exception HandleDbUpdateException(DbUpdateException dbu)
+        {
+            var builder = new StringBuilder("A DbUpdateException was caught while saving changes. ");
+
+            try
+            {
+                foreach (var result in dbu.Entries)
+                {
+                    builder.AppendFormat("Type: {0} was part of the problem. ", result.Entity.GetType().Name);
+                }
+            }
+            catch (Exception e)
+            {
+                builder.Append("Error parsing DbUpdateException: " + e.ToString());
+            }
+
+            string message = builder.ToString();
+            return new Exception(message, dbu);
+        }
+
         public ApplicationDbContext()
-            : base("MyWallDB", throwIfV1Schema: false)
+            : base("MyWallContext", throwIfV1Schema: false)
             
         {
             Database.SetInitializer<ApplicationDbContext>(null);
@@ -87,11 +101,11 @@ namespace myWall.Models
 
 
         public virtual DbSet<Wall> Walls { get; set; }
-        //public IEnumerable<object> Posts { get; internal set; }
+     
 
          public virtual DbSet<Post> Posts { get; set; }
 
-        public virtual DbSet<Chat> Chats { get; set; }
+         public virtual DbSet<Chat> Chats { get; set; }
 
 
 
