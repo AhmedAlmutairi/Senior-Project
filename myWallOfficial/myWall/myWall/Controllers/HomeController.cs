@@ -24,7 +24,7 @@ namespace myWall.Controllers
     public class HomeController : Controller
     {
         
-        private MyWallDB db = new MyWallDB();
+        private MyWallContext db = new MyWallContext();
         ApplicationDbContext d = new ApplicationDbContext();
 
         

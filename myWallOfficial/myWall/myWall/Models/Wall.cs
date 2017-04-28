@@ -12,7 +12,6 @@ namespace myWall.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Wall()
         {
-            Chats = new HashSet<Chat>();
             Posts = new HashSet<Post>();
             Groups = new HashSet<Group>();
         }
@@ -23,16 +22,14 @@ namespace myWall.Models
         [StringLength(50)]
         public string Name { get; set; }
 
+     
         [StringLength(128)]
         public string UserId { get; set; }
-
 
         [ForeignKey("UserId")]
         // [Required]
         public virtual ApplicationUser AspNetUsers { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Chat> Chats { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
