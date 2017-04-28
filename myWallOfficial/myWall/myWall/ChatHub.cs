@@ -14,60 +14,27 @@ namespace myWall
 {
     public class ChatHub : Hub
     {
-       // MyWallDB DB = new MyWallDB();
-        /*public void LetsChat(string Cl_Name, string Cl_Message)
+        public override System.Threading.Tasks.Task OnConnected()
         {
-            Cl_Name = Context.User.Identity.Name;
-            Clients.All.NewMessage(Cl_Name, Cl_Message);
-        }*/
+            ApplicationDbContext db = new ApplicationDbContext();
+            string userName = Context.User.Identity.Name;
 
+            var allUsers = db.Users.ToList();
+            var messages = db.Chats.ToList();
+            Clients.AllExcept(userName).onNewUserConnected(userName);
+            return Clients.Caller.connected(userName, allUsers, messages);
 
-        /*public void Connect(string userName, string userId)
-        {
-            //emailIDLoaded = email;
-            //var id = Context.ConnectionId;
-            userName = Context.User.Identity.Name;
-            userId = Context.User.Identity.GetUserId();
-            using (MyWallDB dc = new MyWallDB())
-            {
-                var item = dc.Chats.FirstOrDefault(x => x.userName == userName);
-                if (item != null)
-                {
-                    dc.Chats.Remove(item);
-                    dc.SaveChanges();
+            
+        }
 
-                    // Disconnect
-                    Clients.All.onUserDisconnectedExisting(item.userName);
-                }
+        
 
-                var users = dc.Chats.ToList();
-                //var context = new ApplicationDbContext();
-                if (users.Where(x => x.userName == userName).ToList().Count == 0)
-                {
-                    var userdetails = new Chat 
-                    {
-                        //ConnectionId = id,
-                        userName = userName,
-                        
-                    };
-                    dc.Chats.Add(userdetails);
-                    dc.SaveChanges();
-
-                    // send to caller
-                    var connectedUsers = dc.Chats.ToList();
-                    var CurrentMessage = dc.Chats.ToList();
-                    Clients.Caller.onConnected(userName, connectedUsers, CurrentMessage);
-                }
-
-                // send to all except caller client
-                Clients.AllExcept(userName).onNewUserConnected(userName);
-            }
-        }*/
 
         public void SendMessageToAll(string UserName, string message)
         {
+            ApplicationDbContext dc = new ApplicationDbContext();
             UserName = Context.User.Identity.Name;
-            
+            //var currentmsg = dc.Chats.Select(m => m.Message).ToList();
             // store last 100 messages in cache
             AddAllMessageinCache(UserName, message);
 
@@ -93,20 +60,13 @@ namespace myWall
                 };
 
 
-                //try
-                //{
+                
                     dc.Chats.Add(messageDetail);
                     //dc.Entry(messageDetail).State = EntityState.Modified;
                     dc.SaveChanges();
                     
                     
-                    
-                //}
-
-                /*catch (Exception ec)
-                {
-                    Console.WriteLine(ec.Message);
-                }*/
+               
             }
         }
 
