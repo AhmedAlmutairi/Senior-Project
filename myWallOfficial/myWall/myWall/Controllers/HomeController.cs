@@ -146,7 +146,7 @@ namespace myWall.Controllers
 
         public byte[] GetImageFromDataBase(int Id)
         {
-            var q = from temp in db.Posts where temp.Id == Id select temp.Image;
+            var q = from temp in d.Posts where temp.Id == Id select temp.Image;
             byte[] cover = q.First();
             return cover;
         }
@@ -233,7 +233,7 @@ namespace myWall.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wall wal = db.Walls.Find(id);
+            Wall wal = d.Walls.Find(id);
             if (wal == null)
             {
                 return HttpNotFound();
@@ -246,9 +246,9 @@ namespace myWall.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
            
-            Wall wal = db.Walls.Find(id);
-                db.Walls.Remove(wal);
-                db.SaveChanges();
+            Wall wal = d.Walls.Find(id);
+                d.Walls.Remove(wal);
+                d.SaveChanges();
                 return RedirectToAction("Index");
             
             
