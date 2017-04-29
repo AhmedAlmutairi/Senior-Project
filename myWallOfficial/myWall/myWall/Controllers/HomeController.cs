@@ -444,12 +444,6 @@ namespace myWall.Controllers
         }
         public ActionResult Whiteboard()
         {
-            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
-            for (int i = 0; i < files.Length; i++)
-            {
-                files[i] = Path.GetFileName(files[i]);
-            }
-            ViewBag.Files = files;
             return View();
             
         }

@@ -1,8 +1,29 @@
-﻿<meta charset="utf-8">
+﻿@{
+    ViewBag.Title = "Whiteboard";
+}
+
+
+<meta charset="utf-8">
 <title>Friendly Drawing</title>
 
 <script src="~/Scripts/atrament.js"></script>
+<style>
+    canvas{
+        position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 2;
+    }
+    form {
+        z-index: 3;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
 
+        form * {
+        }
+</style>
 
 <form>
     <button id="clear" onclick="event.preventDefault(); atrament.clear();">clear</button><br>
@@ -24,13 +45,39 @@
     <input type="range" min="0" max="1" onchange="atrament.opacity = parseFloat(event.target.value);" value="1" step="0.05" autocomplete="off">
 
     <a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>
-    <label>Image File:</label><br />
-    <input type="file" id="imageLoader" name="imageLoader" />
-    <canvas id="imageCanvas"></canvas>
 
 </form>
+<canvas id="sketcher"></canvas>
+<div>
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br /><br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <br />
+    <br>
+    <p>
 
-   
+    </p>
+    <br />
+</div>
 
 <script>
     var button = document.getElementById('btn-download');
@@ -38,32 +85,10 @@
         var dataURL = canvas.toDataURL('image/png');
         button.href = dataURL;
     })
-    var canvas = document.getElementById('imageCanvas');
+		var canvas = document.getElementById('sketcher');
 		var atrament = atrament(canvas, window.innerWidth, window.innerHeight);
 		var clearButton = document.getElementById('clear');
 		canvas.addEventListener('dirty', function(e) {
-		    clearButton.style.display = atrament.dirty ? 'inline-block' : 'none';
-
+			clearButton.style.display = atrament.dirty ? 'inline-block' : 'none';
 		});
-
-		var imageLoader = document.getElementById('imageLoader');
-		imageLoader.addEventListener('change', handleImage, false);
-		var canvas = document.getElementById('imageCanvas');
-		var ctx = canvas.getContext('2d');
-
-
-		function handleImage(e) {
-		    var reader = new FileReader();
-		    reader.onload = function (event) {
-		        var img = new Image();
-		        img.onload = function () {
-		            canvas.width = img.width;
-		            canvas.height = img.height;
-		            ctx.drawImage(img, 0, 0);
-		        }
-		        img.src = event.target.result;
-		    }
-		    reader.readAsDataURL(e.target.files[0]);
-		}
 </script>
-

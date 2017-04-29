@@ -545,6 +545,7 @@
     <Content Include="Scripts\garbochess.js" />
     <Content Include="Scripts\geometry.js" />
     <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\excanvas.js" />
     <Content Include="Scripts\joint.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -578,6 +579,7 @@
     <Content Include="Scripts\testing.js" />
     <Content Include="Scripts\toDeg.js" />
     <Content Include="Scripts\toRad.js" />
+    <Content Include="Scripts\UnionDraw.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
