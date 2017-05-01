@@ -542,15 +542,11 @@
     <Content Include="ckeditor\README.md" />
     <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="ckeditor\skins\moono\readme.md" />
-<<<<<<< HEAD
+
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy.pubxml" />
-=======
     <Content Include="bower.json" />
     <Content Include="crop.php" />
->>>>>>> whitney
-    <None Include="Properties\PublishProfiles\MyWallWeb - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\newmywall - Web Deploy.pubxml" />
     <Content Include="Scripts\createjs.js" />
     <Content Include="Scripts\exif.js" />
     <Content Include="Scripts\signature_pad.js" />
@@ -573,15 +569,14 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-<<<<<<< HEAD
+
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
-=======
     <Content Include="Scripts\jquery.color.js" />
     <Content Include="Scripts\jquery.Jcrop.js" />
     <Content Include="Scripts\jquery.Jcrop.min.js" />
     <Content Include="Scripts\jquery.min.js" />
->>>>>>> whitney
+
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -661,12 +656,12 @@
     <Content Include="Views\Request\Upload.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Home\Whiteboard.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Home\Chat.cshtml" />
-=======
+
     <Content Include="Scripts\upload\upload.php" />
     <Content Include="Views\Home\uploadToCanvas.cshtml" />
->>>>>>> whitney
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

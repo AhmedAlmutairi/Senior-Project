@@ -22,10 +22,74 @@ IF OBJECT_ID('dbo.AspNetUserRoles','U') IS NOT NULL
 	DROP TABLE [dbo].[AspNetUserRoles];
 GO
 
+IF OBJECT_ID('dbo.UserCalloboration','U') IS NOT NULL
+	DROP TABLE [dbo].[UserCalloboration];
+GO
+
 IF OBJECT_ID('dbo.CalloborationAccount','U') IS NOT NULL
 	DROP TABLE [dbo].[CalloborationAccount];
 GO
 
+IF OBJECT_ID('dbo.CalloborationCenter','U') IS NOT NULL
+	DROP TABLE [dbo].[CalloborationCenter];
+GO
+
+IF OBJECT_ID('dbo.CalloborationCenter','U') IS NOT NULL
+	DROP TABLE [dbo].[CalloborationCenter];
+GO
+
+IF OBJECT_ID('dbo.Wall','U') IS NOT NULL
+	DROP TABLE [dbo].[Wall];
+GO
+
+IF OBJECT_ID('dbo.Groups','U') IS NOT NULL
+	DROP TABLE [dbo].[Groups];
+GO
+
+IF OBJECT_ID('dbo.User_Group','U') IS NOT NULL
+	DROP TABLE [dbo].[User_Group];
+GO
+
+IF OBJECT_ID('dbo.Wall_Group','U') IS NOT NULL
+	DROP TABLE [dbo].[Wall_Group];
+GO
+
+IF OBJECT_ID('dbo.Post','U') IS NOT NULL
+	DROP TABLE [dbo].[Post];
+GO
+
+IF OBJECT_ID('dbo.Comments','U') IS NOT NULL
+	DROP TABLE [dbo].[Comments];
+GO
+
+IF OBJECT_ID('dbo.Tag','U') IS NOT NULL
+	DROP TABLE [dbo].[Tag];
+GO
+
+IF OBJECT_ID('dbo.Diagtam','U') IS NOT NULL
+	DROP TABLE [dbo].[Diagram];
+GO
+
+IF OBJECT_ID('dbo.Post_Tag','U') IS NOT NULL
+	DROP TABLE [dbo].[Post_Tag];
+GO
+
+
+IF OBJECT_ID('dbo.Post_Diagram','U') IS NOT NULL
+	DROP TABLE [dbo].[Post_Diagram];
+GO
+
+IF OBJECT_ID('dbo.Amswer','U') IS NOT NULL
+	DROP TABLE [dbo].[Answer];
+GO
+
+IF OBJECT_ID('dbo.Annotation','U') IS NOT NULL
+	DROP TABLE [dbo].[Annotation];
+GO
+
+IF OBJECT_ID('dbo.Chat','U') IS NOT NULL
+	DROP TABLE [dbo].[Chat];
+GO
 -- ############# AspNetRoles #############
 CREATE TABLE [dbo].[AspNetRoles]
 (
