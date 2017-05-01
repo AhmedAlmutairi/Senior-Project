@@ -2,10 +2,6 @@
     ViewBag.Title = "uploadToCanvas";
 }
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="~/Scripts/._html2canvas.js"></script>
-<script src="~/Scripts/._jquery.plugin.html2canvas.js"></script> 
-
 <script src="~/Scripts/atrament.js"></script>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -20,22 +16,10 @@
     <script src="~/Scripts/Canvas2image.js"></script>
 
 
-    <!-- Render your page inside of this div. -->
-
 <input type='file' id="imageLoader" accept="image/*">
-<input type="button" id="modify" value="Modify" />
-<input type="button" id="save" value="Save" />
-<input type="button" id="restore" value="Restore" />
-<input type="button" id="clear" value="Clear Canvas" />
+
 <canvas id="imageCanvas" width="700" height="300" style="border: 3px solid black;"></canvas>
 
-
-<?php
-  $data = $_REQUEST['base64data'];
-  echo $data;
-  $image = explode('base64,',$data);
-  file_put_contents('img.png', base64_decode($image[1]));
-?>
 
 <style>
     canvas {
@@ -95,7 +79,6 @@ function handleImage() {
         reader.readAsDataURL(this.files[0]);
     }
 }
-
 </script>
 
 <br>
@@ -206,6 +189,21 @@ function handleImage() {
         }
 
         </div>
-      
+<br />
+
+<img id="canvasImg" alt="Right click on the canvas to save!">
+
+    <image id="canvasImg"></image>
+
+<script>
+    function exportAndView() {
+      var canvas3 = document.getElementById('imageCanvas');
+      var context = canvas3.getContext('2d');
+      var dataURL = canvas3.toDataURL();
+      document.getElementById('canvasImg').src = dataURL;
+      }
+              
+</script>
+
         <br>
         <br />
