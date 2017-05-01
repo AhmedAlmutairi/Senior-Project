@@ -381,7 +381,7 @@ namespace myWall.Controllers
                      var file = HttpContext.Request.Files["files" + i];
                      if (file != null)
                      {
-                         var fileSavePath = Path.Combine(Server.MapPath("/Files"), file.FileName);
+                         var fileSavePath = Path.Combine(Server.MapPath("Home/Files"), file.FileName);
                          file.SaveAs(fileSavePath);
                          //return RedirectToAction("Wall");
                      }
@@ -392,7 +392,7 @@ namespace myWall.Controllers
 
          public ActionResult Library()
          {
-             string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+             string[] files = Directory.GetFiles(Server.MapPath("Home/Files"));
              for (int i = 0; i < files.Length; i++)
              {
                  files[i] = Path.GetFileName(files[i]);
