@@ -392,7 +392,7 @@ namespace myWall.Controllers
 
          public ActionResult Library()
          {
-             string[] files = Directory.GetFiles(Server.MapPath("/site/wwwroot/Files/"));
+             string[] files = Directory.GetFiles(Server.MapPath("Home") + "\\site\\wwwroot\\Files");
              for (int i = 0; i < files.Length; i++)
              {
                  files[i] = Path.GetFileName(files[i]);
@@ -403,7 +403,7 @@ namespace myWall.Controllers
 
          public FileResult DownloadFile(string fileName)
          {
-             var filepath = System.IO.Path.Combine(Server.MapPath("/site/wwwroot/Files/"), fileName);
+             var filepath = System.IO.Path.Combine(Server.MapPath("/Files/"), fileName);
              return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
          }
 
