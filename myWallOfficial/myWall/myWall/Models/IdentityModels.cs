@@ -89,10 +89,10 @@ namespace myWall.Models
 
         public ApplicationDbContext()
 
-           // : base("SQLAzureConnection", throwIfV1Schema: false)
+            : base("SQLAzureConnection", throwIfV1Schema: false)
         //SQLAzureConnection
 
-            : base("MyWallContext", throwIfV1Schema: false)
+           // : base("MyWallContext", throwIfV1Schema: false)
             
 
         {
