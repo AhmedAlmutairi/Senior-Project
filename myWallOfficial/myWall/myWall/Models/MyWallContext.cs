@@ -8,7 +8,7 @@ namespace myWall.Models
     public partial class MyWallContext : DbContext
     {
         public MyWallContext()
-            : base("name=MyWallContext")
+            : base("name=SQLAzureConnection")
         {
         }
 
