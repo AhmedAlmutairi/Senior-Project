@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "uploadToCanvas";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<canvas id="imageCanvas"></canvas>
+<input type='file' id="imageLoader" accept="image/*">
+
+<style>
+    #imageCanvas {
+  border: 1px solid black;
+}</style>
+
+<script>
+var canvas = $('#imageCanvas')[0];
+var ctx = canvas.getContext('2d');
+
+var imageLoader = $('#imageLoader')[0];
+imageLoader.addEventListener('change', handleImage, false);
+
+// default image
+var defImg = new Image();
+defImg.src = "http://www.rhlaw.com/blog/wp-content/uploads/2011/10/kitten-300x300.jpg";
+defImg.onload = function() {
+    canvas.width = defImg.width;
+    canvas.height = defImg.height;
+    ctx.drawImage(defImg, 0, 0);
+};
+// user loaded image
+function handleImage() {
+    if (this.files && this.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var img = new Image();
+            img.src = event.target.result;
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0);
+            };
+        };
+        reader.readAsDataURL(this.files[0]);
+    }
+}
+</script>

@@ -517,6 +517,7 @@
     <Content Include="index.html" />
     <Content Include="Scripts\atrament.js" />
     <Content Include="Scripts\backbone-min.js" />
+    <Content Include="Scripts\base64.js" />
     <Content Include="Scripts\bezier.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -536,16 +537,23 @@
     <Content Include="crop.php" />
     <None Include="Properties\PublishProfiles\MyWallWeb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\newmywall - Web Deploy.pubxml" />
+    <Content Include="Scripts\createjs.js" />
+    <Content Include="Scripts\exif.js" />
+    <Content Include="Scripts\upload\export.php" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\canvas2image.js" />
+    <Content Include="Scripts\canvas.js" />
+    <Content Include="Scripts\Canvas2image.js" />
     <Content Include="Scripts\chess.js" />
     <Content Include="Scripts\coverage.js" />
+    <Content Include="Scripts\easeljs.js" />
     <Content Include="Scripts\ellipse.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\garbochess.js" />
     <Content Include="Scripts\geometry.js" />
+    <Content Include="Scripts\index.html" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\jqueryCanvas.js" />
     <Content Include="Scripts\joint.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -564,6 +572,7 @@
     <Content Include="Scripts\literallycanvas-core.js.htm" />
     <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\upload\mona.jpg" />
     <Content Include="Scripts\mouse.js" />
     <Content Include="Scripts\myWall.js" />
     <Content Include="Scripts\normalizeAngle.js" />
@@ -580,6 +589,7 @@
     <Content Include="Scripts\toDeg.js" />
     <Content Include="Scripts\toRad.js" />
     <Content Include="Scripts\UnionDraw.js" />
+    <Content Include="Scripts\upclick-min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -629,6 +639,8 @@
     <Content Include="Views\Request\Upload.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Home\Whiteboard.cshtml" />
+    <Content Include="Scripts\upload\upload.php" />
+    <Content Include="Views\Home\uploadToCanvas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
