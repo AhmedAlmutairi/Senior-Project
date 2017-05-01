@@ -660,7 +660,6 @@
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
     <Folder Include="Controllers\Files\" />
-    <Folder Include="Files\" />
     <Folder Include="File\" />
   </ItemGroup>
   <ItemGroup>
