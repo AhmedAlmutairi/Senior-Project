@@ -412,3 +412,7 @@ C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\Microsof
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
+C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\bin\Microsoft.AspNet.SignalR.SystemWeb.xml

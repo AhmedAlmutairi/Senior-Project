@@ -627,6 +627,7 @@
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Home\Whiteboard.cshtml" />
     <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Home\uploadToCanvas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

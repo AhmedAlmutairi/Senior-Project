@@ -82,7 +82,18 @@ namespace myWall.Controllers
             }
         }
 
-        
+        public ActionResult uploadToCanvas(int? id)
+        {
+            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+            ViewBag.Files = files;
+            return View();
+        }
+
+
         [Route("Wall")]
         [HttpGet]
         public ActionResult Wall(int? id)
