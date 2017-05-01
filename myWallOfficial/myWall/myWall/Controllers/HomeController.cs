@@ -392,7 +392,7 @@ namespace myWall.Controllers
 
          public ActionResult Library()
          {
-             string[] files = Directory.GetFiles(Server.MapPath("/Files/"));
+             string[] files = Directory.GetFiles(Server.MapPath("~/File/"));
              for (int i = 0; i < files.Length; i++)
              {
                  files[i] = Path.GetFileName(files[i]);
