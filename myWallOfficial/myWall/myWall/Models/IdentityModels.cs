@@ -96,7 +96,7 @@ namespace myWall.Models
             
 
         {
-            //Database.SetInitializer<ApplicationDbContext>(null);
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         public static ApplicationDbContext Create()
