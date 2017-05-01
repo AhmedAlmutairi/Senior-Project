@@ -52,7 +52,6 @@
                 @Html.ActionLink("Go back to my wall", "Wall", null, new { @class = "btn btn-primary" })
             </p>
 
-
         }
     </div>
     <button id="clear" onclick="event.preventDefault(); atrament.clear();">clear</button><br>
@@ -86,7 +85,7 @@
     <br />
     <br>
     Open file: <input type="file" id="fileUpload" accept="image/*" /><br />
-    <canvas id="sketcher" width="300" height="300">
+    <canvas id="sketcher" onmousemove="keepLine()" onmouseup="drawLine()" onmousedown="startLine()" width="300" height="600" style="background-color:#ffffff;cursor:default;">
         
     </canvas>
     <br />

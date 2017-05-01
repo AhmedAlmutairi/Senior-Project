@@ -198,7 +198,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FromBodyAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IHttpActionResult.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -515,6 +517,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Scripts\._html2canvas.js" />
+    <Content Include="Scripts\._jquery.plugin.html2canvas.js" />
     <Content Include="Scripts\atrament.js" />
     <Content Include="Scripts\backbone-min.js" />
     <Content Include="Scripts\base64.js" />
@@ -539,6 +543,7 @@
     <None Include="Properties\PublishProfiles\newmywall - Web Deploy.pubxml" />
     <Content Include="Scripts\createjs.js" />
     <Content Include="Scripts\exif.js" />
+    <Content Include="Scripts\signature_pad.js" />
     <Content Include="Scripts\upload\export.php" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\canvas.js" />

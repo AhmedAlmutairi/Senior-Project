@@ -9,8 +9,10 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
@@ -351,13 +353,16 @@ namespace myWall.Controllers
 
         }
 
-        public ActionResult uploadToCanvas()
+        public ActionResult uploadToCanvas(int? id)
         {
+            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+            ViewBag.Files = files;
             return View();
         }
-
-
-        [HttpGet]
          public ActionResult Upload()
          {
              return View();
