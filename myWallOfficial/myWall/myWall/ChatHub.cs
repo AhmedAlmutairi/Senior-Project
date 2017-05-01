@@ -62,7 +62,7 @@ namespace myWall
 
                 
                     dc.Chats.Add(messageDetail);
-                    dc.Entry(messageDetail).State = EntityState.Modified;
+                    //dc.Entry(messageDetail).State = EntityState.Modified;
                     dc.SaveChanges();
                     
                     
