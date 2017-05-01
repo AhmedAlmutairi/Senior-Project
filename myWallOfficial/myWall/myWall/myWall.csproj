@@ -72,6 +72,14 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -198,7 +206,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FromBodyAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IHttpActionResult.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,7 +224,8 @@
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MyWallDB.cs" />
+    <Compile Include="ChatHub.cs" />
+    <Compile Include="Models\MyWallContext.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\UserCalloboration.cs" />
@@ -498,15 +509,24 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\chess.css" />
+    <Content Include="Content\demos.css" />
     <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\pool.jpg" />
     <Content Include="Content\joint.css" />
+    <Content Include="Content\jquery.Jcrop.css" />
+    <Content Include="Content\jquery.Jcrop.min.css" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\paper.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\._html2canvas.js" />
+    <Content Include="Scripts\._jquery.plugin.html2canvas.js" />
     <Content Include="Scripts\atrament.js" />
     <Content Include="Scripts\backbone-min.js" />
+    <Content Include="Scripts\base64.js" />
     <Content Include="Scripts\bezier.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -522,23 +542,41 @@
     <Content Include="ckeditor\README.md" />
     <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="ckeditor\skins\moono\readme.md" />
+
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\MyWallWeb - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\newmywall - Web Deploy.pubxml" />
+    <Content Include="bower.json" />
+    <Content Include="crop.php" />
+    <Content Include="Scripts\createjs.js" />
+    <Content Include="Scripts\exif.js" />
+    <Content Include="Scripts\signature_pad.js" />
+    <Content Include="Scripts\upload\export.php" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\canvas2image.js" />
+    <Content Include="Scripts\canvas.js" />
+    <Content Include="Scripts\Canvas2image.js" />
     <Content Include="Scripts\chess.js" />
     <Content Include="Scripts\coverage.js" />
+    <Content Include="Scripts\easeljs.js" />
     <Content Include="Scripts\ellipse.js" />
     <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\garbochess.js" />
     <Content Include="Scripts\geometry.js" />
+    <Content Include="Scripts\index.html" />
     <Content Include="Scripts\JavaScript.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\jqueryCanvas.js" />
     <Content Include="Scripts\joint.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="Scripts\jquery.color.js" />
+    <Content Include="Scripts\jquery.Jcrop.js" />
+    <Content Include="Scripts\jquery.Jcrop.min.js" />
+    <Content Include="Scripts\jquery.min.js" />
+
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -549,6 +587,7 @@
     <Content Include="Scripts\literallycanvas-core.js.htm" />
     <Content Include="Scripts\lodash.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\upload\mona.jpg" />
     <Content Include="Scripts\mouse.js" />
     <Content Include="Scripts\myWall.js" />
     <Content Include="Scripts\normalizeAngle.js" />
@@ -564,6 +603,8 @@
     <Content Include="Scripts\testing.js" />
     <Content Include="Scripts\toDeg.js" />
     <Content Include="Scripts\toRad.js" />
+    <Content Include="Scripts\UnionDraw.js" />
+    <Content Include="Scripts\upclick-min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -615,6 +656,12 @@
     <Content Include="Views\Request\Upload.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
     <Content Include="Views\Home\Whiteboard.cshtml" />
+
+    <Content Include="Views\Home\Chat.cshtml" />
+
+    <Content Include="Scripts\upload\upload.php" />
+    <Content Include="Views\Home\uploadToCanvas.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

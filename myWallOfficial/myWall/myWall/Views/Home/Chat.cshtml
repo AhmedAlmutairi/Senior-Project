@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Chat";
+}
+
+<hgroup>
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+</hgroup>
+
+<div class="container">
+       <div class="col-sm-8">
+        <div id="chat">
+            <ul id="oldmsg"></ul>
+            <ul id="Chats"></ul>
+            
+        </div>
+         
+        <input type="hidden" id="UserName" />
+        <textarea type="MultiLine" id="TxtMessage"></textarea>
+        <input type="button" id="BtnSend" value="Send" />
+        
+       </div>
+        <div class="col-sm-4">
+        <ul id="results"></ul>
+        </div>
+    </div>
+
+
+
+        @section scripts {
+
+            <script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+            <script src="~/signalr/Hubs"></script>
+
+            <script>
+                $(function () {
+
+                    var chat = $.connection.chatHub;
+                    
+                    
+
+                    chat.client.connected = function (userName, allUsers, messages) {
+                        for (i = 0; i < allUsers.length; i++) {
+                            $("#results").append(allUsers[i].UserName + "</br>");
+                          
+                        }
+                        
+                        for (i = 0; i < 20; i++) {
+                            $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
+                        }
+                        $("#oldmsg").append( "<font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
+                        $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                    };
+
+                   
+
+                    chat.client.NewMessage = function (userName, msg) {
+                        $('#Chats').append('<li><strong>' + htmlEncode(userName)
+                            + '</strong>: ' + htmlEncode(msg) + '</li>');
+                        $('#chat').scrollTop($('#chat')[0].scrollHeight);
+                    };
+
+                    registerClientMethods(chat)
+
+                    $.connection.hub.start().done(function () {
+                        registerEvents(chat)
+                    });
+                });
+
+                
+                
+                
+                function registerEvents(chat) {
+                
+                    
+                    
+              
+                    $('#BtnSend').click(function () {
+                        chat.server.sendMessageToAll($('#UserName').val(), $('#TxtMessage').val());
+                        $('#TxtMessage').val('').focus();
+                    });
+               
+                    
+
+                }
+
+                function registerClientMethods(chat) {
+                    // Calls when user successfully logged in
+                    chat.server.connected = function (userName, allUsers, messages) {
+
+
+
+
+                        // Add All Users
+                        for (i = 0; i < allUsers.length; i++) {
+                            AddUser(chat, allUsers[i].UserName);
+                        }
+
+                        // Add Existing Messages
+                        for (i = 0; i < messages.length; i++) {
+                            AddMessage(messages[i].UserName, messages[i].Message);
+                        }
+
+
+                    }
+                }
+                
+
+                function htmlEncode(value) {
+                    var encodedValue = $('<div />').text(value).html();
+                    return encodedValue;
+                }
+
+
+            </script>
+        }
+

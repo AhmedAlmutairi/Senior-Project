@@ -26,7 +26,7 @@ namespace myWall.Models
 
         public int WallId { get; set; }
 
-        
+        public int? CallobId { get; set; }
 
         public string Title { get; set; }
 
@@ -36,12 +36,8 @@ namespace myWall.Models
 
         public byte[] Image { get; set; }
 
-        public byte[] File { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Answer> Answers { get; set; }
-
-       
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }

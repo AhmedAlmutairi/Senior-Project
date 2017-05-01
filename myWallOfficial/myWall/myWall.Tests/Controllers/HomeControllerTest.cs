@@ -1,7 +1,19 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Web;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using System.Web.Routing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using MvcRouteTester;
 using NUnit.Framework;
-using myWall.Controllers;
+using myWall;
+
+
 
 namespace myWall.Tests.Controllers
 {
@@ -65,12 +77,12 @@ namespace myWall.Tests.Controllers
         {
             TestRouteFail("~/About");
         }
-
+        /*
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+           // HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -78,15 +90,15 @@ namespace myWall.Tests.Controllers
             // Assert
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
 
+
         }
 
         
-
         [TestMethod]
         public void About()
         {
             // Arrange
-            HomeController controller = new HomeController();
+          //  HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.About() as ViewResult;
@@ -99,7 +111,7 @@ namespace myWall.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            //HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Contact() as ViewResult;
@@ -116,7 +128,7 @@ namespace myWall.Tests.Controllers
         public void Wall()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            //HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Wall(12) as ViewResult;
@@ -131,7 +143,7 @@ namespace myWall.Tests.Controllers
         public void Create()
         {
             // Arrange
-            HomeController controller = new HomeController();
+           // HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Create() as ViewResult;
@@ -144,7 +156,7 @@ namespace myWall.Tests.Controllers
         public void CreateWall()
         {
             // Arrange
-            HomeController controller = new HomeController();
+           // HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.CreateWall() as ViewResult;
@@ -153,9 +165,40 @@ namespace myWall.Tests.Controllers
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
 
-       
+
+        [TestMethod]
+        public void Delete()
+        { 
+
+            // Arrange
+            //HomeController controller = new HomeController();
+
+            // Act
+
+            ViewResult result = controller.DeleteConfirmed(11) as ViewResult;
+
+           
+            // Assert
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void DeletePost()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+
+            ViewResult result = controller.DeletePost(11) as ViewResult;
+
+            // Assert
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
+        }
+
+        
+      */  
+
     }
-
-
     
 }

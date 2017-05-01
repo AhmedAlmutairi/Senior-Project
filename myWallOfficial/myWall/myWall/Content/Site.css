@@ -84,3 +84,28 @@ textarea {
 #lib{
     text-align: center;
 }
+
+
+#chat{
+    width: 700px;
+    height: 400px;
+    border: 2px solid black;
+    padding: 25px;
+    margin: 0px;
+    overflow:auto;
+}
+
+#TxtMessage{
+    width: 100%;
+    overflow:auto;
+}
+
+#results{
+    width: 400px;
+    height: 400px;
+    border: 2px solid black;
+    padding: 25px;
+    margin: 0px;
+   
+   
+}

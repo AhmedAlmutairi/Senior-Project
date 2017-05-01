@@ -6,11 +6,15 @@
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_IsLayoutPageSelected>True</WebStackScaffolding_IsLayoutPageSelected>
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
-    <WebStackScaffolding_IsReferencingScriptLibrariesSelected>True</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
+    <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>myWall.Models.ApplicationDbContext</WebStackScaffolding_DbContextTypeFullName>
+
     <NameOfLastUsedPublishProfile>MyWallOfficial - Web Deploy %282%29</NameOfLastUsedPublishProfile>
     <ProjectView>ProjectFiles</ProjectView>
+
+    
+    
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

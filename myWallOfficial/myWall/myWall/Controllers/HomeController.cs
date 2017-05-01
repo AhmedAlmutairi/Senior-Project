@@ -9,8 +9,10 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
@@ -24,7 +26,7 @@ namespace myWall.Controllers
     public class HomeController : Controller
     {
         
-        private MyWallDB db = new MyWallDB();
+        private MyWallContext db = new MyWallContext();
         ApplicationDbContext d = new ApplicationDbContext();
 
         
@@ -146,7 +148,7 @@ namespace myWall.Controllers
 
         public byte[] GetImageFromDataBase(int Id)
         {
-            var q = from temp in db.Posts where temp.Id == Id select temp.Image;
+            var q = from temp in d.Posts where temp.Id == Id select temp.Image;
             byte[] cover = q.First();
             return cover;
         }
@@ -233,7 +235,7 @@ namespace myWall.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wall wal = db.Walls.Find(id);
+            Wall wal = d.Walls.Find(id);
             if (wal == null)
             {
                 return HttpNotFound();
@@ -246,9 +248,9 @@ namespace myWall.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
            
-            Wall wal = db.Walls.Find(id);
-                db.Walls.Remove(wal);
-                db.SaveChanges();
+            Wall wal = d.Walls.Find(id);
+                d.Walls.Remove(wal);
+                d.SaveChanges();
                 return RedirectToAction("Index");
             
             
@@ -354,8 +356,16 @@ namespace myWall.Controllers
 
         }
 
-
-        [HttpGet]
+        public ActionResult uploadToCanvas(int? id)
+        {
+            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+            ViewBag.Files = files;
+            return View();
+        }
          public ActionResult Upload()
          {
              return View();
@@ -447,7 +457,14 @@ namespace myWall.Controllers
         }
         public ActionResult Whiteboard()
         {
+            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+            ViewBag.Files = files;
             return View();
+
         }
         public ActionResult Chess()
         {
@@ -455,7 +472,15 @@ namespace myWall.Controllers
             return View();
         }
 
+        public ActionResult Chat()
+        {
 
+
+
+
+
+            return View();
+        }
        
 
     }
