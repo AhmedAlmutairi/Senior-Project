@@ -10,6 +10,7 @@ using System;
 using System.Diagnostics;
 using System.Data.Entity.Infrastructure;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace myWall.Models
 {
@@ -86,7 +87,7 @@ namespace myWall.Models
             string message = builder.ToString();
             return new Exception(message, dbu);
         }
-
+      
         public ApplicationDbContext()
 
            : base("SQLAzureConnection", throwIfV1Schema: false)
