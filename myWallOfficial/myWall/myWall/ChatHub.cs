@@ -18,7 +18,7 @@ namespace myWall
         
         public override System.Threading.Tasks.Task OnConnected()
         {
-            MyWallContext db = new MyWallContext();
+            ApplicationDbContext db = new ApplicationDbContext();
             string userName = Context.User.Identity.Name;
 
             var allUsers = db.Users.ToList();
