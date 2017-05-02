@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
+
 namespace myWall
 {
     public class ChatHub : Hub
     {
+        
         public override System.Threading.Tasks.Task OnConnected()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -21,7 +23,7 @@ namespace myWall
 
             var allUsers = db.Users.ToList();
             var messages = db.Chats.ToList();
-            Clients.AllExcept(userName).onNewUserConnected(userName);
+           // Clients.AllExcept(userName).onNewUserConnected(userName);
             return Clients.Caller.connected(userName, allUsers, messages);
 
             
