@@ -38,7 +38,7 @@
 
                     var chat = $.connection.chatHub;
                     
-                    //$.connection.hub.logging = true;
+                    $.connection.hub.logging = true;
 
                     chat.client.connected = function (userName, allUsers, messages) {
                         for (i = 0; i < allUsers.length; i++) {
