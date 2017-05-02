@@ -63,7 +63,7 @@
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
                     };
 
-            //        registerClientMethods(chat)
+                    registerClientMethods(chat)
 
                     $.connection.hub.start().done(function () {
                        registerEvents(chat)
@@ -87,7 +87,7 @@
 
                 }
 
-               /* function registerClientMethods(chat) {
+                function registerClientMethods(chat) {
                     // Calls when user successfully logged in
                     chat.server.connected = function (userName, allUsers, messages) {
 
@@ -106,7 +106,7 @@
 
 
                     }
-                }*/
+                }
                 
 
                 function htmlEncode(value) {
