@@ -16,7 +16,7 @@ namespace myWall
     public class ChatHub : Hub
     {
         
-        /*public override System.Threading.Tasks.Task OnConnected()
+        public override System.Threading.Tasks.Task OnConnected()
         {
             ApplicationDbContext db = new ApplicationDbContext();
             string userName = Context.User.Identity.Name;
@@ -27,7 +27,7 @@ namespace myWall
             return Clients.Caller.connected(userName, allUsers, messages);
 
             
-        }*/
+        }
 
         
 
