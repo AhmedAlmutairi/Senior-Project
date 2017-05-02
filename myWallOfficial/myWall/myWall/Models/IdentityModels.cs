@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 
 namespace myWall.Models
 {
+   
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -50,9 +51,11 @@ namespace myWall.Models
     }
 
     
-
+    
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+
 
         public override int SaveChanges()
         {
@@ -90,10 +93,10 @@ namespace myWall.Models
       
         public ApplicationDbContext()
 
-           : base("SQLAzureConnection", throwIfV1Schema: false)
+         //  : base("SQLAzureConnection", throwIfV1Schema: false)
         //SQLAzureConnection
 
-       //  : base("MyWallContext", throwIfV1Schema: false)
+         : base("MyWallContext", throwIfV1Schema: false)
             
 
         {
