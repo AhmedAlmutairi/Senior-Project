@@ -4,11 +4,12 @@ namespace myWall.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public partial class MyWallContext : DbContext
     {
         public MyWallContext()
-            : base("name=SQLAzureConnection")
+            : base("name=MyWallContext")
         {
         }
 
@@ -28,6 +29,9 @@ namespace myWall.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
             modelBuilder.Entity<CalloborationAccount>()
                 .HasMany(e => e.CalloborationCenters)
                 .WithRequired(e => e.CalloborationAccount)

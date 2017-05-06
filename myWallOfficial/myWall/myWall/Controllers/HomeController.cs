@@ -165,32 +165,35 @@ namespace myWall.Controllers
         /// <returns></returns>
         [Route("Create")]
         [HttpPost]
-        public ActionResult Create(Post model)
+        public ActionResult Create(Post model, int id)
         {
 
-            
+
+                Wall Id = db.Walls.Find(id);
             
                 HttpPostedFileBase file = Request.Files["ImageData"];
                 //var UserId = User.Identity.GetUserId();
                 //model.UserId = User.Identity.GetUserId();
                // model.WallId = 
                 //ContentRepository service = new ContentRepository();
-                int i = myWall(file, model);
+                int i = myWall(file, model, id);
                 if (i == 1)
                 {
 
-                    return RedirectToAction("Wall");
+                    return RedirectToAction("Wall", new { id = id});
                 }
             
             return View(model);
         }
 
-        public int myWall(HttpPostedFileBase file, Post contentViewModel)
+        public int myWall(HttpPostedFileBase file, Post contentViewModel, int id)
         {
             if (User.Identity.IsAuthenticated)
             {
+
                 contentViewModel.Image = ConvertToBytes(file);
                 contentViewModel.UserId = User.Identity.GetUserId();
+                contentViewModel.WallId = id;
                 var Post = new Post
                 {
 
@@ -358,7 +361,7 @@ namespace myWall.Controllers
 
         public ActionResult uploadToCanvas(int? id)
         {
-            string[] files = Directory.GetFiles(Server.MapPath("/Files"));
+            string[] files = Directory.GetFiles(Server.MapPath("/Files/"));
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = Path.GetFileName(files[i]);

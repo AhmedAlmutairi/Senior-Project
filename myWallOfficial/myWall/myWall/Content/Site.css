@@ -7,6 +7,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -72,6 +73,7 @@ textarea {
     
     margin-left: auto ;
     margin-right: auto ;
+    width: 500px;
     background-color: aliceblue;
     border: groove;
     text-align: center;
@@ -109,3 +111,30 @@ textarea {
    
    
 }
+
+#myDiv {
+    transform: rotate(20deg); /* Standard syntax */
+}
+
+
+
+.parallax {
+    /* The image used */
+    background-color:azure;
+
+    /* Full height */
+    height: 100%; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.imgg{
+    height: 200px;
+    width: 1140px;
+}
+
+
