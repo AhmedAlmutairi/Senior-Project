@@ -87,7 +87,6 @@ textarea {
     text-align: center;
 }
 
-
 #chat{
     width: 700px;
     height: 400px;
@@ -111,6 +110,7 @@ textarea {
    
    
 }
+
 
 #myDiv {
     transform: rotate(20deg); /* Standard syntax */

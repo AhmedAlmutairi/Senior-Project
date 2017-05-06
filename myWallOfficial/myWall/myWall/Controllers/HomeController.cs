@@ -361,7 +361,7 @@ namespace myWall.Controllers
 
         public ActionResult uploadToCanvas(int? id)
         {
-            string[] files = Directory.GetFiles(Server.MapPath("/Files/"));
+            string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = Path.GetFileName(files[i]);
@@ -384,7 +384,7 @@ namespace myWall.Controllers
                      var file = HttpContext.Request.Files["files" + i];
                      if (file != null)
                      {
-                         var fileSavePath = Path.Combine(Server.MapPath("~/Files"), file.FileName);
+                         var fileSavePath = Path.Combine(Server.MapPath("/Controllers/Files/"), file.FileName);
                          file.SaveAs(fileSavePath);
                          //return RedirectToAction("Wall");
                      }
@@ -395,7 +395,7 @@ namespace myWall.Controllers
 
          public ActionResult Library()
          {
-             string[] files = Directory.GetFiles(Server.MapPath("~/Files"));
+             string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
              for (int i = 0; i < files.Length; i++)
              {
                  files[i] = Path.GetFileName(files[i]);
@@ -406,7 +406,7 @@ namespace myWall.Controllers
 
          public FileResult DownloadFile(string fileName)
          {
-             var filepath = System.IO.Path.Combine(Server.MapPath("~/File/"), fileName);
+             var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
              return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
          }
 

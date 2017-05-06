@@ -10,12 +10,10 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 
-
 namespace myWall
 {
     public class ChatHub : Hub
     {
-        
         public override System.Threading.Tasks.Task OnConnected()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -23,21 +21,20 @@ namespace myWall
 
             var allUsers = db.Users.ToList();
             var messages = db.Chats.ToList();
-           // Clients.AllExcept(userName).onNewUserConnected(userName);
-            return Clients.Caller.connected(userName, allUsers, messages);
+            //Clients.AllExcept(userName).onNewUserConnected(userName);
+            return Clients.All.connected(userName, allUsers, messages);
 
-            
+
         }
 
-        
+
 
 
         public void SendMessageToAll(string UserName, string message)
         {
             ApplicationDbContext dc = new ApplicationDbContext();
             UserName = Context.User.Identity.Name;
-            //var currentmsg = dc.Chats.Select(m => m.Message).ToList();
-            // store last 100 messages in cache
+            
             AddAllMessageinCache(UserName, message);
 
             // Broad cast message
@@ -47,30 +44,26 @@ namespace myWall
         private void AddAllMessageinCache(string UserName, string message)
         {
 
-           var userId = Context.User.Identity.GetUserId();
+            var userId = Context.User.Identity.GetUserId();
             using (ApplicationDbContext dc = new ApplicationDbContext())
             {
 
                 var messageDetail = new Chat
                 {
-                    
+
                     UserId = userId,
                     userName = UserName,
                     Message = message
-                    
-                    
+
+
                 };
-
-
-                
-                    dc.Chats.Add(messageDetail);
-                    //dc.Entry(messageDetail).State = EntityState.Modified;
-                    dc.SaveChanges();
-                    
-                    
-               
+                dc.Chats.Add(messageDetail);
+                dc.SaveChanges();
             }
         }
 
     }
 }
+
+
+
