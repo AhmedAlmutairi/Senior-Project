@@ -21,6 +21,7 @@ namespace myWall
 
             var allUsers = db.Users.ToList();
             var messages = db.Chats.ToList();
+            var wall = db.Walls.ToList();
             //Clients.AllExcept(userName).onNewUserConnected(userName);
             return Clients.All.connected(userName, allUsers, messages);
 
