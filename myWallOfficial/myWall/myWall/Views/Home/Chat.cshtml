@@ -42,7 +42,7 @@
                     chat.client.connected = function (userName, messages) {
                         
 
-                        for (i = 0; i < 10; i++) {
+                        for (i = 0; i < messages.length; i++) {
                             $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
                         }
                         $("#oldmsg").append( "<font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
