@@ -27,9 +27,6 @@ namespace myWall
 
         }
 
-
-
-
         public void SendMessageToAll(string UserName, string message)
         {
             ApplicationDbContext dc = new ApplicationDbContext();
