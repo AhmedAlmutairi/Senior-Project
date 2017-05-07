@@ -4,51 +4,117 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>myWall this is just to test devlivery continuous</h1>
-    <p class="lead"></p>
-    <p>
-        @Html.ActionLink("Create New Wall", "CreateWall")
-    </p>
 
-</div>
+<style>
+    .buttonn {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 300px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
 
-<div class="waa">
-<h3>Latest Wall:</h3>
-@foreach (var item in Model)
-{
+        .buttonn span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
 
-    @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id}) <br />
+            .buttonn span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
 
-}
+        .buttonn:hover span {
+            padding-right: 25px;
+        }
 
-</div>
+            .buttonn:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+</style>
 
 
+<body class="inx">
+    
+        
+        
+        <p>
+            @Html.ActionLink("Create New Wall", "CreateWall")
+        </p>
+        <p>
+            @Html.ActionLink("Start Chatting", "Chat")
+        </p>
 
+    
 
+    <div class="waa">
+        <h3>Latest Wall:</h3>
+        @foreach (var item in Model)
+        {
 
-<div class="row">
+            @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
-    <div class="col-md-4">
-        <div id="bak">
-            <h2>What is myWall?</h2>
-            <p>An application used to collaborate with your team, your co-worker, your friends, and other people that you share the same interests with. In myWall app, you can have a learning experience with classmates, friends and teachers. This app provides several tools that are easy to use and useful for your needs such as drawing diagrams, making lists, posting documents, ...etc. The focus is to have an amazing place to share your ideas, comments, knowledge, and other things with the right people at the right time.</p>
-        </div>
+        }
+
     </div>
 
-    <div class="col-md-4">
-        <div id="bak">
-            <h2>Vision Statement</h2>
-            <p>myWall is a collaboration tool for working with collogues locally or remotely where users can draw out diagrams, mind maps, brainstorming lists, flow charts, etc. and save them for later review. myWall is a web application that allows users to connect with other users whether it is school, business, art, software engineering projects, the individuals using will be able to display their creativity with their very own virtual whiteboard. The system will show real-time updates as others draw, either using digital whiteboards or tablets, and areas of the white board can be protected with the option of turning on or off overlays of others drawings or notes. It is intended to be for both individual users and for teams who need a way to work collaboratively and have an easy way to keep track of their progress. Unlike A Web Whiteboard (awwapp.com), www.webwhiteboard.com, or Realtime Board (realtimeboard.com). Our app will be different as there will be a section where items can be posted to the community at large, like a Stack Exchange site.</p>
-        </div>
+
+    <br />
+    <br />
+    <br />
+
+    <style>
+        divv {
+            width: 300px;
+            height: 100px;
+            //background-color: yellow;
+            //border: 1px solid black;
+        }
+
+            divv#myDiv {
+                -ms-transform: rotate(20deg); /* IE 9 */
+                -webkit-transform: rotate(20deg); /* Safari */
+                transform: rotate(20deg); /* Standard syntax */
+            }
+    </style>
+
+    <div class="row">
+
+        <divv class="col-md-4">
+            <div id="myDiv">
+                <h2>What is myWall?</h2>
+                <p>An application used to collaborate with your team, your co-worker, your friends, and other people that you share the same interests with. In myWall app, you can have a learning experience with classmates, friends and teachers. This app provides several tools that are easy to use and useful for your needs such as drawing diagrams, making lists, posting documents, ...etc. The focus is to have an amazing place to share your ideas, comments, knowledge, and other things with the right people at the right time.</p>
+            </div>
+        </divv>
+
+        <divv class="col-md-4">
+            <div id="myDiv">
+                <h2>Vision Statement</h2>
+                <p>myWall is a collaboration tool for working with collogues locally or remotely where users can draw out diagrams, mind maps, brainstorming lists, flow charts, etc. and save them for later review. myWall is a web application that allows users to connect with other users whether it is school, business, art, software engineering projects, the individuals using will be able to display their creativity with their very own virtual whiteboard. The system will show real-time updates as others draw, either using digital whiteboards or tablets, and areas of the white board can be protected with the option of turning on or off overlays of others drawings or notes. It is intended to be for both individual users and for teams who need a way to work collaboratively and have an easy way to keep track of their progress. Unlike A Web Whiteboard (awwapp.com), www.webwhiteboard.com, or Realtime Board (realtimeboard.com). Our app will be different as there will be a section where items can be posted to the community at large, like a Stack Exchange site.</p>
+            </div>
+        </divv>
+
+        <divv class="col-md-4">
+            <div id="myDiv">
+                <h2>What is New?</h2>
+                <p>Comming Soon</p>
+            </div>
+        </divv>
+
     </div>
 
-    <div class="col-md-4">
-        <div id="bak">
-            <h2>What is New?</h2>
-            <p>Comming Soon</p>
-        </div>
-    </div>
-
-</div>
+</body>

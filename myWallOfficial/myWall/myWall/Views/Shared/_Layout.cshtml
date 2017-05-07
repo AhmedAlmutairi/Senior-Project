@@ -14,10 +14,10 @@
     @Scripts.Render("~/bundles/modernizr")
 
 
-    
+
 
 </head>
-<body>
+<body class="parallax">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -41,6 +41,7 @@
         </div>
     </div>
     <div class="container body-content">
+        <img src="~/Content/images/wall.png", class="imgg" />
         @RenderBody()
         <hr />
         <footer>
@@ -53,10 +54,3 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-<style>
-    body {
-    background-color: #00ffcc;
-}
-
-    
-    </style>

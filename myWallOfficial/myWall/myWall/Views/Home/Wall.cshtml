@@ -72,13 +72,13 @@
 
 
 
-
+            @foreach (var item in stwall) { 
             <p>
-                <br />    @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
+                <br />    @Html.ActionLink("Create New Image", "Create", new { id = item.Id}, new { @class = "btn btn-primary" })
             </p>
 
             <br />
-
+            }
             
                 <table class="table" style="width: 1200px;">
 
@@ -118,6 +118,7 @@
 {
     @Html.ActionLink("Delete the whole wall", "Delete", new { id = name.Id })
 }
+
 
 
 

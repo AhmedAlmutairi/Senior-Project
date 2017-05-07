@@ -9,12 +9,6 @@ namespace myWall.Models
     [Table("CalloborationCenter")]
     public partial class CalloborationCenter
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CalloborationCenter()
-        {
-            
-        }
-
         public int Id { get; set; }
 
         [Required]
@@ -28,7 +22,5 @@ namespace myWall.Models
         public int CallobId { get; set; }
 
         public virtual CalloborationAccount CalloborationAccount { get; set; }
-
-        
     }
 }

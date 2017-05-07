@@ -22,15 +22,74 @@ IF OBJECT_ID('dbo.AspNetUserRoles','U') IS NOT NULL
 	DROP TABLE [dbo].[AspNetUserRoles];
 GO
 
+IF OBJECT_ID('dbo.UserCalloboration','U') IS NOT NULL
+	DROP TABLE [dbo].[UserCalloboration];
+GO
+
 IF OBJECT_ID('dbo.CalloborationAccount','U') IS NOT NULL
 	DROP TABLE [dbo].[CalloborationAccount];
+GO
+
+IF OBJECT_ID('dbo.CalloborationCenter','U') IS NOT NULL
+	DROP TABLE [dbo].[CalloborationCenter];
+GO
+
+IF OBJECT_ID('dbo.CalloborationCenter','U') IS NOT NULL
+	DROP TABLE [dbo].[CalloborationCenter];
+GO
+
+IF OBJECT_ID('dbo.Wall','U') IS NOT NULL
+	DROP TABLE [dbo].[Wall];
+GO
+
+IF OBJECT_ID('dbo.Groups','U') IS NOT NULL
+	DROP TABLE [dbo].[Groups];
+GO
+
+IF OBJECT_ID('dbo.User_Group','U') IS NOT NULL
+	DROP TABLE [dbo].[User_Group];
+GO
+
+IF OBJECT_ID('dbo.Wall_Group','U') IS NOT NULL
+	DROP TABLE [dbo].[Wall_Group];
+GO
+
+IF OBJECT_ID('dbo.Post','U') IS NOT NULL
+	DROP TABLE [dbo].[Post];
+GO
+
+IF OBJECT_ID('dbo.Comments','U') IS NOT NULL
+	DROP TABLE [dbo].[Comments];
+GO
+
+IF OBJECT_ID('dbo.Tag','U') IS NOT NULL
+	DROP TABLE [dbo].[Tag];
+GO
+
+IF OBJECT_ID('dbo.Diagtam','U') IS NOT NULL
+	DROP TABLE [dbo].[Diagram];
+GO
+
+IF OBJECT_ID('dbo.Post_Tag','U') IS NOT NULL
+	DROP TABLE [dbo].[Post_Tag];
+GO
+
+
+IF OBJECT_ID('dbo.Post_Diagram','U') IS NOT NULL
+	DROP TABLE [dbo].[Post_Diagram];
+GO
+
+IF OBJECT_ID('dbo.Amswer','U') IS NOT NULL
+	DROP TABLE [dbo].[Answer];
+GO
+
+IF OBJECT_ID('dbo.Annotation','U') IS NOT NULL
+	DROP TABLE [dbo].[Annotation];
 GO
 
 IF OBJECT_ID('dbo.Chat','U') IS NOT NULL
 	DROP TABLE [dbo].[Chat];
 GO
-
-
 -- ############# AspNetRoles #############
 CREATE TABLE [dbo].[AspNetRoles]
 (
@@ -60,6 +119,7 @@ CREATE TABLE [dbo].[AspNetUsers]
 	[Question]             NVARCHAR (256) NULL,
 	[Hint]             NVARCHAR (256) NULL,
 	[Answer]             NVARCHAR (256) NULL,
+	[ConnectionId]             NVARCHAR (256) NULL,
     CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 GO
@@ -192,18 +252,16 @@ CREATE TABLE [dbo].[Post]
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[UserId] NVARCHAR (128) NOT NULL,
 	[WallId] INT NOT NULL,
-	[CallobId] INT NULL,
+	[CallobId] INT  NULL,
 	[Title]       NVARCHAR (MAX)  NULL,
     [Description] NVARCHAR (MAX)  NULL,
     [Contents]    NVARCHAR (MAX)  NULL,
     [Image]       VARBINARY (MAX) NULL,
-	[File]       VARBINARY (MAX) NULL,
 
 	
 	CONSTRAINT [PK_dbo.Post] PRIMARY KEY CLUSTERED ([Id] ASC),
 	CONSTRAINT [FK_dbo.Post_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE,
 	CONSTRAINT [FK_dbo.Post_dbo.Walls_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Wall] ([Id]),
-	CONSTRAINT [FK_dbo.Post_dbo.CalloborationCenters_CallobId] FOREIGN KEY ([CallobId]) REFERENCES [dbo].[CalloborationCenter] ([Id]) ON DELETE CASCADE
 
 );
 
@@ -298,17 +356,18 @@ CREATE TABLE [dbo].[Annotation]
 	CONSTRAINT [FK_dbo.Annotation_dbo.Diagram_DiagramId] FOREIGN KEY ([DiagramId]) REFERENCES [dbo].[Diagram] ([Id]) ON DELETE CASCADE
 );
 
-
 -- ############# Chat #############
 CREATE TABLE [dbo].[Chat]
 (
     [Id]         INT      IDENTITY (1, 1) NOT NULL,
-    [UserId]     NVARCHAR (128) NOT NULL,
-    [WallId]  INT NOT NULL,
-    [Time] TIMESTAMP NOT NULL,
+    [UserId]     NVARCHAR (128) NULL,
+    [WallId]  INT NULL,
+    [Time] DateTime NULL,
 	[Message] NVARCHAR (500) NOT NULL,
 	[File] Binary NULL, 
-    CONSTRAINT [PK_dbo.Chat] PRIMARY KEY CLUSTERED ([Id] ASC),
-    CONSTRAINT [FK_dbo.Chat_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]),
-	CONSTRAINT [FK_dbo.Chat_dbo.Wall_WallId] FOREIGN KEY ([WallId]) REFERENCES [dbo].[Wall] ([Id]) ON DELETE CASCADE
+	[Code] INT NULL,
+	[userName] NVARCHAR (50) NOT NULL,
+	[ConnectionId]             NVARCHAR (256) NULL,
+    CONSTRAINT [PK_dbo.Chat] PRIMARY KEY CLUSTERED ([Id] ASC)
+    
 );

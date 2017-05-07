@@ -63,6 +63,9 @@ namespace myWall
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            //Enable SignalR
+            app.MapSignalR();
         }
     }
 }
