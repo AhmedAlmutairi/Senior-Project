@@ -23,7 +23,7 @@ namespace myWall
             var messages = db.Chats.ToList();
             var wall = db.Walls.ToList();
             //Clients.AllExcept(userName).onNewUserConnected(userName);
-            return Clients.All.connected(userName, allUsers, messages);
+            return Clients.All.connected(userName, allUsers, messages, wall);
 
 
         }

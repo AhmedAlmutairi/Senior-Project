@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Chatting";
+    ViewBag.Title = "Chat";
 }
 
 <hgroup>
@@ -39,7 +39,7 @@
 
 
 
-                    chat.client.connected = function (userName, allUsers, messages) {
+                    chat.client.connected = function (userName, allUsers, messages, wall) {
                         for (i = 0; i < allUsers.length; i++) {
                             $("#results").append(allUsers[i].UserName + "</br>");
 
