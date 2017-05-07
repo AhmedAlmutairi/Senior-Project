@@ -40,10 +40,7 @@
 
 
                     chat.client.connected = function (userName, allUsers, messages, wall) {
-                        for (i = 0; i < allUsers.length; i++) {
-                            $("#results").append(allUsers[i].UserName + "</br>");
-
-                        }
+                        
 
                         for (i = 0; i < 10; i++) {
                             $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
