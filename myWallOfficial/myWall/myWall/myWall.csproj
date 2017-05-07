@@ -559,12 +559,14 @@
     <Content Include="ckeditor\skins\moono\readme.md" />
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy.pubxml" />
+
     <Content Include="bower.json" />
     <Content Include="crop.php" />
     <Content Include="Scripts\createjs.js" />
     <Content Include="Scripts\exif.js" />
     <Content Include="Scripts\signature_pad.js" />
     <Content Include="Scripts\upload\export.php" />
+
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\canvas.js" />
     <Content Include="Scripts\Canvas2image.js" />
