@@ -1,4 +1,6 @@
-﻿@model IEnumerable<myWall.Models.Wall>
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<myWall.Models.Wall>
 
 @{
     ViewBag.Title = "Home Page";
@@ -49,30 +51,42 @@
 
 
 <body class="inx">
-    
-        
-        
-        <p>
-            @Html.ActionLink("Create New Wall", "CreateWall")
-        </p>
-        <p>
-            @Html.ActionLink("Start Chatting", "Chat")
-        </p>
 
-    
 
-    <div class="waa">
-        <h3>Latest Wall:</h3>
-        @foreach (var item in Model)
-        {
 
-            @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
-        }
+    @Html.ActionLink("Create New Wall", "CreateWall", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Start Chatting", "Chat", null, new { @class = "btn btn-primary" })
 
+
+    <br />
+    <br />
+    <br />
+    <div class="col-md-6">
+        <div class="waa">
+            <h3>Latest Wall:</h3>
+            @foreach (var item in Model)
+            {
+
+                @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
+
+            }
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }));
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <div class="sear">
+            <h1>Comming soon</h1>
+            <h2 class="buttonn">Search for a wall & Users</h2>
+        </div>
     </div>
 
 
+    
+    <br />
+    <br />
+    <br />
     <br />
     <br />
     <br />
@@ -88,7 +102,7 @@
             divv#myDiv {
                 -ms-transform: rotate(20deg); /* IE 9 */
                 -webkit-transform: rotate(20deg); /* Safari */
-                transform: rotate(20deg); /* Standard syntax */
+                transform: rotate(10deg); /* Standard syntax */
             }
     </style>
 

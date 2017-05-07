@@ -16,6 +16,8 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using PagedList;
+using PagedList.Mvc;
 
 namespace myWall.Controllers
 {
@@ -30,10 +32,10 @@ namespace myWall.Controllers
         ApplicationDbContext d = new ApplicationDbContext();
 
         
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             
-            var wall = d.Walls.ToList();
+            var wall = d.Walls.ToList().ToPagedList(page ?? 1, 3);
             return View(wall);
             
         }
