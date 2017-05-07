@@ -13,4 +13,7 @@
   <parameter name="MyWallContext-Web.config Connection String" description="" value="data source=(LocalDB)\ProjectsV13;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
   </parameter>
+  <parameter name="SQLAzureConnection-Web.config Connection String" description="" value="SQLAzureConnection_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SQLAzureConnection']/@connectionString" />
+  </parameter>
 </parameters>
