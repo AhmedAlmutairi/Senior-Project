@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+<<<<<<< HEAD
+  <IisApp path="C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp\App_Data" setAclResourceType="Directory" setAclAccess="Write" />
+=======
+  <IisApp path="C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Release\Package\PackageTmp\App_Data" setAclResourceType="Directory" setAclAccess="Write" />
+>>>>>>> 483a5d2bbd039ce121ce9115e4a6b3e757b6df5e
+</sitemanifest>
