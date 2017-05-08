@@ -35,7 +35,7 @@ namespace myWall.Controllers
         public ActionResult Index(int? page)
         {
             
-            var wall = d.Walls.OrderBy(d => d.Id).ToList().ToPagedList(page ?? 1, 3);
+            var wall = d.Walls.OrderByDescending(d => d.Id).ToList().ToPagedList(page ?? 1, 3);
             return View(wall);
             
         }
@@ -48,7 +48,7 @@ namespace myWall.Controllers
 
             return View();
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult CreateWall(Wall wall)
         {
@@ -477,13 +477,10 @@ namespace myWall.Controllers
             return View();
         }
 
+        [Authorize]
+        [ValidateInput(false)]
         public ActionResult Chat()
         {
-
-
-
-
-
             return View();
         }
        
