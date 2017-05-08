@@ -71,14 +71,23 @@ textarea {
 
 .waa{
     
-    margin-left: auto ;
-    margin-right: auto ;
+   // margin-left: auto ;
+   // margin-right: auto ;
     width: 500px;
+    height: 400px;
     background-color: aliceblue;
     border: groove;
     text-align: center;
     
 
+}
+
+.sear{
+    width: 500px;
+    height: 400px;
+    background-color: aliceblue;
+    border: groove;
+    text-align: center;
 }
 
 

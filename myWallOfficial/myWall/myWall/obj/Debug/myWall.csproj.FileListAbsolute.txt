@@ -90,3 +90,7 @@ C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\System.N
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\System.Web.Http.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\System.Web.Http.WebHost.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
+C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\PagedList.dll
+C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\PagedList.Mvc.dll
+C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\PagedList.xml
+C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\PagedList.Mvc.xml
