@@ -1,6 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
-@model IPagedList<myWall.Models.Wall>
+@model IEnumerable<myWall.Models.Wall>
 
 @{
     ViewBag.Title = "Home Page";
@@ -71,7 +71,7 @@
                 @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
             }
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }));
+            
         </div>
 
     </div>
