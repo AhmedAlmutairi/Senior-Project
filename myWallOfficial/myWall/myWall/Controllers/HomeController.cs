@@ -363,7 +363,7 @@ namespace myWall.Controllers
 
         public ActionResult uploadToCanvas(int? id)
         {
-            string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
+            string[] files = Directory.GetFiles(Server.MapPath("~/Controllers/Files/"));
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = Path.GetFileName(files[i]);
