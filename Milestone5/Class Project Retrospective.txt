@@ -1,0 +1,15 @@
+
+What did you learn from the Sprint?
+Team engOrg learned that organizing things and arrange tasks are a major contributer to success. Also, the VSTS has been very helpful to make sure we are always up to date and on time, it engages proactivety, and to know what to accomplish next on our agenda. In addition, our collaboration skills have improved dramatically since this the team first started working together.
+We could improve our skills in asp.net such as learning how to implement searching functionality. Learning API's that may be useful in our project. 
+
+What still puzzles you?
+We have troubles meeting up at the same time, and a majority of our work is done through connecting through skype and slack. We need to find more times to meet that work for everyone to continue being successful in the future.
+
+What can the team do better during the next Sprint? Make a specific Action Plan.
+First step towards success in the next sprint is that we need to make VSTS very arranged, very organized, very detailed.
+Second step is that we need to use VSTS as a guide in all of our tasks and make sure all the details and requirements for every user story are covered perfictly. 
+
+Are there any items that need to be brought up with someone outside the team? (i.e. in this case the instructor)
+In some sprints, there are some details need to be cleared by instructor. I know that it's our project and we have the decision and our own way to do it, but we need some advice from our instructor.
+ 
