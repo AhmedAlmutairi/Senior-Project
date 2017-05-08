@@ -35,7 +35,7 @@ namespace myWall.Controllers
         public ActionResult Index(int? page)
         {
             
-            var wall = d.Walls.ToList().ToPagedList(page ?? 1, 3);
+            var wall = d.Walls.OrderByDescending(d => d.Id).ToList().ToPagedList(page ?? 1, 3);
             return View(wall);
             
         }
