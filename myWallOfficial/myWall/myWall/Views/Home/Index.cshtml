@@ -72,8 +72,9 @@
 
             }
             
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
         </div>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+       
 
     </div>
     <div class="col-md-6">
