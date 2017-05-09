@@ -29,7 +29,7 @@ namespace myWall.Controllers
     {
         
         private MyWallContext db = new MyWallContext();
-        ApplicationDbContext d = new ApplicationDbContext();
+        ApplicationDbContext d = ApplicationDbContext.Repository();
 
         
         public ActionResult Index(int? page)
@@ -46,7 +46,7 @@ namespace myWall.Controllers
         public ActionResult CreateWall()
         {
 
-            return View();
+            return RedirectToAction("Create", "Wall");
         }
 
         [HttpPost]
@@ -91,47 +91,47 @@ namespace myWall.Controllers
         [HttpGet]
         public ActionResult Wall(int? id)
         {
+            return RedirectToAction("Id", "Wall", new { id = id });
+            //List<object> myModel = new List<object>();
+            ////var post = d.Walls.Find(id).Posts.ToList();
+            ////myModel.Add(d.Walls.ToList());
+            ////myModel.Add(d.Posts.ToList());
 
-            List<object> myModel = new List<object>();
-            //var post = d.Walls.Find(id).Posts.ToList();
-            //myModel.Add(d.Walls.ToList());
-            //myModel.Add(d.Posts.ToList());
 
+            //var wall = from w in d.Walls
+            //           where w.Id == id
+            //           select w;
+            //var wal = wall.First();
 
-            var wall = from w in d.Walls
-                       where w.Id == id
-                       select w;
-            var wal = wall.First();
-
-            var post = from p in d.Posts
-                       join w in d.Walls on p.WallId equals wal.Id
-                       where p.WallId == id
-                       select p;
+            //var post = from p in d.Posts
+            //           join w in d.Walls on p.WallId equals wal.Id
+            //           where p.WallId == id
+            //           select p;
             
 
-            myModel.Add(wall.ToList());
-            myModel.Add(post.ToList());
-            /* var content = d.Walls.
-            Join(d.Posts, u => u.Id, uir => uir.WallId,
-            (u, uir) => new { u, uir }).
-            Where(n => n.uir.WallId == n.u.Id)
-            .AsEnumerable().Select(m => new Post  //ContentViewModel
-            {
-                Id = m.uir.Id,
-                UserId = m.uir.UserId,
-                WallId = m.uir.WallId,
-                CallobId = m.uir.CallobId,
-                Title = m.uir.Title,
-                Image = m.uir.Image,
-                Contents = m.uir.Contents,
-                Description = m.uir.Description
+            //myModel.Add(wall.ToList());
+            //myModel.Add(post.ToList());
+            ///* var content = d.Walls.
+            //Join(d.Posts, u => u.Id, uir => uir.WallId,
+            //(u, uir) => new { u, uir }).
+            //Where(n => n.uir.WallId == n.u.Id)
+            //.AsEnumerable().Select(m => new Post  //ContentViewModel
+            //{
+            //    Id = m.uir.Id,
+            //    UserId = m.uir.UserId,
+            //    WallId = m.uir.WallId,
+            //    CallobId = m.uir.CallobId,
+            //    Title = m.uir.Title,
+            //    Image = m.uir.Image,
+            //    Contents = m.uir.Contents,
+            //    Description = m.uir.Description
 
 
-            }).ToList();*/
-            //return View(content);
+            //}).ToList();*/
+            ////return View(content);
 
 
-            return View(myModel);
+            //return View(myModel);
 
         }
 
@@ -158,34 +158,35 @@ namespace myWall.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Create", "Wall");
         }
         /// <summary>
         /// Save content and images
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+
         [Route("Create")]
         [HttpPost]
         public ActionResult Create(Post model, int id)
         {
 
-
-                Wall Id = db.Walls.Find(id);
+            return RedirectToAction("Create", "Wall", new { model = model, id = id });
+            //    Wall Id = db.Walls.Find(id);
             
-                HttpPostedFileBase file = Request.Files["ImageData"];
-                //var UserId = User.Identity.GetUserId();
-                //model.UserId = User.Identity.GetUserId();
-               // model.WallId = 
-                //ContentRepository service = new ContentRepository();
-                int i = myWall(file, model, id);
-                if (i == 1)
-                {
+            //    HttpPostedFileBase file = Request.Files["ImageData"];
+            //    //var UserId = User.Identity.GetUserId();
+            //    //model.UserId = User.Identity.GetUserId();
+            //   // model.WallId = 
+            //    //ContentRepository service = new ContentRepository();
+            //    int i = myWall(file, model, id);
+            //    if (i == 1)
+            //    {
 
-                    return RedirectToAction("Wall", new { id = id});
-                }
+            //        return RedirectToAction("Wall", new { id = id});
+            //    }
             
-            return View(model);
+            //return View(model);
         }
 
         public int myWall(HttpPostedFileBase file, Post contentViewModel, int id)

@@ -55,7 +55,16 @@ namespace myWall.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
+        public static ApplicationDbContext db = null;
 
+        public static ApplicationDbContext Repository()
+        {
+            if (db == null)
+            {
+                db = new ApplicationDbContext();
+            }
+            return db;
+        }
 
         public override int SaveChanges()
         {

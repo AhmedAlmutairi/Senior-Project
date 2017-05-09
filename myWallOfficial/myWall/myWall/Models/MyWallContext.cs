@@ -76,5 +76,7 @@ namespace myWall.Models
                 .WithRequired(e => e.Wall)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<myWall.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }
