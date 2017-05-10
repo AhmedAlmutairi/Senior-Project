@@ -25,7 +25,7 @@ namespace myWall.Controllers
     public class WallController : Controller
     {
         private MyWallContext db = new MyWallContext();
-        ApplicationDbContext d = ApplicationDbContext.Repository();
+        ApplicationDbContext d = new ApplicationDbContext();
 
         [Route("Wall")]
         [HttpGet]
@@ -74,7 +74,6 @@ namespace myWall.Controllers
             }).ToList();*/
             //return View(content);
 
-
             return View(myModel);
         }
 
@@ -109,9 +108,38 @@ namespace myWall.Controllers
 
         [Route("Create")]
         [HttpPost]
-        public ActionResult Create(Post model, int id)
+        public ActionResult Create(Wall wall)
         {
 
+
+            //ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
+
+            if (User.Identity.IsAuthenticated)
+            {
+                //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+                //String WallId = currentUser.Id;
+                //ApplicationUser AspNetUsers = UserManager.FindById(User.Identity.GetUserId());
+                wall.UserId = User.Identity.GetUserId();
+                d.Walls.Add(wall);
+
+                d.SaveChanges();
+
+                return RedirectToAction("Comment", "Wall", new { id = wall.Id });
+
+
+            }
+            return View(wall);
+        }
+
+        [HttpGet]
+        public ActionResult Comment( )
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Comment(Post model, int id)
+        {
 
             Wall Id = db.Walls.Find(id);
 
@@ -124,7 +152,7 @@ namespace myWall.Controllers
             if (i == 1)
             {
 
-                return RedirectToAction("Wall", new { id = id });
+                return RedirectToAction("Id", "Wall", new { id = id });
             }
 
             return View(model);
@@ -260,6 +288,47 @@ namespace myWall.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Upload(string baseData)
+        {
+            if (HttpContext.Request.Files.AllKeys.Any())
+            {
+                for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
+                {
+                    var file = HttpContext.Request.Files["files" + i];
+                    if (file != null)
+                    {
+                        var fileSavePath = Path.Combine(Server.MapPath("/Controllers/Files/"), file.FileName);
+                        file.SaveAs(fileSavePath);
+                        //return RedirectToAction("Wall");
+                    }
+                }
+            }
+            return View();
+        }
+
+        public ActionResult Library()
+        {
+            string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = Path.GetFileName(files[i]);
+            }
+            ViewBag.Files = files;
+            return View();
+        }
+
+        public FileResult DownloadFile(string fileName)
+        {
+            var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
+            return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
         }
     }
 }

@@ -688,6 +688,8 @@
     <Content Include="Views\Wall\Edit.cshtml" />
     <Content Include="Views\Wall\Index.cshtml" />
     <Content Include="Views\Wall\Id.cshtml" />
+    <Content Include="Views\Wall\Library.cshtml" />
+    <Content Include="Views\Wall\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

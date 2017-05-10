@@ -29,7 +29,7 @@ namespace myWall.Controllers
     {
         
         private MyWallContext db = new MyWallContext();
-        ApplicationDbContext d = ApplicationDbContext.Repository();
+        ApplicationDbContext d = new ApplicationDbContext();
 
         
         public ActionResult Index(int? page)
@@ -53,24 +53,24 @@ namespace myWall.Controllers
         public ActionResult CreateWall(Wall wall)
         {
 
-
+            return RedirectToAction("Create", "Wall", new { wall = wall });
             //ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
 
-            if (User.Identity.IsAuthenticated)
-            {
-                //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
-                //String WallId = currentUser.Id;
-                //ApplicationUser AspNetUsers = UserManager.FindById(User.Identity.GetUserId());
-                wall.UserId = User.Identity.GetUserId();
-                d.Walls.Add(wall);
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+            //    //String WallId = currentUser.Id;
+            //    //ApplicationUser AspNetUsers = UserManager.FindById(User.Identity.GetUserId());
+            //    wall.UserId = User.Identity.GetUserId();
+            //    d.Walls.Add(wall);
                 
-                d.SaveChanges();
+            //    d.SaveChanges();
 
-                return RedirectToAction("Index");
+            //    return RedirectToAction("Index");
 
 
-            }
-            return View(wall);
+            //}
+            //return View(wall);
         }
 
         private ApplicationUserManager _userManager;
@@ -158,7 +158,7 @@ namespace myWall.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return RedirectToAction("Create", "Wall");
+            return RedirectToAction("Comment", "Wall");
         }
         /// <summary>
         /// Save content and images
@@ -171,7 +171,7 @@ namespace myWall.Controllers
         public ActionResult Create(Post model, int id)
         {
 
-            return RedirectToAction("Create", "Wall", new { model = model, id = id });
+            return RedirectToAction("Comment", "Wall", new { model = model, id = id });
             //    Wall Id = db.Walls.Find(id);
             
             //    HttpPostedFileBase file = Request.Files["ImageData"];
@@ -374,44 +374,47 @@ namespace myWall.Controllers
         }
          public ActionResult Upload()
          {
-             return View();
+             return RedirectToAction("Upload", "Wall");
          }
 
          [HttpPost]
          public ActionResult Upload(string baseData)
          {
-             if (HttpContext.Request.Files.AllKeys.Any())
-             {
-                 for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
-                 {
-                     var file = HttpContext.Request.Files["files" + i];
-                     if (file != null)
-                     {
-                         var fileSavePath = Path.Combine(Server.MapPath("/Controllers/Files/"), file.FileName);
-                         file.SaveAs(fileSavePath);
-                         //return RedirectToAction("Wall");
-                     }
-                 }
-             }
-             return View();
+            return RedirectToAction("Upload", "Wall", new { baseData = baseData });
+             //if (HttpContext.Request.Files.AllKeys.Any())
+             //{
+             //    for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
+             //    {
+             //        var file = HttpContext.Request.Files["files" + i];
+             //        if (file != null)
+             //        {
+             //            var fileSavePath = Path.Combine(Server.MapPath("/Controllers/Files/"), file.FileName);
+             //            file.SaveAs(fileSavePath);
+             //            //return RedirectToAction("Wall");
+             //        }
+             //    }
+             //}
+             //return View();
          }
 
          public ActionResult Library()
          {
-             string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
-             for (int i = 0; i < files.Length; i++)
-             {
-                 files[i] = Path.GetFileName(files[i]);
-             }
-             ViewBag.Files = files;
-             return View();
+            return RedirectToAction("Library", "Wall");
+             //string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
+             //for (int i = 0; i < files.Length; i++)
+             //{
+             //    files[i] = Path.GetFileName(files[i]);
+             //}
+             //ViewBag.Files = files;
+             //return View();
          }
 
          public FileResult DownloadFile(string fileName)
          {
-             var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
-             return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
-         }
+            //return RedirectToAction("DownloadFile", "Wall", new { fileName = fileName });
+            var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
+            return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
+        }
 
 
       
