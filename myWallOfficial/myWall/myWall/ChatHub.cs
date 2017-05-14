@@ -46,6 +46,11 @@ namespace myWall
 
         }
 
+        public System.Threading.Tasks.Task OnConnected( string room)
+        {
+            return OnConnected();
+        }
+
         public string[] GetMessageCache(string room)
         {
             room = ParseUrlForRoom(room);
