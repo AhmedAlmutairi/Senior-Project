@@ -71,7 +71,10 @@
                 @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
             }
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }));
+            
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+
         </div>
 
     </div>
@@ -87,9 +90,7 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
-    <br />
+    
 
     <style>
         divv {

@@ -35,7 +35,7 @@ namespace myWall.Controllers
         public ActionResult Index(int? page)
         {
             
-            var wall = d.Walls.ToList().ToPagedList(page ?? 1, 3);
+            var wall = d.Walls.OrderBy(d => d.Id).ToList().ToPagedList(page ?? 1, 3);
             return View(wall);
             
         }
@@ -71,6 +71,11 @@ namespace myWall.Controllers
 
             }
             return View(wall);
+        }
+
+        public ActionResult draw()
+        {
+            return View();
         }
 
         private ApplicationUserManager _userManager;
