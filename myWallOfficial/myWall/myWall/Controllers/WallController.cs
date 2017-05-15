@@ -151,7 +151,7 @@ namespace myWall.Controllers
         public ActionResult Comment(Post model, int id)
         {
 
-            Wall Id = db.Walls.Find(id);
+            Wall Id = d.Walls.Find(id);
 
             HttpPostedFileBase file = Request.Files["ImageData"];
             //var UserId = User.Identity.GetUserId();
@@ -239,7 +239,7 @@ namespace myWall.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wall wall = db.Walls.Find(id);
+            Wall wall = d.Walls.Find(id);
             if (wall == null)
             {
                 return HttpNotFound();
@@ -257,8 +257,8 @@ namespace myWall.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(wall).State = EntityState.Modified;
-                db.SaveChanges();
+                d.Entry(wall).State = EntityState.Modified;
+                d.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "Question", wall.UserId);
@@ -345,7 +345,7 @@ namespace myWall.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Wall wall = db.Walls.Find(id);
+            Wall wall = d.Walls.Find(id);
             if (wall == null)
             {
                 return HttpNotFound();
@@ -359,16 +359,16 @@ namespace myWall.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Wall wall = db.Walls.Find(id);
-            var posts = from p in db.Posts
+            Wall wall = d.Walls.Find(id);
+            var posts = from p in d.Posts
                         select p;
 
             foreach( Post post in posts)
             {
-                db.Posts.Remove(post);
+                d.Posts.Remove(post);
             }
-            db.Walls.Remove(wall);
-            db.SaveChanges();
+            d.Walls.Remove(wall);
+            d.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
 
