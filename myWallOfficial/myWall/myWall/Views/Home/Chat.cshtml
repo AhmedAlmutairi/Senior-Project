@@ -38,7 +38,9 @@
 
                     var chat = $.connection.chatHub;
 
+                    chat.client.connected = function (userName, messages) {
 
+<<<<<<< HEAD
 
                     chat.client.connected = function (userName, messages) {
                    // chat.client.connected = function (userName) {
@@ -49,62 +51,62 @@
                             $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
                         }
                         $("#oldmsg").append( "<font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
+=======
+                        var url = window.location.href;
+                        //var messages = chat.server.getMessageCache(url);
+
+                        //for (i = 0; i < 10; i++) {
+                        //    $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
+                        //}
+                        //$("#oldmsg").append( "<font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
+>>>>>>> 52d28c80c64b7cbdbc2a9fd029dcc2f5570d36ee
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
-
                     };
-
-                    //chat.client.getRoom = function ( ) {
-                    //    var url = window.location.href;
-                    //    return url;
-                    //}
-
 
                     chat.client.NewMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
                             + '</strong>: ' + htmlEncode(msg) + '</li>');
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 52d28c80c64b7cbdbc2a9fd029dcc2f5570d36ee
                     };
 
                     chat.client.AddChatMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
                             + '</strong>: ' + htmlEncode(msg) + '</li>');
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 52d28c80c64b7cbdbc2a9fd029dcc2f5570d36ee
                     }
 
                     registerClientMethods(chat)
 
                     $.connection.hub.start().done(function () {
                         registerEvents(chat)
-                        var room = "0";
+                        var room = window.location.href;
                         chat.server.joinRoom(room);
-                        //chat.server.getMessageCache(room);
                     });
+
                 });
-
-
 
 
                 function registerEvents(chat) {
 
-
-
-
                     $('#BtnSend').click(function () {
-                        var room = "0";
-                        chat.server.sendMessageToGroup(room, $('#UserName').val(), $('#TxtMessage').val());
+                        var room = window.location.href
+                        chat.server.sendMessageToGroup(room,$('#UserName').val(), $('#TxtMessage').val());
                         $('#TxtMessage').val('').focus();
                     });
-
-
 
                 }
 
                 function registerClientMethods(chat) {
                     // Calls when user successfully logged in
                     chat.server.connected = function (userName, allUsers, messages) {
-
-
-
 
                         // Add All Users
                         for (i = 0; i < allUsers.length; i++) {
@@ -115,7 +117,6 @@
                         for (i = 0; i < messages.length; i++) {
                             AddMessage(messages[i].UserName, messages[i].Message);
                         }
-
 
                     }
                 }

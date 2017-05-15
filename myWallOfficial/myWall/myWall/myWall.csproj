@@ -692,6 +692,8 @@
     <Content Include="Views\Wall\Id.cshtml" />
     <Content Include="Views\Wall\Library.cshtml" />
     <Content Include="Views\Wall\Comment.cshtml" />
+    <Content Include="Views\Wall\DeletePost.cshtml" />
+    <Content Include="Views\Wall\EditPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

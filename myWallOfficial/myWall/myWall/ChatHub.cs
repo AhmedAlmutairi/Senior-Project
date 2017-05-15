@@ -134,7 +134,7 @@ namespace myWall
         {
             room = ParseUrlForRoom(room);
             await Groups.Add(Context.ConnectionId, room);
-            Clients.Group(room).addChatMessage(Context.User.Identity.Name + "Joined Channel");
+            Clients.Group(room).addChatMessage(Context.User.Identity.Name + " Joined Channel");
 
         }
 
