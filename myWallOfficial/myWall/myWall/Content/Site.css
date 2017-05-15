@@ -74,7 +74,7 @@ textarea {
    // margin-left: auto ;
    // margin-right: auto ;
     width: 500px;
-    height: 400px;
+    height: auto;
     background-color: aliceblue;
     border: groove;
     text-align: center;
