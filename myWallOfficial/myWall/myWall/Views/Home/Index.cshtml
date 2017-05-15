@@ -6,8 +6,20 @@
     ViewBag.Title = "Home Page";
 }
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="~/Content/wall.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Scripts/bootstrap.min.js"></script>
 
 <style>
+   
+
+    
     .buttonn {
         display: inline-block;
         border-radius: 4px;
@@ -49,19 +61,15 @@
             }
 </style>
 
-
-<body class="inx">
-
-
-
-
-    @Html.ActionLink("Create New Wall", "CreateWall", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Start Chatting", "Chat", null, new { @class = "btn btn-primary" })
-
-
-    <br />
-    <br />
-    <br />
+<body>
+    <div>
+        <a href='@Url.Action("CreateWall", "Home")'>
+            <img src='@Url.Content("~/Content/Images/wallicon.png")' />
+        </a>
+        <a href='@Url.Action("Chat", "Home")'>
+            <img src='@Url.Content("~/Content/Images/chat.png")' />
+        </a>
+    </div>
     <div class="col-md-6">
         <div class="waa">
             <h3>Latest Wall:</h3>
@@ -71,7 +79,7 @@
                 @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
             }
-            
+
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
 
@@ -86,18 +94,15 @@
     </div>
 
 
-    
     <br />
     <br />
     <br />
-    
+
 
     <style>
         divv {
             width: 300px;
             height: 100px;
-            //background-color: yellow;
-            //border: 1px solid black;
         }
 
             divv#myDiv {
@@ -107,7 +112,7 @@
             }
     </style>
 
-    <div class="row">
+    <!--<div class="row">
 
         <divv class="col-md-4">
             <div id="myDiv">
@@ -129,7 +134,5 @@
                 <p>Comming Soon</p>
             </div>
         </divv>
-
-    </div>
-
+        -->
 </body>
