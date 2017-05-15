@@ -230,11 +230,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IHttpActionResult.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-
     <Compile Include="DrawHub.cs" />
-
     <Compile Include="Controllers\WallController.cs" />
-
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -687,17 +684,13 @@
     <Content Include="Views\Home\Chat.cshtml" />
     <Content Include="Scripts\upload\upload.php" />
     <Content Include="Views\Home\uploadToCanvas.cshtml" />
-
     <Content Include="Views\Home\draw.cshtml" />
-
     <Content Include="Views\Wall\Create.cshtml" />
     <Content Include="Views\Wall\Delete.cshtml" />
     <Content Include="Views\Wall\Edit.cshtml" />
-    <Content Include="Views\Wall\Index.cshtml" />
     <Content Include="Views\Wall\Id.cshtml" />
     <Content Include="Views\Wall\Library.cshtml" />
     <Content Include="Views\Wall\Comment.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
