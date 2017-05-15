@@ -55,7 +55,16 @@ namespace myWall.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
+        public static ApplicationDbContext db = null;
 
+        public static ApplicationDbContext Repository()
+        {
+            if (db == null)
+            {
+                db = new ApplicationDbContext();
+            }
+            return db;
+        }
 
         public override int SaveChanges()
         {
@@ -93,10 +102,10 @@ namespace myWall.Models
       
         public ApplicationDbContext()
 
-           : base("DefaultConnection", throwIfV1Schema: false)
+       //    : base("DefaultConnection", throwIfV1Schema: false)
         //SQLAzureConnection
 
-       //  : base("MyWallContext", throwIfV1Schema: false)
+         : base("MyWallContext", throwIfV1Schema: false)
             
 
         {

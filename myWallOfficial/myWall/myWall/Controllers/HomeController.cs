@@ -46,31 +46,31 @@ namespace myWall.Controllers
         public ActionResult CreateWall()
         {
 
-            return View();
+            return RedirectToAction("Create", "Wall");
         }
         [Authorize]
         [HttpPost]
         public ActionResult CreateWall(Wall wall)
         {
 
-
+            return RedirectToAction("Create", "Wall", new { wall = wall });
             //ApplicationUser currentUser = UserManager.FindById(User.Identity.GetUserId());
 
-            if (User.Identity.IsAuthenticated)
-            {
-                //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
-                //String WallId = currentUser.Id;
-                //ApplicationUser AspNetUsers = UserManager.FindById(User.Identity.GetUserId());
-                wall.UserId = User.Identity.GetUserId();
-                d.Walls.Add(wall);
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    //var userId = (Guid)Membership.GetUser(User.Identity.Name).ProviderUserKey;
+            //    //String WallId = currentUser.Id;
+            //    //ApplicationUser AspNetUsers = UserManager.FindById(User.Identity.GetUserId());
+            //    wall.UserId = User.Identity.GetUserId();
+            //    d.Walls.Add(wall);
                 
-                d.SaveChanges();
+            //    d.SaveChanges();
 
-                return RedirectToAction("Index");
+            //    return RedirectToAction("Index");
 
 
-            }
-            return View(wall);
+            //}
+            //return View(wall);
         }
 
         public ActionResult draw()
@@ -96,47 +96,47 @@ namespace myWall.Controllers
         [HttpGet]
         public ActionResult Wall(int? id)
         {
+            return RedirectToAction("Id", "Wall", new { id = id });
+            //List<object> myModel = new List<object>();
+            ////var post = d.Walls.Find(id).Posts.ToList();
+            ////myModel.Add(d.Walls.ToList());
+            ////myModel.Add(d.Posts.ToList());
 
-            List<object> myModel = new List<object>();
-            //var post = d.Walls.Find(id).Posts.ToList();
-            //myModel.Add(d.Walls.ToList());
-            //myModel.Add(d.Posts.ToList());
 
+            //var wall = from w in d.Walls
+            //           where w.Id == id
+            //           select w;
+            //var wal = wall.First();
 
-            var wall = from w in d.Walls
-                       where w.Id == id
-                       select w;
-            var wal = wall.First();
-
-            var post = from p in d.Posts
-                       join w in d.Walls on p.WallId equals wal.Id
-                       where p.WallId == id
-                       select p;
+            //var post = from p in d.Posts
+            //           join w in d.Walls on p.WallId equals wal.Id
+            //           where p.WallId == id
+            //           select p;
             
 
-            myModel.Add(wall.ToList());
-            myModel.Add(post.ToList());
-            /* var content = d.Walls.
-            Join(d.Posts, u => u.Id, uir => uir.WallId,
-            (u, uir) => new { u, uir }).
-            Where(n => n.uir.WallId == n.u.Id)
-            .AsEnumerable().Select(m => new Post  //ContentViewModel
-            {
-                Id = m.uir.Id,
-                UserId = m.uir.UserId,
-                WallId = m.uir.WallId,
-                CallobId = m.uir.CallobId,
-                Title = m.uir.Title,
-                Image = m.uir.Image,
-                Contents = m.uir.Contents,
-                Description = m.uir.Description
+            //myModel.Add(wall.ToList());
+            //myModel.Add(post.ToList());
+            ///* var content = d.Walls.
+            //Join(d.Posts, u => u.Id, uir => uir.WallId,
+            //(u, uir) => new { u, uir }).
+            //Where(n => n.uir.WallId == n.u.Id)
+            //.AsEnumerable().Select(m => new Post  //ContentViewModel
+            //{
+            //    Id = m.uir.Id,
+            //    UserId = m.uir.UserId,
+            //    WallId = m.uir.WallId,
+            //    CallobId = m.uir.CallobId,
+            //    Title = m.uir.Title,
+            //    Image = m.uir.Image,
+            //    Contents = m.uir.Contents,
+            //    Description = m.uir.Description
 
 
-            }).ToList();*/
-            //return View(content);
+            //}).ToList();*/
+            ////return View(content);
 
 
-            return View(myModel);
+            //return View(myModel);
 
         }
 
@@ -163,34 +163,35 @@ namespace myWall.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            return RedirectToAction("Comment", "Wall");
         }
         /// <summary>
         /// Save content and images
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+
         [Route("Create")]
         [HttpPost]
         public ActionResult Create(Post model, int id)
         {
 
-
-                Wall Id = db.Walls.Find(id);
+            return RedirectToAction("Comment", "Wall", new { model = model, id = id });
+            //    Wall Id = db.Walls.Find(id);
             
-                HttpPostedFileBase file = Request.Files["ImageData"];
-                //var UserId = User.Identity.GetUserId();
-                //model.UserId = User.Identity.GetUserId();
-               // model.WallId = 
-                //ContentRepository service = new ContentRepository();
-                int i = myWall(file, model, id);
-                if (i == 1)
-                {
+            //    HttpPostedFileBase file = Request.Files["ImageData"];
+            //    //var UserId = User.Identity.GetUserId();
+            //    //model.UserId = User.Identity.GetUserId();
+            //   // model.WallId = 
+            //    //ContentRepository service = new ContentRepository();
+            //    int i = myWall(file, model, id);
+            //    if (i == 1)
+            //    {
 
-                    return RedirectToAction("Wall", new { id = id});
-                }
+            //        return RedirectToAction("Wall", new { id = id});
+            //    }
             
-            return View(model);
+            //return View(model);
         }
 
         public int myWall(HttpPostedFileBase file, Post contentViewModel, int id)
@@ -378,44 +379,47 @@ namespace myWall.Controllers
         }
          public ActionResult Upload()
          {
-             return View();
+             return RedirectToAction("Upload", "Wall");
          }
 
          [HttpPost]
          public ActionResult Upload(string baseData)
          {
-             if (HttpContext.Request.Files.AllKeys.Any())
-             {
-                 for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
-                 {
-                     var file = HttpContext.Request.Files["files" + i];
-                     if (file != null)
-                     {
-                         var fileSavePath = Path.Combine(Server.MapPath("/Controllers/Files/"), file.FileName);
-                         file.SaveAs(fileSavePath);
-                         //return RedirectToAction("Wall");
-                     }
-                 }
-             }
-             return View();
+            return RedirectToAction("Upload", "Wall", new { baseData = baseData });
+             //if (HttpContext.Request.Files.AllKeys.Any())
+             //{
+             //    for (int i = 0; i <= HttpContext.Request.Files.Count; i++)
+             //    {
+             //        var file = HttpContext.Request.Files["files" + i];
+             //        if (file != null)
+             //        {
+             //            var fileSavePath = Path.Combine(Server.MapPath("/Controllers/Files/"), file.FileName);
+             //            file.SaveAs(fileSavePath);
+             //            //return RedirectToAction("Wall");
+             //        }
+             //    }
+             //}
+             //return View();
          }
 
          public ActionResult Library()
          {
-             string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
-             for (int i = 0; i < files.Length; i++)
-             {
-                 files[i] = Path.GetFileName(files[i]);
-             }
-             ViewBag.Files = files;
-             return View();
+            return RedirectToAction("Library", "Wall");
+             //string[] files = Directory.GetFiles(Server.MapPath("/Controllers/Files/"));
+             //for (int i = 0; i < files.Length; i++)
+             //{
+             //    files[i] = Path.GetFileName(files[i]);
+             //}
+             //ViewBag.Files = files;
+             //return View();
          }
 
          public FileResult DownloadFile(string fileName)
          {
-             var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
-             return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
-         }
+            //return RedirectToAction("DownloadFile", "Wall", new { fileName = fileName });
+            var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
+            return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
+        }
 
 
       
