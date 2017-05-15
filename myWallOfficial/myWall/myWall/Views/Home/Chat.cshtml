@@ -7,22 +7,22 @@
     <h3>@ViewBag.Message</h3>
 </hgroup>
 
-<<<<<<< HEAD
-=======
+
 <style>
     body {
         background: url(/Content/images/bigChat.PNG) no-repeat center center;
+        color: white;
     }
 </style>
 
 
->>>>>>> 549ed54ca1495a6d1017a7b53d37ce98100c883c
+
 
 <div class="container">
     <div class="col-sm-8">
         <div id="chat">
             <ul id="oldmsg"></ul>
-            <ul id="Chats"></ul>
+            <ul id="Chats"></ul> <br />
 
         </div>
 
@@ -75,14 +75,14 @@
 
                     chat.client.NewMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
-                            + '</strong>: ' + htmlEncode(msg) + '</li>');
+                            + '</strong>: ' + htmlEncode(msg) + '</li>' + '</br>');
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
 
                     };
 
                     chat.client.AddChatMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
-                            + '</strong>: ' + htmlEncode(msg) + '</li>');
+                            + '</strong>: ' + htmlEncode(msg) + '</li>' + '</br>');
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
 
                     }

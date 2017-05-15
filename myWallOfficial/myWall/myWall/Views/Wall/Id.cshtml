@@ -13,6 +13,14 @@
     ViewBag.Title = "Wall - " + ViewBag.Name;
 }
 
+<style>
+    body {
+        background: url(/Content/images/whitewall.png) no-repeat center center;
+        color: blue;
+        font-weight: bold;
+    }
+</style>
+
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
                     $body = $("body");
@@ -82,14 +90,14 @@
 
                     chat.client.NewMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
-                            + '</strong>: ' + htmlEncode(msg) + '</li>');
+                            + '</strong>: ' + htmlEncode(msg) + '</li>' + '</br>');
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
 
                     };
 
                     chat.client.AddChatMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
-                            + '</strong>: ' + htmlEncode(msg) + '</li>');
+                            + '</strong>: ' + htmlEncode(msg) + '</li>' + '</br>');
                         $('#chat').scrollTop($('#chat')[0].scrollHeight);
 
                     }
