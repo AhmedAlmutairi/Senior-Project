@@ -35,13 +35,13 @@ namespace myWall
             //var url = Clients.Caller.getRoom();
             //var room = ParseUrlForRoom(url);
             //// var allUsers = db.Users.ToList();
-            //var messages = db.Chats.ToList();
+            var messages = db.Chats.ToList();
             //var messages = GetMessageCache(room);
             //// var wall = db.Walls.ToList();
             ////Clients.AllExcept(userName).onNewUserConnected(userName);
 
-            //return Clients.Caller.connected(userName, messages);
-            return Clients.Caller.connected(userName);
+            return Clients.Caller.connected(userName, messages);
+            //return Clients.Caller.connected(userName);
 
 
         }

@@ -40,10 +40,10 @@
 
 
 
-                    //chat.client.connected = function (userName, messages) {
-                    chat.client.connected = function (userName) {
+                    chat.client.connected = function (userName, messages) {
+                   // chat.client.connected = function (userName) {
                         var url = window.location.href;
-                        var messages = chat.server.GetMessageCache(url);
+                       // var messages = chat.server.GetMessageCache(url);
 
                         for (i = 0; i < messages.length; i++) {
                             $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
@@ -68,6 +68,7 @@
                     chat.client.AddChatMessage = function (userName, msg) {
                         $('#Chats').append('<li><strong>' + htmlEncode(userName)
                             + '</strong>: ' + htmlEncode(msg) + '</li>');
+                        $('#chat').scrollTop($('#chat')[0].scrollHeight);
                     }
 
                     registerClientMethods(chat)
