@@ -73,6 +73,11 @@ namespace myWall.Controllers
             return View(wall);
         }
 
+        public ActionResult draw()
+        {
+            return View();
+        }
+
         private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
