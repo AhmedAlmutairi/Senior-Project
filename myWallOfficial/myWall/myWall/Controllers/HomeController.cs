@@ -483,7 +483,7 @@ namespace myWall.Controllers
         }
 
         [Authorize]
-        [ValidateInput(false)]
+       // [ValidateInput(false)]
         public ActionResult Chat()
         {
             return View();
