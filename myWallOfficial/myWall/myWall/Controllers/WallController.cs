@@ -33,7 +33,7 @@ namespace myWall.Controllers
         {
             if( id == null)
             {
-                RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
             }
 
             List<object> myModel = new List<object>();
@@ -42,19 +42,24 @@ namespace myWall.Controllers
             //myModel.Add(d.Posts.ToList());
 
 
-            var wall = from w in d.Walls
+            var walls = from w in d.Walls
                        where w.Id == id
                        select w;
-            var wal = wall.First();
+            var wall = walls.First();
 
-            var post = from p in d.Posts
-                       join w in d.Walls on p.WallId equals wal.Id
+            var posts = from p in d.Posts
+                       join w in d.Walls on p.WallId equals w.Id
                        where p.WallId == id
                        select p;
 
+            var chats = from c in d.Chats
+                        join w in d.Walls on c.WallId equals w.Id
+                        where c.WallId == id
+                        select c;
 
-            myModel.Add(wall.ToList());
-            myModel.Add(post.ToList());
+            myModel.Add(walls.ToList());
+            myModel.Add(posts.ToList());
+            myModel.Add(chats.ToList());
             /* var content = d.Walls.
             Join(d.Posts, u => u.Id, uir => uir.WallId,
             (u, uir) => new { u, uir }).
@@ -75,6 +80,11 @@ namespace myWall.Controllers
             //return View(content);
 
             return View(myModel);
+        }
+
+        public ActionResult Id()
+        {
+            return RedirectToAction("Index", "Home");
         }
 
         //// GET: Wall
@@ -255,6 +265,79 @@ namespace myWall.Controllers
             return View(wall);
         }
 
+        public ActionResult EditPost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = d.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPost([Bind(Include = "Id, WallId, CallobId, Title, Image, Description, Contents")] Post post)
+        {
+
+
+            HttpPostedFileBase file = Request.Files["ImageData"];
+
+            int d = post.WallId;
+            int i = myWallEdit(file, post);
+            if (i == 1)
+            {
+
+
+                return RedirectToAction("Id", "Wall", new { id = d });
+
+            }
+
+
+            return View(post);
+        }
+
+        public int myWallEdit(HttpPostedFileBase file, Post contentViewModel)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                contentViewModel.Image = ConvertToBytes(file);
+                contentViewModel.UserId = User.Identity.GetUserId();
+                var Post = new Post
+                {
+
+                    UserId = contentViewModel.UserId,
+                    WallId = contentViewModel.WallId,
+                    Title = contentViewModel.Title,
+                    Description = contentViewModel.Description,
+                    Contents = contentViewModel.Contents,
+                    Image = contentViewModel.Image
+                };
+
+
+                d.Entry(contentViewModel).State = EntityState.Modified;
+                int i = d.SaveChanges();
+
+
+                if (i == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            return 0;
+
+        }
+
         // GET: Wall/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -270,15 +353,48 @@ namespace myWall.Controllers
             return View(wall);
         }
 
+
         // POST: Wall/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Wall wall = db.Walls.Find(id);
+            var posts = from p in db.Posts
+                        select p;
+
+            foreach( Post post in posts)
+            {
+                db.Posts.Remove(post);
+            }
             db.Walls.Remove(wall);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult DeletePost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = d.Posts.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+        [HttpPost, ActionName("DeletePost")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmedPost(int id)
+        {
+            Post post = d.Posts.Find(id);
+            int i = post.WallId;
+            d.Posts.Remove(post);
+            d.SaveChanges();
+            return RedirectToAction("Id", "Wall", new { id = i });
         }
 
         protected override void Dispose(bool disposing)
