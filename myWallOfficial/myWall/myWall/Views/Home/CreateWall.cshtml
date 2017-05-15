@@ -4,8 +4,16 @@
     ViewBag.Title = "CreateWall";
 }
 
+<style>
+    body {
+    
+    background: url(/Content/images/intro-bg.jpg) no-repeat center center;
+    }
 
-<head>
+</style>
+
+<body>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,43 +33,39 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
+
 <style>
-    form { 
+    form {
+        width: 250px;
+    }
 
-width:250px;
-}
-h3 {
-    
-}
-
+    h3 {
+    }
 </style>
-<body>
+<a name="about"></a>
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
 
-    <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        
-                        
-                        
 
-                       @using (Html.BeginForm())
-                       {
+
+
+
+                    @using (Html.BeginForm())
+                    {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            
-                            
+
+
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-">
-                                
+
                                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    
+
                                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                 </div>
@@ -77,25 +81,24 @@ h3 {
                                 </div>
                             </div>
                         </div>
-                       }
-                        </ul>
-                    </div>
+                    }
+
                 </div>
             </div>
         </div>
-        <!-- /.container -->
     </div>
-    <!-- jQuery -->
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
-
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    <!-- /.container -->
 </div>
+<!-- jQuery -->
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Scripts/bootstrap.min.js"></script>
 
+
+    <a href='@Url.Action("Index", "Home")'>
+        <img src='@Url.Content("~/Content/Images/backButton.png")' />
+    </a>
+</body>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

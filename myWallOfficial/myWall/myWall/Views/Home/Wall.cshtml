@@ -4,14 +4,19 @@
     List <myWall.Models.Post> stcontent = Model.ToList()[1] as List<myWall.Models.Post>;
 }
 
-
+<style>
+body {
+    background: url(/Content/images/whitewall.png) no-repeat center center;
+    color: blue;
+    font-weight: bold;
+    }
+</style>
             @{
                 ViewBag.Title = "Index";
             }
 
 
-            <h2>Index</h2>
-
+    <body>
 
             <div class="upld">
                 <h3>Upload a File to my E-Library:</h3> <br />
@@ -119,6 +124,6 @@
     @Html.ActionLink("Delete the whole wall", "Delete", new { id = name.Id })
 }
 
-
+</body>
 
 
