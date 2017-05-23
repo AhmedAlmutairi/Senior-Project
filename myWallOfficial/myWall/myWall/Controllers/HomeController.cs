@@ -482,6 +482,11 @@ namespace myWall.Controllers
             return View();
         }
 
+        public ActionResult Collab()
+        {
+            return View();
+        }
+
         public ActionResult Chat()
         {
 
