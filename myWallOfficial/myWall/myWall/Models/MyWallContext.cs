@@ -20,6 +20,7 @@ namespace myWall.Models
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Diagram> Diagrams { get; set; }
+        public virtual DbSet<Dolist> Dolists { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
@@ -50,6 +51,10 @@ namespace myWall.Models
                 .HasMany(e => e.Posts)
                 .WithMany(e => e.Diagrams)
                 .Map(m => m.ToTable("Post_Diagram").MapLeftKey("DiagramId").MapRightKey("PostId"));
+
+            modelBuilder.Entity<Dolist>()
+                .Property(e => e.File)
+                .IsFixedLength();
 
             modelBuilder.Entity<Group>()
                 .HasMany(e => e.Walls)

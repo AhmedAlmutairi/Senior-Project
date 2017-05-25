@@ -243,6 +243,7 @@
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Diagram.cs" />
+    <Compile Include="Models\Dolist.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

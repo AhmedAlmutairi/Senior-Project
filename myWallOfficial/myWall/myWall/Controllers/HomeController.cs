@@ -35,19 +35,20 @@ namespace myWall.Controllers
         public ActionResult Index(int? page)
         {
             
-            var wall = d.Walls.OrderByDescending(d => d.Id).ToList().ToPagedList(page ?? 1, 3);
+            var wall = d.Walls.OrderByDescending(x => x.Id).ToList().ToPagedList(page ?? 1, 3);
             return View(wall);
             
         }
 
 
-        
+        [Authorize]
         [HttpGet]
         public ActionResult CreateWall()
         {
 
             return RedirectToAction("Create", "Wall");
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult CreateWall(Wall wall)

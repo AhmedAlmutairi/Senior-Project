@@ -22,14 +22,15 @@ namespace myWall.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-     
+        //[Required]
         [StringLength(128)]
         public string UserId { get; set; }
+
+        public int? QuestionId { get; set; }
 
         [ForeignKey("UserId")]
         // [Required]
         public virtual ApplicationUser AspNetUsers { get; set; }
-
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Post> Posts { get; set; }
