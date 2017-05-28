@@ -49,7 +49,7 @@ namespace myWall.Controllers
             return RedirectToAction("Create", "Wall");
         }
 
-        [Authorize]
+        
         [HttpPost]
         public ActionResult CreateWall(Wall wall)
         {

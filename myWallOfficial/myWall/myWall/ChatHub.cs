@@ -46,7 +46,7 @@ namespace myWall
 
         }
 
-        public System.Threading.Tasks.Task OnConnected( string room)
+        public System.Threading.Tasks.Task OnConnected(string room)
         {
             return OnConnected();
         }
@@ -63,19 +63,19 @@ namespace myWall
             {
                 ApplicationDbContext db = new ApplicationDbContext();
                 messages = from c in db.Chats
-                               where c.WallId == id
-                               select c;
+                           where c.WallId == id
+                           select c;
             }
 
             Chat[] chat_array = messages.ToArray<Chat>();
             string[] msg_array = new string[chat_array.Count()];
-            for( int i = 0; i < chat_array.Count(); i++)
+            for (int i = 0; i < chat_array.Count(); i++)
             {
                 msg_array[i] = chat_array[i].Message;
             }
 
             return msg_array;
-            
+
         }
 
         public void SendMessageToAll(string UserName, string message)
@@ -83,7 +83,7 @@ namespace myWall
             // TODO Refactor this call to a class instance
             ApplicationDbContext dc = new ApplicationDbContext();
             UserName = Context.User.Identity.Name;
-            
+
             AddMessageToCache(UserName, message);
 
             // Broad cast message
@@ -118,7 +118,7 @@ namespace myWall
                 var time = System.DateTime.Now;
                 var messageDetail = new Chat
                 {
-                    
+
                     UserId = userId,
                     userName = UserName,
                     Message = message,
@@ -162,7 +162,7 @@ namespace myWall
             var parse = int.TryParse(room, out id);
             user = Context.User.Identity.Name;
             Wall wall = null;
-            if( id > 0)
+            if (id > 0)
             {
                 var walls = from w in db.Walls
                             where w.Id == id
@@ -170,18 +170,19 @@ namespace myWall
                 wall = walls.First();
             }
 
-            if( wall == null)
+            if (wall == null)
             {
                 AddMessageToCache(user, message);
-            } else
+            }
+            else
             {
                 AddMessageToCache(user, message, wall.Id);
             }
             //Clients.All.NewMessage(user, message);
-            return Clients.Group(room).addChatMessage(user,message);
+            return Clients.Group(room).addChatMessage(user, message);
         }
 
-        private string ParseUrlForRoom( string url)
+        private string ParseUrlForRoom(string url)
         {
             var list = url.Split('/').ToList();
             var room = list.Last();
@@ -189,6 +190,3 @@ namespace myWall
         }
     }
 }
-
-
-

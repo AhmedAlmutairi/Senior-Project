@@ -9,7 +9,7 @@ namespace myWall.Models
     public partial class MyWallContext : DbContext
     {
         public MyWallContext()
-            : base("name=DefaultConnection")
+            : base("name=MyWallContext")
         {
         }
 
