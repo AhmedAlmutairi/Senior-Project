@@ -705,6 +705,7 @@
     <Content Include="Views\Home\uploadToCanvas.cshtml" />
     <Content Include="Views\Home\draw.cshtml" />
     <Content Include="Views\Home\Collab.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

@@ -39,6 +39,10 @@ namespace myWall.Controllers
             return View(wall);
             
         }
+        public ActionResult Welcome()
+        {
+            return View();
+        }
 
 
         
