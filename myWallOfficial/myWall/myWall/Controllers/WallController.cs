@@ -446,5 +446,115 @@ namespace myWall.Controllers
             var filepath = System.IO.Path.Combine(Server.MapPath("/Controllers/Files/"), fileName);
             return File(filepath, MimeMapping.GetMimeMapping(filepath), fileName);
         }
+
+
+        [HttpGet]
+        public ActionResult TodoList()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Save content and images
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+
+        [HttpPost]
+        public ActionResult TodoList(Dolist model, string page)
+        {
+            page = ParseUrlForRoom(page);
+            int id;
+            var parse = int.TryParse(page, out id);
+
+
+
+
+            int i = List(model, page);
+            if (i == 1)
+            {
+
+                return RedirectToAction("Wall", new { id = 2 });
+            }
+
+            return View(model);
+        }
+
+        public int List(Dolist contentViewModel, string page)
+        {
+
+            page = ParseUrlForRoom(page);
+            int id;
+            var parse = int.TryParse(page, out id);
+
+            if (User.Identity.IsAuthenticated)
+            {
+
+
+                contentViewModel.UserId = User.Identity.GetUserId();
+                contentViewModel.WallId = id;
+                //contentViewModel.Time = DateTime.Now;
+                var Post = new Dolist
+                {
+
+                    UserId = contentViewModel.UserId,
+                    WallId = contentViewModel.WallId,
+                    Item = contentViewModel.Item,
+                    Time = contentViewModel.Time,
+
+                };
+
+
+                db.Dolists.Add(Post);
+                int i = d.SaveChanges();
+
+
+                if (i == 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            return 0;
+
+        }
+
+        private string ParseUrlForRoom(string url)
+        {
+            var list = url.Split('/').ToList();
+            var room = list.Last();
+            return room;
+        }
+
+        public PartialViewResult Todaylist(int? id)
+        {
+
+            //ApplicationDbContext d = new ApplicationDbContext();
+            var Id = d.Walls.Find(id);
+            DateTime date = DateTime.Today;
+            List<Dolist> model = db.Dolists.Where(x => x.Time == DateTime.Today && x.WallId == id).ToList();
+            return PartialView("_List", model);
+        }
+
+        public PartialViewResult Yeslist(int? id)
+        {
+            //ApplicationDbContext d = new ApplicationDbContext();
+            var Id = d.Walls.Find(id);
+            DateTime yesterday = DateTime.Today.AddDays(-1);
+            List<Dolist> model = db.Dolists.Where(x => x.Time == yesterday && x.WallId == id).ToList();
+            return PartialView("_List", model);
+        }
+
+        public PartialViewResult Tomlist(int? id)
+        {
+            //ApplicationDbContext d = new ApplicationDbContext();
+            var Id = d.Walls.Find(id);
+            DateTime tom = DateTime.Today.AddDays(+1);
+            List<Dolist> model = db.Dolists.Where(x => x.Time == tom && x.WallId == id).ToList();
+            return PartialView("_List", model);
+        }
     }
 }
