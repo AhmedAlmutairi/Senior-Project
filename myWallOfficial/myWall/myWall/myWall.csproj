@@ -719,11 +719,9 @@
     <Content Include="Views\Wall\EditPost.cshtml" />
 
     <Content Include="Views\Home\Collab.cshtml" />
-<<<<<<< HEAD
 
-=======
     <Content Include="Views\Home\Welcome.cshtml" />
->>>>>>> 880eb84f6feb6dc502d990f0173ad14f2073d54a
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
