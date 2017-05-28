@@ -542,18 +542,21 @@
     <Content Include="Content\images\Capture.png" />
     <Content Include="Content\images\chat.png" />
     <Content Include="Content\images\dog.png" />
+    <Content Include="Content\images\eraser.gif" />
     <Content Include="Content\images\graffitti-1373857_960_720.jpg" />
     <Content Include="Content\images\intro-bg.jpg" />
     <Content Include="Content\images\ipad.png" />
     <Content Include="Content\images\messageInAbottle.PNG" />
     <Content Include="Content\images\mywall.jpg" />
     <Content Include="Content\images\noo.jpg" />
+    <Content Include="Content\images\pencil.jpg" />
     <Content Include="Content\images\pexels-photo-30161.jpg" />
     <Content Include="Content\images\phones.png" />
     <Content Include="Content\images\pic2.png" />
     <Content Include="Content\images\pool.jpg" />
     <Content Include="Content\images\wall.png" />
     <Content Include="Content\images\wallicon.png" />
+    <Content Include="Content\images\white-top-bottom.gif" />
     <Content Include="Content\images\whitewall.png" />
     <Content Include="Content\joint.css" />
     <Content Include="Content\jquery.Jcrop.css" />
@@ -563,11 +566,11 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\paper.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
     <Content Include="Content\wall.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
     <Content Include="Scripts\._html2canvas.js" />
     <Content Include="Scripts\._jquery.plugin.html2canvas.js" />
     <Content Include="Scripts\atrament.js" />
@@ -705,6 +708,7 @@
     <Content Include="Scripts\upload\upload.php" />
     <Content Include="Views\Home\uploadToCanvas.cshtml" />
     <Content Include="Views\Home\draw.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Wall\Create.cshtml" />
     <Content Include="Views\Wall\Delete.cshtml" />
     <Content Include="Views\Wall\Edit.cshtml" />
@@ -713,6 +717,9 @@
     <Content Include="Views\Wall\Comment.cshtml" />
     <Content Include="Views\Wall\DeletePost.cshtml" />
     <Content Include="Views\Wall\EditPost.cshtml" />
+=======
+    <Content Include="Views\Home\Collab.cshtml" />
+>>>>>>> d6bea6ce2d262f9b7cb5c829a6be100cf63e79d2
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />

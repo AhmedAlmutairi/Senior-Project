@@ -487,8 +487,16 @@ namespace myWall.Controllers
             return View();
         }
 
+<<<<<<< HEAD
         [Authorize]
        // [ValidateInput(false)]
+=======
+        public ActionResult Collab()
+        {
+            return View();
+        }
+
+>>>>>>> d6bea6ce2d262f9b7cb5c829a6be100cf63e79d2
         public ActionResult Chat()
         {
             return View();
