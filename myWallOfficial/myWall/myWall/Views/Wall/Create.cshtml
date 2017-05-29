@@ -1,7 +1,7 @@
 ﻿@model myWall.Models.Wall
 
 @{
-    ViewBag.Title = "CreateWall";
+    ViewBag.Title = "Create Wall";
 }
 
 
@@ -12,7 +12,7 @@
 </style>
 
  
-<h2>CreateWall</h2>
+<h2>Create Wall</h2>
 
 
 
@@ -25,7 +25,7 @@
         <h4>Wall</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-">
+        <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })

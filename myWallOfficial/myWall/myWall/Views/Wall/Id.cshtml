@@ -3,12 +3,15 @@
     List<myWall.Models.Wall> stwall = Model.ToList()[0] as List<myWall.Models.Wall>;
     List<myWall.Models.Post> stcontent = Model.ToList()[1] as List<myWall.Models.Post>;
     List<myWall.Models.Chat> stconverse = Model.ToList()[2] as List<myWall.Models.Chat>;
+    List<myWall.Models.Post> stquestion = Model.ToList()[3] as List<myWall.Models.Post>;
 }
 
 
 @{
     ViewBag.Wall = stwall.Last();
     ViewBag.Id = ViewBag.Wall.Id;
+    ViewBag.Question = stquestion;
+    ViewBag.QuestionId = ViewBag.Wall.QuestionId;
     ViewBag.Name = ViewBag.Wall.Name;
     ViewBag.Title = "Wall - " + ViewBag.Name;
 }
@@ -158,38 +161,43 @@
 
 <div class="container-fluid">
     <div class="row">
-        <h2>@ViewBag.Title</h2>
+        <div class="col-xs-12">
+            <h2>@ViewBag.Title</h2>
+        </div>
     </div>
     <!-- Wall Post -->
     <div class="row">
-        <hr />
-        @{if (stcontent.Count >= 1)
+        <div class="col-xs-12">
+
+            <hr />
+            @{if (ViewBag.Wall.QuestionId != null)
             {
-                var p = stcontent.First();
-                <div class="col-sm-6">
-                    <div class="row">
-                        @Html.DisplayFor(modelItem => p.Title)
+                var p = stquestion;
+                    <div class="col-sm-6">
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => p.First().Title)
+                        </div>
+                        <hr />
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => p.First().Description)
+                        </div>
                     </div>
-                    <hr />
-                    <div class="row">
-                        @Html.DisplayFor(modelItem => p.Description)
-                    </div>
-                </div>
                     <div class="col-sm-4">
-                        <img src="/Home/RetrieveImage/@p.Id" alt="" height=300 width=400 />
+                        <img src="/Home/RetrieveImage/@p.First().Id" alt="" height=300 width=400 />
                     </div>
                     <div class="col-sm-1"></div>
                     <div class="col-sm-1">
                         <div class="row">
-                            @Html.ActionLink("Delete", "DeletePost", new { id = p.Id })
+                            @Html.ActionLink("Edit", "EditPost", new { id = p.First().Id })
                         </div>
                         <div class="row">
-                            @Html.ActionLink("Edit", "EditPost", new { id = p.Id })
+                            @Html.ActionLink("Delete", "DeletePost", new { id = p.First().Id })
                         </div>
                     </div>
+                }
             }
-        }
-        <hr />
+            <hr />
+        </div>
     </div>
     <!-- Chat -->
     <div class="row container-fluid">
@@ -217,9 +225,11 @@
 
             </div>
             <div class="row">
-                <input type="hidden" id="UserName" />
-                <textarea type="MultiLine" id="TxtMessage"></textarea>
-                <input type="button" id="BtnSend" value="Send" />
+                <div class="col-xs-12">
+                    <input type="hidden" id="UserName" />
+                    <textarea type="MultiLine" id="TxtMessage"></textarea>
+                    <input type="button" id="BtnSend" value="Send" />
+                </div>
             </div>
         </div>
         <!-- Users -->
@@ -228,132 +238,61 @@
         </div>
     </div>
     <!-- Comments -->
-    @for (int i = 1; i < stcontent.Count; i++)
-    {
-        <div class="row">
+    <div class="col-xs-12">
 
+        @for (int i = 0; i < stcontent.Count; i++)
+        {
+            if (stcontent[i].Id != ViewBag.QuestionId)
+            {
+                <div class="row">
+
+                    <hr />
+                    <div class="col-sm-6">
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => stcontent[i].Title)
+                        </div>
+                        <hr />
+                        <div class="row">
+                            @Html.DisplayFor(modelItem => stcontent[i].Description)
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="/Home/RetrieveImage/@stcontent[i].Id" alt="" height=300 width=400 />
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1">
+                        <div class="row">
+                            @Html.ActionLink("Edit", "EditPost", new { id = stcontent[i].Id })
+                        </div>
+                        <div class="row">
+                            @Html.ActionLink("Delete", "DeletePost", new { id = stcontent[i].Id })
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            }
+        }
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
             <hr />
             <div class="col-sm-6">
-                <div class="row">
-                    @Html.DisplayFor(modelItem => stcontent[i].Title)
-                </div>
-                <hr />
-                <div class="row">
-                    @Html.DisplayFor(modelItem => stcontent[i].Description)
-                </div>
+
+                @Html.ActionLink("Create New Post", "Comment", new { id = ViewBag.Id }, new { @class = "btn btn-primary" })
             </div>
-            <div class="col-sm-4">
-                <img src="/Home/RetrieveImage/@stcontent[i].Id" alt="" height=300 width=400 />
-            </div>
-            <div class="col-sm-1"></div>
-            <div class="col-sm-1">
-                <div class="row">
-                    @Html.ActionLink("Delete", "DeletePost", new { id = stcontent[i].Id })
-                </div>
-                <div class="row">
-                    @Html.ActionLink("Edit", "EditPost", new { id = stcontent[i].Id })
-                </div>
-            </div>
-            <hr />
-        </div>
-    }
-    <div class="row">
-        <hr />
-        <div class="col-sm-6">
+            <div class="col-sm-6 upld">
+                <h3>Upload a File to my E-Library:</h3> <br />
 
-            @Html.ActionLink("Create New Post", "Comment", new { id = ViewBag.Id }, new { @class = "btn btn-primary" })
-        </div>
-        <div class="col-sm-6 upld">
-            <h3>Upload a File to my E-Library:</h3> <br />
-
-            <input type='file' id="files" multiple="multiple" />
-            <input type="button" id="upload" class="btn btn-primary" value="Upload" /> <br />
-            <p>
-                <br /> @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
-            </p>
-
-            <br />
-        </div>
-    </div>
-</div>
-
-
-@*<div class="upld">
-        <h3>Upload a File to my E-Library:</h3> <br />
-
-        <input type='file' id="files" multiple="multiple" />
-        <input type="button" id="upload" class="btn btn-primary" value="Upload" /> <br />
-        <p>
-            <br /> @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
-        </p>
-
-        <br />
-    </div>*@
-
-
-@*<div class="container">
-        <div class="col-sm-8">
-            <div id="oldchat">
-
-            </div>
-            <div id="chat">
-                <ul id="oldmsg"></ul>
-                <ul id="Chats"></ul>
-
-            </div>
-
-            <input type="hidden" id="UserName" />
-            <textarea type="MultiLine" id="TxtMessage"></textarea>
-            <input type="button" id="BtnSend" value="Send" />
-
-        </div>
-        <div class="col-sm-4">
-            <ul id="results"></ul>
-        </div>
-    </div>*@
-
-@*@foreach (var item in stwall)
-    {
-        <p>
-            <br />    @Html.ActionLink("Create New Image", "Comment", new { id = item.Id }, new { @class = "btn btn-primary" })
-        </p>
+                <input type='file' id="files" multiple="multiple" />
+                <input type="button" id="upload" class="btn btn-primary" value="Upload" /> <br />
+                <p>
+                    <br /> @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
+                </p>
 
                 <br />
-    }
-
-    <table class="table" style="width: 1200px;">
-
-
-        @foreach (var item in stcontent)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td style="width: 500px;">
-                    @Html.Raw(item.Contents)
-                </td>
-                <td>
-                    <img src="/Home/RetrieveImage/@item.Id" alt="" height=300 width=400 />
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "DeletePost", new { id = item.Id })
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditPost", new { id = item.Id })
-                </td>
-
-
-            </tr>
-
-        }
-
-
-
-    </table>*@
+            </div>
+        </div>
+    </div>
 
 @foreach (var name in stwall)
 {
