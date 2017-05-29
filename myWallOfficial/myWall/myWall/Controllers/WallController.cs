@@ -505,7 +505,7 @@ namespace myWall.Controllers
 
 
                 db.Dolists.Add(Post);
-                int i = d.SaveChanges();
+                int i = db.SaveChanges();
 
 
                 if (i == 1)

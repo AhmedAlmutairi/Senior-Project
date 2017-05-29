@@ -284,22 +284,19 @@
                 <br />
             </div>
             
-        </div>
-    </div>
+            <div class="col-sm-6">
 
-    <div class="col-sm-6">
-
-        <div class="waa" id="lis">
-            @foreach (var item in stwall)
+                <div class="waa" id="lis">
+                    @foreach (var item in stwall)
             {
-                @Ajax.ActionLink("Today's List", "Todaylist", new { id = item.Id }, new AjaxOptions()
-                   {
+                        @Ajax.ActionLink("Today's List", "Todaylist", new { id = item.Id }, new AjaxOptions()
+           {
 
-                       HttpMethod = "GET",
-                       UpdateTargetId = "todaylist",
-                       InsertionMode = InsertionMode.Replace
-                   })
-                <span>|</span>
+               HttpMethod = "GET",
+               UpdateTargetId = "todaylist",
+               InsertionMode = InsertionMode.Replace
+           })
+                        <span>|</span>
                         @Ajax.ActionLink("Yesterday's List", "Yeslist", new { id = item.Id }, new AjaxOptions()
                    {
                        HttpMethod = "GET",
@@ -313,22 +310,29 @@
                        UpdateTargetId = "todaylist",
                        InsertionMode = InsertionMode.Replace
                    })
-            }<br />
-            <input id="text" type="text" />
-            <input id="time" type="date" />
-            <input id="save" type="button" value="add list" /> <br />
+                    }<br />
+                    <input id="text" type="text" />
+                    <input id="time" type="date" />
+                    <input id="save" type="button" value="add list" /> <br />
 
 
-            <ul id="li"></ul> <br />
-            <ul id="todaylist"></ul>
+                    <ul id="li"></ul> <br />
+                    <ul id="todaylist"></ul>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
+
+    
 
     <script>
 
        
         $(document).ready(function () {
-            
+            $("#time").datepicker();
             var ur = window.location.href;
             $("#save").click(function () {
                 
@@ -357,7 +361,7 @@
                 $.ajax({
 
                     type: 'GET',
-                    url: "@Url.Action("TodoList")",
+                    url: "@Url.Action("Id")",
 
 
                     data: {

@@ -1,5 +1,8 @@
-﻿@using myWall;
+﻿
+
 @model myWall.ViewModel.WallandUserVM
+
+@using PagedList.Mvc;
 
 <script src="~/Scripts/jquery-1.12.4.js"></script>
 <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
@@ -85,25 +88,29 @@
 
                         <div class="col-md-4">
                             <div class="waa">
-                                <h3>Latest Wall:</h3>
+                                <h3 style="color:black">Latest Wall:</h3>
                                 @foreach (var item in Model.Walls)
                                 {
 
                                     @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
                                 }
-
                                 
+                                
+                               
+
 
 
                             </div>
 
                         </div>
+                        
                         <div class="col-md-4">
                             <div class="sear">
                                 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-            {
-                                    <h1>SearchFor:</h1> @Html.RadioButton("SearchFor", "User") <text>User</text>
+                                {
+
+                                    <h1 style="color:black">SearchFor:</h1> @Html.RadioButton("SearchFor", "User") <text>User</text>
                                     @Html.RadioButton("SearchFor", "Wall", true) <text>Wall</text><br />
                                     @Html.TextBox("search") <br />
                                     <input type="submit" value="Search" class="buttonn" />
@@ -115,7 +122,7 @@
 
                         <div class="col-md-4">
                             <div class="waa">
-                                <h3>Users:</h3>
+                                <h3 style="color:black">Users:</h3>
                                 @foreach (var it in Model.Users)
             {
 
@@ -123,7 +130,8 @@
 
 
                                 }
-                                    
+
+                               
                             </div>
 
                         </div>

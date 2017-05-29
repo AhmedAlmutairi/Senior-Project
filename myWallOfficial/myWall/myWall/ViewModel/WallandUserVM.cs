@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using myWall;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace myWall.ViewModel
 {
     public class WallandUserVM
     {
-        public IEnumerable<ApplicationUser> Users { get; set; }
-        public IEnumerable<Wall> Walls { get; set; }
+        public IPagedList<ApplicationUser> Users { get; set; }
+        public IPagedList<Wall> Walls { get; set; }
     }
 }

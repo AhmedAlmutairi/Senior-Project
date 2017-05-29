@@ -74,7 +74,7 @@ textarea {
    // margin-left: auto ;
    // margin-right: auto ;
     width: 370px;
-    height: auto;
+    height: 400px;
     background-color: aliceblue;
     border: groove;
     text-align: center;
@@ -83,7 +83,7 @@ textarea {
 }
 
 .sear{
-    width: 500px;
+    width: 370px;
     height: 400px;
     background-color: aliceblue;
     border: groove;
