@@ -75,12 +75,14 @@ namespace myWall.Controllers
         }
 
         // GET: Wall/Create
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize]
         [Route("Create")]
         [HttpPost]
         public ActionResult Create(Wall wall)
@@ -106,8 +108,10 @@ namespace myWall.Controllers
         }
 
         // GET: Wall/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
+            // TODO Refactor
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,12 +122,17 @@ namespace myWall.Controllers
                 return HttpNotFound();
             }
             ViewBag.UserId = new SelectList(db.ApplicationUsers, "Id", "Question", wall.UserId);
+            if (wall.UserId != User.Identity.GetUserId())
+            {
+                return RedirectToAction("NotAuthorized", "Wall", id);
+            }
             return View(wall);
         }
 
         // POST: Wall/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,UserId")] Wall wall)
@@ -139,6 +148,7 @@ namespace myWall.Controllers
         }
 
         // GET: Wall/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -150,11 +160,16 @@ namespace myWall.Controllers
             {
                 return HttpNotFound();
             }
+            if (wall.UserId != User.Identity.GetUserId())
+            {
+                return RedirectToAction("NotAuthorized", "Wall", id);
+            }
             return View(wall);
         }
 
 
         // POST: Wall/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -174,12 +189,14 @@ namespace myWall.Controllers
 
         /** Comment Routes **/
 
+        [Authorize]
         [HttpGet]
         public ActionResult Comment( )
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Comment(Post model, int id)
         {
@@ -201,6 +218,7 @@ namespace myWall.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult EditPost(int? id)
         {
@@ -208,15 +226,24 @@ namespace myWall.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Post post = d.Posts.Find(id);
             if (post == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+
+            var userId = User.Identity.GetUserId();
+            if (post.UserId == userId) {
+                return View(post);
+            }
+            else
+            {
+                return RedirectToAction("NotAuthorized", "Wall", id);
+            }
         }
 
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditPost([Bind(Include = "Id, WallId, CallobId, Title, Image, Description, Contents")] Post post)
@@ -239,6 +266,8 @@ namespace myWall.Controllers
             return View(post);
         }
 
+        [Authorize]
+        [HttpGet]
         public ActionResult DeletePost(int? id)
         {
             if (id == null)
@@ -250,9 +279,14 @@ namespace myWall.Controllers
             {
                 return HttpNotFound();
             }
+            if (post.UserId != User.Identity.GetUserId())
+            {
+                return RedirectToAction("NotAuthorized", "Wall", id);
+            }
             return View(post);
         }
 
+        [Authorize]
         [HttpPost, ActionName("DeletePost")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmedPost(int id)
@@ -265,12 +299,14 @@ namespace myWall.Controllers
         }
 
         /** Question Routes **/
+        [Authorize]
         [HttpGet]
         public ActionResult Question()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public ActionResult Question(Post model, int id)
         {
@@ -297,9 +333,24 @@ namespace myWall.Controllers
             //    return RedirectToAction("Id", "Wall", new { id = id });
             //}
             //return View(model);
-            return RedirectToAction("Id", "Wall", new { id = id });
+            //return RedirectToAction("Id", "Wall", new { id = id });
+            return RedirectToAction("Id", "Wall");
 
         }
+
+        /** Unauthorized Routes **/
+
+        [HttpGet]
+        public ActionResult NotAuthorized()
+        {
+            return View();
+        }
+
+        //[HttpGet]
+        //public ActionResult NotAllowed( int id)
+        //{
+        //    return View();
+        //}
 
         /** Helper Methods **/
 
