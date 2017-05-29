@@ -78,21 +78,21 @@ namespace myWall.Controllers
             //WallandUserVM obj = new WallandUserVM();
             if (searchFor == "User")
             {
-                myModel.Users = d.Users.Where(x => x.UserName.StartsWith(search) || search == null).ToList();
-                myModel.Walls = d.Walls.ToList();
+                myModel.Users = d.Users.OrderByDescending(x => x.Id).Where(x => x.UserName.StartsWith(search) || search == null).ToList(); //ToPagedList(page ?? 1, 3);
+                myModel.Walls = d.Walls.OrderByDescending(x => x.Id).ToList(); //ToPagedList(page ?? 1, 3);
                 return View(myModel);
             }
 
             if (searchFor == "Wall")
             {
 
-                myModel.Walls = d.Walls.Where(x => x.Name == search || search == null).ToList();
-                myModel.Users = d.Users.ToList();
+                myModel.Walls = d.Walls.OrderByDescending(x => x.Id).Where(x => x.Name == search || search == null).ToList(); //ToPagedList(page ?? 1, 3);
+                myModel.Users = d.Users.OrderByDescending(x => x.Id).ToList(); //ToPagedList(page ?? 1, 3);
                 return View(myModel);
             }
 
-            myModel.Walls = d.Walls.Where(x => x.Name == search && searchFor == "Wall" || search == null).ToList();
-            myModel.Users = d.Users.Where(x => x.UserName.StartsWith(search) && searchFor == "User" || search == null).ToList();
+            myModel.Walls = d.Walls.OrderByDescending(x => x.Id).Where(x => x.Name == search && searchFor == "Wall" || search == null).ToList(); //ToPagedList(page ?? 1, 3);
+            myModel.Users = d.Users.OrderByDescending(x => x.Id).Where(x => x.UserName.StartsWith(search) && searchFor == "User" || search == null).ToList(); //ToPagedList(page ?? 1, 3);
             return View(myModel);
 
 
