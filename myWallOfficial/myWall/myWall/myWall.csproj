@@ -708,7 +708,6 @@
     <Content Include="Scripts\upload\upload.php" />
     <Content Include="Views\Home\uploadToCanvas.cshtml" />
     <Content Include="Views\Home\draw.cshtml" />
-
     <Content Include="Views\Wall\Create.cshtml" />
     <Content Include="Views\Wall\Delete.cshtml" />
     <Content Include="Views\Wall\Edit.cshtml" />
@@ -717,11 +716,10 @@
     <Content Include="Views\Wall\Comment.cshtml" />
     <Content Include="Views\Wall\DeletePost.cshtml" />
     <Content Include="Views\Wall\EditPost.cshtml" />
-
     <Content Include="Views\Home\Collab.cshtml" />
-
     <Content Include="Views\Home\Welcome.cshtml" />
-
+    <Content Include="Views\Wall\Question.cshtml" />
+    <Content Include="Views\Wall\NotAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
