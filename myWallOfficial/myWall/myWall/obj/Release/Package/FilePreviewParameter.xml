@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="MyWallOfficial" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="MyWallOfficial/App_Data" tags="Hidden">
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet_myWall_20170224085357.mdf;Initial Catalog=aspnet_myWall_20170224085357;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MyWallContext-Web.config Connection String" description="" value="Data Source=mywalldb.database.windows.net;Initial Catalog=mywalldb;User ID=ahmed;Password=Hanin123" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
+  </parameter>
+</parameters>
