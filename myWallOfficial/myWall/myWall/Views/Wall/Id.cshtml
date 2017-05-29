@@ -30,7 +30,7 @@
     }
 </style>
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
 <script>
                     $body = $("body");
                     $(document).on({
@@ -71,66 +71,6 @@
                     });
 </script>
 
-<script>
-
-
-            $(document).ready(function () {
-                $("#time").datepicker();
-                var ur = window.location.href;
-                $("#save").click(function () {
-                    //var time = $("#time").datepicker();
-                    // var date = {
-                    //  Item: $("#text").val(),
-                    // Time: time.toISOString()
-                    // }
-                    // var url = window.location.href;
-                    $.ajax({
-                        type: 'POST',
-                        url: "@Url.Action("TodoList")",
-
-
-                        data: {
-
-                            Item: $("#text").val(),
-                            Time: $("#time").val(),
-                            page: ur
-                        }
-
-
-                    });
-                });
-            });
-
-
-            $(document).ready(function () {
-                var url = window.location.href;
-                $("#save").click(function () {
-
-                    $.ajax({
-
-                        type: 'GET',
-                        url: "@Url.Action("Wall")",
-
-
-                        data: {
-                            WallId: 2,
-                            Contents: $("#text").val(),
-
-
-                        },
-                        success: function (Contents) {
-                            $("#li").append($("#text").val())
-                            $('#text').val('');
-
-
-
-                        }
-
-
-                    });
-                });
-            });
-</script>
 
 @section scripts {
 
@@ -381,11 +321,72 @@
             </div>
         </div>
 
+        
 
 
     </div>
 </div>
+        
+      <script>
 
+
+            $(document).ready(function () {
+                $("#time").datepicker();
+                var ur = window.location.href;
+                $("#save").click(function () {
+                    //var time = $("#time").datepicker();
+                    // var date = {
+                    //  Item: $("#text").val(),
+                    // Time: time.toISOString()
+                    // }
+                    // var url = window.location.href;
+                    $.ajax({
+                        type: 'POST',
+                        url: "@Url.Action("TodoList")",
+
+
+                        data: {
+
+                            Item: $("#text").val(),
+                            Time: $("#time").val(),
+                            page: ur
+                        }
+
+
+                    });
+                });
+            });
+
+
+            $(document).ready(function () {
+                var url = window.location.href;
+                $("#save").click(function () {
+
+                    $.ajax({
+
+                        type: 'GET',
+                        url: "@Url.Action("Wall")",
+
+
+                        data: {
+                            WallId: 2,
+                            Contents: $("#text").val(),
+
+
+                        },
+                        success: function (Contents) {
+                            $("#li").append($("#text").val())
+                            $('#text').val('');
+
+
+
+                        }
+
+
+                    });
+                });
+            });
+</script>  
 
 
 
