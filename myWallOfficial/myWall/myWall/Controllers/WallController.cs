@@ -148,7 +148,7 @@ namespace myWall.Controllers
         }
 
         // GET: Wall/Delete/5
-        [Authorize]
+       /* [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -185,7 +185,7 @@ namespace myWall.Controllers
             d.Walls.Remove(wall);
             d.SaveChanges();
             return RedirectToAction("Index", "Home");
-        }
+        }*/
 
         /** Comment Routes **/
 
