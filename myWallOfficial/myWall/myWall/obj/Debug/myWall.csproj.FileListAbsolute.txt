@@ -93,3 +93,4 @@ C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\bin\Micros
 C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Debug\myWall.dll
 C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Debug\myWall.pdb
+C:\Users\Whitney\Documents\engorgwhitney\myWallOfficial\myWall\myWall\obj\Debug\myWall.csprojResolveAssemblyReference.cache
