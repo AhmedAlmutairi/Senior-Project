@@ -93,3 +93,4 @@ C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\Microsof
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\myWall.dll
 C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\myWall.pdb
+C:\Users\Ahmed\Documents\engOrg\engorg\myWallOfficial\myWall\myWall\obj\Release\myWall.csprojResolveAssemblyReference.cache

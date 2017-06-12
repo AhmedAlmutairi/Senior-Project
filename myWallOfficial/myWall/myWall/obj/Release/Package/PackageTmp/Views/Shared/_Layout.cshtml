@@ -11,40 +11,6 @@
     <title>@ViewBag.Name - @ViewBag.Title </title>
 
     @Styles.Render("~/Content/css")
-<<<<<<< HEAD
-    @Scripts.Render("~/bundles/modernizr")
-    
-
-    <style>
-    ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
-}
-
-.active {
-    background-color: #ff7d24
-}
-li a {
-    display: block;
-    
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #ff7d24
-}
-    </style>
-=======
 
     <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/jquery")
@@ -54,7 +20,6 @@ li a:hover {
     @Scripts.Render("~/bundles/modernizr")
     
 
->>>>>>> feature
 
 </head>
 <body class="parallax">
@@ -75,14 +40,9 @@ li a:hover {
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Chess", "Chess", "Home")</li>
-<<<<<<< HEAD
-                    <li>@Html.ActionLink("UploadToCanvas", "UploadToCanvas", "Home")</li>
-                    <li>@Html.ActionLink("draw", "draw", "Home")</li>
-=======
                     <li>@Html.ActionLink("Resize Image", "Collab", "Home")</li>
                     <li>@Html.ActionLink("Draw On An Image", "uploadToCanvas", "Home")</li>
                     <li>@Html.ActionLink("Draw With Friends", "draw", "Home")</li>
->>>>>>> feature
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -95,11 +55,7 @@ li a:hover {
 
     </div>
 
-<<<<<<< HEAD
-    @Scripts.Render("~/bundles/jquery")
-=======
    
->>>>>>> feature
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

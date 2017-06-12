@@ -1,18 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-<<<<<<< HEAD
-  <parameter name="MyWallContext-Web.config Connection String" description="MyWallContext Connection String used in web.config by the application to access the database." defaultValue="data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
+  <parameter name="SQLAzureConnection-Web.config Connection String" description="SQLAzureConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=mywalldb.database.windows.net;Initial Catalog=MywallDB;Integrated Security=False;User ID=ahmed;Password=Hanin1990;Connect Timeout=15;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='SQLAzureConnection']/@connectionString" />
+  </parameter>
+  <parameter name="myWall.Models.MyWallContext-Web.config Connection String" description="myWall.Models.MyWallContext Connection String used in web.config by the application to access the database." defaultValue="myWall.Models.MyWallContext_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='myWall.Models.MyWallContext']/@connectionString" />
+  </parameter>
+  <parameter name="MyWallContext-Web.config Connection String" description="MyWallContext Connection String used in web.config by the application to access the database." defaultValue="MyWallContext_ConnectionString" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
   </parameter>
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet_myWall_20170224085357.mdf;Initial Catalog=aspnet_myWall_20170224085357;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-=======
-  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet_myWall_20170224085357.mdf;Initial Catalog=aspnet_myWall_20170224085357;Integrated Security=True" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="MyWallContext-Web.config Connection String" description="MyWallContext Connection String used in web.config by the application to access the database." defaultValue="data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\MyWallDB.mdf;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Ahmed\\Documents\\engOrg\\engorg\\myWallOfficial\\myWall\\myWall\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MyWallContext']/@connectionString" />
-  </parameter>
->>>>>>> feature
 </parameters>

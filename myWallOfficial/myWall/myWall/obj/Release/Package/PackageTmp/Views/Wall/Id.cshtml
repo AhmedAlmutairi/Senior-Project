@@ -3,14 +3,6 @@
     List<myWall.Models.Wall> stwall = Model.ToList()[0] as List<myWall.Models.Wall>;
     List<myWall.Models.Post> stcontent = Model.ToList()[1] as List<myWall.Models.Post>;
     List<myWall.Models.Chat> stconverse = Model.ToList()[2] as List<myWall.Models.Chat>;
-<<<<<<< HEAD
-}
-
-
-@{
-    ViewBag.Wall = stwall.Last();
-    ViewBag.Id = ViewBag.Wall.Id;
-=======
     List<myWall.Models.Post> stquestion = Model.ToList()[3] as List<myWall.Models.Post>;
 }
 
@@ -22,61 +14,21 @@
     ViewBag.Id = ViewBag.Wall.Id;
     ViewBag.Question = stquestion;
     ViewBag.QuestionId = ViewBag.Wall.QuestionId;
->>>>>>> feature
     ViewBag.Name = ViewBag.Wall.Name;
     ViewBag.Title = "Wall - " + ViewBag.Name;
 }
 
-<<<<<<< HEAD
+
+
+
 <style>
     body {
         background: url(/Content/images/whitewall.png) no-repeat center center;
         color: white;
-=======
-
-
-
-<style>
-    body {
-        background: url(/Content/images/whitewall.png) no-repeat center center;
-        color: blue;
->>>>>>> feature
         font-weight: bold;
     }
 </style>
 
-<<<<<<< HEAD
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script>
-                    $body = $("body");
-                    $(document).on({
-                        ajaxStart: function () { $body.addClass("loading"); },
-                        ajaxStop: function () { $body.removeClass("loading"); }
-                    });
-
-                    $(document).ready(function () {
-                        $("#upload").click(function () {
-                            var data = new FormData();
-
-                            //Add the Multiple selected files into the data object
-                            var files = $("#files").get(0).files;
-                            for (i = 0; i < files.length; i++) {
-                                data.append("files" + i, files[i]);
-                            }
-
-                            //Post the data (files) to the server
-                            if (files.length > 0) {
-                                $.ajax({
-                                    type: 'POST',
-                                    url: "@Url.Action("Upload")",
-                                    data: data,
-                                    contentType: false,
-                                    processData: false,
-                                    success: function (data) {
-                                        alert("Successfully Uploaded!");
-
-                                    },
-=======
 
 <script src="~/Scripts/jquery-3.1.1.min.js"></script>
 <script src="~/Scripts/jquery-3.1.1.js"></script>
@@ -115,138 +67,11 @@
                             alert("Successfully Uploaded!");
 
                         },
->>>>>>> feature
                         else: {
                             error: function () {
                                 alert("An error occurred!");
                             }
                         },
-<<<<<<< HEAD
-                                });
-                            }
-                        });
-                    });
-</script>
-
-@section scripts {
-
-    <script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
-    <script src="~/signalr/Hubs"></script>
-
-    <script>
-                $(function () {
-
-                    var chat = $.connection.chatHub;
-
-                    chat.client.connected = function (userName, messages) {
-
-                        var url = window.location.href;
-                        //var messages = chat.server.getMessageCache(url);
-
-
-                        //for (i = 0; i < 10; i++) {
-                          //  $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
-                        //}
-                        "</br>"
-                        $("#oldmsg").append( "<font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
-
-                       
-
-                        $('#chat').scrollTop($('#chat')[0].scrollHeight);
-                    };
-
-                    chat.client.NewMessage = function (userName, msg) {
-                        $('#Chats').append('<li><strong>' + htmlEncode(userName)
-                            + '</strong>: ' + htmlEncode(msg) + '</li>' + '</br>');
-                        $('#chat').scrollTop($('#chat')[0].scrollHeight);
-
-                    };
-
-                    chat.client.AddChatMessage = function (userName, msg) {
-                        $('#Chats').append('<li><strong>' + htmlEncode(userName)
-                            + '</strong>: ' + htmlEncode(msg) + '</li>' + '</br>');
-                        $('#chat').scrollTop($('#chat')[0].scrollHeight);
-
-                    }
-
-                    registerClientMethods(chat)
-
-                    $.connection.hub.start().done(function () {
-                        registerEvents(chat)
-                        var room = window.location.href;
-                        chat.server.joinRoom(room);
-                    });
-
-                });
-
-
-                function registerEvents(chat) {
-
-                    $('#BtnSend').click(function () {
-                        var room = window.location.href
-                        chat.server.sendMessageToGroup(room,$('#UserName').val(), $('#TxtMessage').val());
-                        $('#TxtMessage').val('').focus();
-                    });
-
-                }
-
-                function registerClientMethods(chat) {
-                    // Calls when user successfully logged in
-                    chat.server.connected = function (userName, allUsers, messages) {
-
-                        // Add All Users
-                        for (i = 0; i < allUsers.length; i++) {
-                            AddUser(chat, allUsers[i].UserName);
-                        }
-
-                        // Add Existing Messages
-                        for (i = 0; i < messages.length; i++) {
-                            AddMessage(messages[i].UserName, messages[i].Message);
-                        }
-
-                    }
-                }
-
-
-                function htmlEncode(value) {
-                    var encodedValue = $('<div />').text(value).html();
-                    return encodedValue;
-                }
-
-
-    </script>
-}
-
-
-@*<div class="container">
-    <input type="text" id="message"/>
-    <input type="button" id="sendmessage" value="Send" />
-    <input type="hidden" id="displayname" />
-    <ul id="discussion"></ul>
-</div>*@
-
-<div class="container-fluid">
-    <div class="row">
-        <h2>@ViewBag.Title</h2>
-    </div>
-    <!-- Wall Post -->
-    <div class="row">
-        <hr />
-            @{if (stcontent.Count >= 1)
-                {
-                    var p = stcontent.First();
-                    <div class="col-sm-6">
-                        <div class="row">
-                            @Html.DisplayFor(modelItem => p.Title)
-                        </div>
-                        <hr />
-                        <div class="row">
-                            @Html.DisplayFor(modelItem => p.Description)
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <img src="/Home/RetrieveImage/@p.Id" alt="" height=300 width=400 />
-=======
                     });
                 }
             });
@@ -269,6 +94,14 @@
                     var url = window.location.href;
                    
 
+<<<<<<< HEAD
+                        //for (i = 0; i < 10; i++) {
+                          //  $("#oldmsg").append(messages[i].userName + ": " + messages[i].Message + "</br>");
+                        //}
+                     
+                        $("#oldmsg").append( "</br>" +" <font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
+=======
+>>>>>>> feature
 
 
                     $("#oldmsg").append("<font color= 'red' >" + "Welcome " + "<strong>" + userName + "</strong>" + " to the most fantastic real time chat" + "</font>" + "</br>");
@@ -368,22 +201,14 @@
                     </div>
                     <div class="col-sm-4">
                         <img src="/Home/RetrieveImage/@p.First().Id" alt="" height=300 width=400 />
->>>>>>> feature
                     </div>
                     <div class="col-sm-1"></div>
                     <div class="col-sm-1">
                         <div class="row">
-<<<<<<< HEAD
-                            @Html.ActionLink("Delete", "DeletePost", new { id = p.Id })
-                        </div>
-                        <div class="row">
-                            @Html.ActionLink("Edit", "EditPost", new { id = p.Id })
-=======
                             @Html.ActionLink("Edit", "EditPost", new { id = p.First().Id })
                         </div>
                         <div class="row">
                             @Html.ActionLink("Delete", "DeletePost", new { id = p.First().Id })
->>>>>>> feature
                         </div>
                     </div>
                 }
@@ -405,7 +230,7 @@
                     @foreach (var item in stconverse)
                     {
                         <li>
-                            <b>@Html.DisplayFor(modelItem => item.userName):</b> @Html.DisplayFor(modelItem => item.Message)
+                            <b>@Html.DisplayFor(modelItem => item.userName):</b> @Html.DisplayFor(modelItem => item.Message) 
                         </li>
                     }
                 </ul>
@@ -414,22 +239,6 @@
                 </span>
                 <hr />
                 <ul id="Chats"></ul>
-
-            </div>
-            <div class="row">
-                <input type="hidden" id="UserName" />
-                <textarea type="MultiLine" id="TxtMessage"></textarea>
-                <input type="button" id="BtnSend" value="Send" />
-            </div>
-        </div>
-        <!-- Users -->
-        <div class="col-lg-4 col-md-2 col-sm-12">
-            <ul id="results"></ul>
-        </div>
-    </div>
-    <!-- Comments -->
-        @for (int i = 1; i < stcontent.Count; i++)
-        {
 =======
             <hr />
         </div>
@@ -457,6 +266,7 @@
                     </span>
                     <hr />
                     <ul id="Chats"></ul>
+>>>>>>> feature
 
                 </div>
                 <div class="row">
@@ -478,7 +288,6 @@
         {
             if (stcontent[i].Id != ViewBag.QuestionId)
             {
->>>>>>> feature
             <div class="row">
 
                 <hr />
@@ -505,115 +314,6 @@
                 </div>
                 <hr />
             </div>
-<<<<<<< HEAD
-        }
-    <div class="row">
-        <hr />
-        <div class="col-sm-6">
-
-            @Html.ActionLink("Create New Post", "Comment", new { id = ViewBag.Id }, new { @class = "btn btn-primary" })
-        </div>
-        <div class="col-sm-6 upld">
-            <h3>Upload a File to my E-Library:</h3> <br />
-
-            <input type='file' id="files" multiple="multiple" />
-            <input type="button" id="upload" class="btn btn-primary" value="Upload" /> <br />
-            <p>
-                <br /> @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
-            </p>
-
-            <br />
-        </div>
-    </div>
-</div>
-
-
-@*<div class="upld">
-    <h3>Upload a File to my E-Library:</h3> <br />
-
-    <input type='file' id="files" multiple="multiple" />
-    <input type="button" id="upload" class="btn btn-primary" value="Upload" /> <br />
-    <p>
-        <br /> @Html.ActionLink("E-Library", "Library", null, new { @class = "btn btn-primary" })
-    </p>
-
-    <br />
-</div>*@
-
-
-@*<div class="container">
-    <div class="col-sm-8">
-        <div id="oldchat">
-
-        </div>
-        <div id="chat">
-            <ul id="oldmsg"></ul>
-            <ul id="Chats"></ul>
-
-        </div>
-
-        <input type="hidden" id="UserName" />
-        <textarea type="MultiLine" id="TxtMessage"></textarea>
-        <input type="button" id="BtnSend" value="Send" />
-
-    </div>
-    <div class="col-sm-4">
-        <ul id="results"></ul>
-    </div>
-</div>*@
-
-@*@foreach (var item in stwall)
-{
-    <p>
-        <br />    @Html.ActionLink("Create New Image", "Comment", new { id = item.Id }, new { @class = "btn btn-primary" })
-    </p>
-
-            <br />
-}
-
-<table class="table" style="width: 1200px;">
-
-
-    @foreach (var item in stcontent)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td style="width: 500px;">
-                @Html.Raw(item.Contents)
-            </td>
-            <td>
-                <img src="/Home/RetrieveImage/@item.Id" alt="" height=300 width=400 />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Delete", "DeletePost", new { id = item.Id })
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditPost", new { id = item.Id })
-            </td>
-
-
-        </tr>
-
-    }
-
-
-
-</table>*@
-
-@foreach (var name in stwall)
-{
-    @Html.ActionLink("Delete the whole wall", "Delete", new { id = name.Id })
-}
-
-
-
-
-=======
             }
         }
         </div>
@@ -743,4 +443,3 @@
    
 
 </body>
->>>>>>> feature
