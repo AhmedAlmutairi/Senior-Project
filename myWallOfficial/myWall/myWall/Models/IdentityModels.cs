@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace myWall.Models
 {
-   
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -22,11 +22,11 @@ namespace myWall.Models
         {
             Walls = new HashSet<Wall>();
             Posts = new HashSet<Post>();
-           // Chats = new HashSet<Chat>();
-            
+            // Chats = new HashSet<Chat>();
+
         }
 
-        
+
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -45,13 +45,13 @@ namespace myWall.Models
 
         public virtual ICollection<Wall> Walls { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
-       // public virtual ICollection<Chat> Chats { get; set; }
+        // public virtual ICollection<Chat> Chats { get; set; }
 
 
     }
 
-    
-    
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
@@ -72,7 +72,7 @@ namespace myWall.Models
             {
                 return base.SaveChanges();
             }
-            
+
             catch (DbUpdateException dbu)
             {
                 var exception = HandleDbUpdateException(dbu);
@@ -99,14 +99,14 @@ namespace myWall.Models
             string message = builder.ToString();
             return new Exception(message, dbu);
         }
-      
+
         public ApplicationDbContext()
 
-          // : base("DefaultConnection", throwIfV1Schema: false)
-        //SQLAzureConnection
+         //  : base("DefaultConnection", throwIfV1Schema: false)
+         //SQLAzureConnection
 
          : base("MyWallContext", throwIfV1Schema: false)
-            
+
 
         {
             Database.SetInitializer<ApplicationDbContext>(null);
@@ -119,11 +119,11 @@ namespace myWall.Models
 
 
         public virtual DbSet<Wall> Walls { get; set; }
-     
 
-         public virtual DbSet<Post> Posts { get; set; }
 
-         public virtual DbSet<Chat> Chats { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+
+        public virtual DbSet<Chat> Chats { get; set; }
 
 
 
@@ -135,9 +135,9 @@ namespace myWall.Models
                 HasMany(m => m.Walls).WithOptional(m => m.AspNetUsers).
                 HasForeignKey(p => p.UserId);
 
-           // modelBuilder.Entity<ApplicationUser>().
-             //   HasMany(m => m.Posts).WithOptional(m => m.AspNetUsers).
-               // HasForeignKey(p => p.UserId);
+            // modelBuilder.Entity<ApplicationUser>().
+            //   HasMany(m => m.Posts).WithOptional(m => m.AspNetUsers).
+            // HasForeignKey(p => p.UserId);
 
 
 
