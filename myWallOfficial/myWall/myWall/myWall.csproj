@@ -639,6 +639,9 @@
     <Content Include="ckeditor\skins\moono\readme.md" />
     <Content Include="Content\ContentServer.pdf" />
     <Content Include="Content\Letterhead.docx" />
+    <Content Include="cstring.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\MyWallOfficial - Web Deploy %284%29.pubxml" />
@@ -774,12 +777,9 @@
     <Content Include="Views\Wall\EditPost.cshtml" />
     <Content Include="Views\Home\Collab.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
-
     <Content Include="Views\Shared\_List.cshtml" />
-
     <Content Include="Views\Wall\Question.cshtml" />
     <Content Include="Views\Wall\NotAuthorized.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\images\Profile\" />
