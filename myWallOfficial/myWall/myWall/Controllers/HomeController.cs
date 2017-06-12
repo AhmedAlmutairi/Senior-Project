@@ -31,24 +31,92 @@ namespace myWall.Controllers
         private MyWallContext db = new MyWallContext();
         ApplicationDbContext d = new ApplicationDbContext();
 
-        
-        public ActionResult Index(int? page)
+
+        /*public ActionResult Index(int? page)
         {
             
-            var wall = d.Walls.OrderByDescending(d => d.Id).ToList().ToPagedList(page ?? 1, 3);
+            var wall = d.Walls.OrderByDescending(x => x.Id).ToList().ToPagedList(page ?? 1, 3);
             return View(wall);
             
+        }*/
+
+        public ActionResult Index(string searchFor, string search, int? page)
+        {
+            /*List<object> myModel = new List<object>();
+            
+            if (searchFor == "User")
+            {
+
+
+                var user = d.Users.Where(x => x.UserName.StartsWith(search));
+
+                myModel.Add(user.ToList());
+                return View(myModel);
+            }
+
+            else if (searchFor == "Wall")
+            {
+                var wall = d.Walls.Where(x => x.Name == search || search == null);
+
+                //var wal = wall.First();
+                myModel.Add(wall.ToList());
+                return View(myModel);
+            }
+
+            else if(search == null)
+            {
+                var wal = d.Walls.Where(x => x.Name == search || search == null);
+                var use = d.Users.Where(x => x.UserName.StartsWith(search));
+                myModel.Add(wal.ToList());
+                myModel.Add(use.ToList());
+                return View(myModel);
+            }
+            return View(myModel);*/
+
+
+            WallandUserVM myModel = new WallandUserVM();
+            //WallandUserVM obj = new WallandUserVM();
+            if (searchFor == "User")
+            {
+                myModel.Users = d.Users.OrderByDescending(x => x.Id).Where(x => x.UserName.StartsWith(search) || search == null).ToList().ToPagedList(page ?? 1, 3);
+                myModel.Walls = d.Walls.OrderByDescending(x => x.Id).ToList().ToPagedList(page ?? 1, 3);
+                return View(myModel);
+            }
+
+            if (searchFor == "Wall")
+            {
+
+                myModel.Walls = d.Walls.OrderByDescending(x => x.Id).Where(x => x.Name == search || search == null).ToList().ToPagedList(page ?? 1, 3);
+                myModel.Users = d.Users.OrderByDescending(x => x.Id).ToList().ToPagedList(page ?? 1, 3);
+                return View(myModel);
+            }
+
+            myModel.Walls = d.Walls.OrderByDescending(x => x.Id).Where(x => x.Name == search && searchFor == "Wall" || search == null).ToList().ToPagedList(page ?? 1, 3);
+            myModel.Users = d.Users.OrderByDescending(x => x.Id).Where(x => x.UserName.StartsWith(search) && searchFor == "User" || search == null).ToList().ToPagedList(page ?? 1, 3);
+            return View(myModel);
+
+
         }
 
 
-        
+
+
+
+        public ActionResult Welcome()
+        {
+            return View();
+        }
+
+
+        [Authorize]
         [HttpGet]
         public ActionResult CreateWall()
         {
 
             return RedirectToAction("Create", "Wall");
         }
-        [Authorize]
+
+        
         [HttpPost]
         public ActionResult CreateWall(Wall wall)
         {
@@ -486,8 +554,13 @@ namespace myWall.Controllers
             return View();
         }
 
+        
+        public ActionResult Collab()
+        {
+            return View();
+        }
+
         [Authorize]
-       // [ValidateInput(false)]
         public ActionResult Chat()
         {
             return View();

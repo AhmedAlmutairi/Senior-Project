@@ -1,10 +1,19 @@
-﻿@using PagedList;
+﻿
+
+@model myWall.ViewModel.WallandUserVM
+
 @using PagedList.Mvc;
-@model IPagedList<myWall.Models.Wall>
+
+<script src="~/Scripts/jquery-1.12.4.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "Home Page";
 }
+
+
+
 
 <link href="~/Content/bootstrap.min.css" rel="stylesheet">
 <!-- Custom CSS -->
@@ -20,7 +29,7 @@
    
     body{
 
-      background: url(/Content/images/graffitti-1373857_960_720.jpg) no-repeat center center;
+      background: url(/Content/images/intro-bg.jpg) no-repeat center center;  
     }
     
     .buttonn {
@@ -79,28 +88,57 @@
                                 <img src='@Url.Content("~/Content/Images/chat.png")' />
                             </a>
                         </div>
-                        <div class="col-md-6">
+
+                        <div class="col-md-4">
                             <div class="waa">
-                                <h3>Latest Wall:</h3>
-                                @foreach (var item in Model)
-            {
+                                <h3 style="color:black">Latest Wall:</h3>
+                                @foreach (var item in Model.Walls)
+                                {
 
                                     @Html.RouteLink(item.Name, "Wall", new { action = "Wall", id = item.Id }, new { @class = "buttonn" }) <br />
 
                                 }
+                                
+                                
+                               
 
-                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
 
                             </div>
 
                         </div>
-                        <div class="col-md-6">
+                        
+                        <div class="col-md-4">
                             <div class="sear">
-                                <h1>Comming soon</h1>
-                                <h2 class="buttonn">Search for a wall & Users</h2>
+                                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                                {
+
+                                    <h1 style="color:black">SearchFor:</h1> @Html.RadioButton("SearchFor", "User") <text>User</text>
+                                    @Html.RadioButton("SearchFor", "Wall", true) <text>Wall</text><br />
+                                    @Html.TextBox("search") <br />
+                                    <input type="submit" value="Search" class="buttonn" />
+                                }
+
+
                             </div>
                         </div>
+
+                        <div class="col-md-4">
+                            <div class="waa">
+                                <h3 style="color:black">Users:</h3>
+                                @foreach (var it in Model.Users)
+            {
+
+                                    @Html.ActionLink(it.UserName, "UserProfile", new { action = "UserProfile", id = it.Id }, new { @class = "buttonn" }) <br />
+
+
+                                }
+
+                               
+                            </div>
+
+                        </div>
+
 
 
                         <br />

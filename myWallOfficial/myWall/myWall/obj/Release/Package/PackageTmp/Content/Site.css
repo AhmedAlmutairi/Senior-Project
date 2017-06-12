@@ -73,8 +73,13 @@ textarea {
     
    // margin-left: auto ;
    // margin-right: auto ;
+<<<<<<< HEAD
     width: 500px;
     height: auto;
+=======
+    width: 370px;
+    height: 400px;
+>>>>>>> feature
     background-color: aliceblue;
     border: groove;
     text-align: center;
@@ -83,7 +88,11 @@ textarea {
 }
 
 .sear{
+<<<<<<< HEAD
     width: 500px;
+=======
+    width: 370px;
+>>>>>>> feature
     height: 400px;
     background-color: aliceblue;
     border: groove;
@@ -147,3 +156,10 @@ textarea {
 }
 
 
+<<<<<<< HEAD
+=======
+#backButton {
+background-color: white;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+>>>>>>> feature

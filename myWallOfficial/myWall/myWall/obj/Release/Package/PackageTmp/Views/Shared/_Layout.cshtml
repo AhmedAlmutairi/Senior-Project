@@ -11,6 +11,7 @@
     <title>@ViewBag.Name - @ViewBag.Title </title>
 
     @Styles.Render("~/Content/css")
+<<<<<<< HEAD
     @Scripts.Render("~/bundles/modernizr")
     
 
@@ -43,6 +44,17 @@ li a:hover {
     background-color: #ff7d24
 }
     </style>
+=======
+
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+    @Scripts.Render("~/bundles/modernizr")
+    
+
+>>>>>>> feature
 
 </head>
 <body class="parallax">
@@ -63,8 +75,14 @@ li a:hover {
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Chess", "Chess", "Home")</li>
+<<<<<<< HEAD
                     <li>@Html.ActionLink("UploadToCanvas", "UploadToCanvas", "Home")</li>
                     <li>@Html.ActionLink("draw", "draw", "Home")</li>
+=======
+                    <li>@Html.ActionLink("Resize Image", "Collab", "Home")</li>
+                    <li>@Html.ActionLink("Draw On An Image", "uploadToCanvas", "Home")</li>
+                    <li>@Html.ActionLink("Draw With Friends", "draw", "Home")</li>
+>>>>>>> feature
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -77,7 +95,11 @@ li a:hover {
 
     </div>
 
+<<<<<<< HEAD
     @Scripts.Render("~/bundles/jquery")
+=======
+   
+>>>>>>> feature
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

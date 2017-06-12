@@ -90,6 +90,13 @@ GO
 IF OBJECT_ID('dbo.Chat','U') IS NOT NULL
 	DROP TABLE [dbo].[Chat];
 GO
+<<<<<<< HEAD
+=======
+
+IF OBJECT_ID('dbo.Dolist','U') IS NOT NULL
+	DROP TABLE [dbo].[Dolist];
+GO
+>>>>>>> feature
 -- ############# AspNetRoles #############
 CREATE TABLE [dbo].[AspNetRoles]
 (
@@ -207,6 +214,10 @@ CREATE TABLE [dbo].[Wall]
 	[Id] INT IDENTITY (1,1) NOT NULL,
 	[Name] NVARCHAR (50) NOT NULL,
 	[UserId] NVARCHAR (128) NOT NULL,
+<<<<<<< HEAD
+=======
+	[QuestionId] INT NULL,
+>>>>>>> feature
 	CONSTRAINT [PK_dbo.Wall] PRIMARY KEY CLUSTERED ([Id] ASC),
 	CONSTRAINT [FK_dbo.Wall_dbo.AspNetUsers_UserId] FOREIGN KEY ([UserId]) REFERENCES [dbo].[AspNetUsers] ([Id]) ON DELETE CASCADE
 
@@ -370,4 +381,21 @@ CREATE TABLE [dbo].[Chat]
 	[ConnectionId]             NVARCHAR (256) NULL,
     CONSTRAINT [PK_dbo.Chat] PRIMARY KEY CLUSTERED ([Id] ASC)
     
+<<<<<<< HEAD
+=======
+);
+
+-- ############# Dolist #############
+CREATE TABLE [dbo].[Dolist]
+(
+    [Id]         INT      IDENTITY (1, 1) NOT NULL,
+    [UserId]     NVARCHAR (128) NULL,
+    [WallId]  INT NULL,
+    [Time] DateTime NULL,
+	[File] Binary NULL, 
+	[Item] NVARCHAR (500) NULL,
+	[Status] NVARCHAR (500) NULL,
+    CONSTRAINT [PK_dbo.Dolist] PRIMARY KEY CLUSTERED ([Id] ASC)
+    
+>>>>>>> feature
 );

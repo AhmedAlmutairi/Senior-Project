@@ -1,0 +1,18 @@
+myWall app is an application was developed by engOrg team at WOU (Western Oregon University) for CS 460-462 (Software Engineering |, || and |||) classes in the year 2016-2017. 
+myWall app allows users to be able to interact in a real-time chat and whiteboard for drawing. Also, Users can create their own walls, not only one but the user can have multiple walls for different fields or all for the same field. 
+In their own walls, they can post images, questions, and answer others' questions. They also will have their own chat in every wall they have. They can post their to do lists and show three days of the to do lists.
+
+Team memebers:
+Ahmed Almutairi
+Whitney Meulink
+Peter Wallace
+
+You can visit our projects' Git repository from the following link:
+https://bitbucket.org/CS460Almutairi/engorg
+
+Tech/tools used to develop our project:
+We used Visual Stodio 2015 to develop our project. The languages that we used to build our project are C#, Javascript, Html.
+We also used Sql Server 2016 to build our database. For our meetings, we have used slack and skype.
+We all proud of what we have done. We learn a lot, we improved our skills and knowledge, and we became more familliar to software engineering and programming.
+We are very happy with what we gained from this project especially singlr technology, and the good thing with this is all of us had the chance to work on it and learn it.
+ 
