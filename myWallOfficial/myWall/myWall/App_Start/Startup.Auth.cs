@@ -54,15 +54,15 @@ namespace myWall
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "128976454435482",
+               appSecret: "7521f459062e8ac4a49eed6c2ef99f40");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "729539153430-nqqod0no5tq0i2hfe75to4l3el1c2h0e.apps.googleusercontent.com",
+               ClientSecret = "73e4m7vGkAxs-K3xa_OaMpLp"
+            });
 
             //Enable SignalR
             app.MapSignalR();

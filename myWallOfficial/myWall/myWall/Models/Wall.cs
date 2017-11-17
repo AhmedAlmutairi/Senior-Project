@@ -22,7 +22,7 @@ namespace myWall.Models
         [StringLength(50)]
         public string Name { get; set; }
 
-
+       // [Required]
         [StringLength(128)]
         public string UserId { get; set; }
 

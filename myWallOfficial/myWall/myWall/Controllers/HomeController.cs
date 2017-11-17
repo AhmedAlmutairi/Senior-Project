@@ -18,6 +18,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using PagedList;
 using PagedList.Mvc;
+using Microsoft.AspNet.SignalR.Infrastructure;
 
 namespace myWall.Controllers
 {
@@ -28,51 +29,12 @@ namespace myWall.Controllers
     public class HomeController : Controller
     {
         
-        private MyWallContext db = new MyWallContext();
+        MyWallContext db = new MyWallContext();
         ApplicationDbContext d = new ApplicationDbContext();
-
-
-        /*public ActionResult Index(int? page)
-        {
-            
-            var wall = d.Walls.OrderByDescending(x => x.Id).ToList().ToPagedList(page ?? 1, 3);
-            return View(wall);
-            
-        }*/
-
+        
         public ActionResult Index(string searchFor, string search, int? page)
         {
-            /*List<object> myModel = new List<object>();
-            
-            if (searchFor == "User")
-            {
-
-
-                var user = d.Users.Where(x => x.UserName.StartsWith(search));
-
-                myModel.Add(user.ToList());
-                return View(myModel);
-            }
-
-            else if (searchFor == "Wall")
-            {
-                var wall = d.Walls.Where(x => x.Name == search || search == null);
-
-                //var wal = wall.First();
-                myModel.Add(wall.ToList());
-                return View(myModel);
-            }
-
-            else if(search == null)
-            {
-                var wal = d.Walls.Where(x => x.Name == search || search == null);
-                var use = d.Users.Where(x => x.UserName.StartsWith(search));
-                myModel.Add(wal.ToList());
-                myModel.Add(use.ToList());
-                return View(myModel);
-            }
-            return View(myModel);*/
-
+          
 
             WallandUserVM myModel = new WallandUserVM();
             //WallandUserVM obj = new WallandUserVM();
