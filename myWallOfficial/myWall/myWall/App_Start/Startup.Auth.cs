@@ -61,8 +61,7 @@ namespace myWall
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
                 ClientId = "729539153430-nqqod0no5tq0i2hfe75to4l3el1c2h0e.apps.googleusercontent.com",
-               ClientSecret = "73e4m7vGkAxs-K3xa_OaMpLp
-"
+               ClientSecret = "73e4m7vGkAxs-K3xa_OaMpLp"
             });
 
             //Enable SignalR
